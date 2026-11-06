@@ -164,8 +164,8 @@ that `unverified` must never count as evidence either way.
 | M4 | API | FastAPI + SSE streaming `/api/check`, `/api/ask`, rate limit, CORS | ✅ |
 | M5 | Evals | labelled set + `scamcheck eval` + rules baseline; live agent run pending API key | ✅ (agent run pending) |
 | M6 | Web UI | Next.js chat with live trace panel and verdict card; offline rules engine fallback | ✅ |
-| M7 | MCP server | FastMCP stdio server over `tools/` and Claude Desktop config snippet | ⏳ next |
-| M8 | Ship | deploy (Vercel + Render), demo GIF, README polish, LICENSE | ⏳ |
+| M7 | MCP server | `MCPServer` (mcp 2.x, formerly FastMCP) stdio server over `tools/` + prompt + resource | ✅ |
+| M8 | Ship | deploy (Vercel + Render), demo GIF, README polish, LICENSE | ⏳ next |
 | S1 | Stretch: screenshot input | Claude vision reads the SMS screenshot, then the same pipeline | — |
 | S2 | Stretch: WhatsApp | Twilio sandbox webhook adapter | — |
 | S3 | Stretch: urlscan.io | submit the final URL for a sandboxed scan (needs a key) | — |

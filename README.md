@@ -8,7 +8,7 @@ channels and known Malaysian scam patterns, then gives a verdict that cites each
 > **calls tools that verify the claims**: RDAP/WHOIS lookups, server-side redirect resolution and
 > a sourced dataset of official contacts. Deterministic red flags can't be argued away by the model.
 
-🚧 **Status: in progress.** Tools, agent loop, CLI, streaming API, evals and web UI work. MCP server and deployment are next
+🚧 **Status: in progress.** Tools, agent loop, CLI, streaming API, evals, web UI and MCP server work. Deployment is next
 (see [docs/PLAN.md](docs/PLAN.md)).
 
 ---
@@ -127,6 +127,34 @@ never as clickable links.
 on the same tools. Its verdicts are labelled "rules engine, no AI", and follow-up questions are switched off.
 Set `SCAMCHECK_ENGINE=claude|rules` to force one engine.
 
+### MCP server
+
+The same six tools are also available over the [Model Context Protocol](https://modelcontextprotocol.io),
+so Claude Desktop, Claude Code or any MCP client can investigate messages with them:
+
+```bash
+claude mcp add scamcheck -- /path/to/scam-checker-agent/.venv/bin/scamcheck-mcp   # Claude Code
+```
+
+```json
+// Claude Desktop: claude_desktop_config.json
+{
+  "mcpServers": {
+    "scamcheck": { "command": "/path/to/scam-checker-agent/.venv/bin/scamcheck-mcp" }
+  }
+}
+```
+
+(On Windows the path is `.venv\Scripts\scamcheck-mcp.exe`.) The server exposes:
+
+| Kind | Name | Notes |
+|---|---|---|
+| Tools | `extract_entities`, `check_domain`, `resolve_url_redirects`, `lookup_official_contact`, `match_scam_pattern`, `check_phone_number` | All read-only. The two that reach the network are marked `openWorldHint`. Each returns the structured `ToolResult` |
+| Prompt | `investigate_message` | The agent's analyst instructions, with the message wrapped as untrusted data |
+| Resource | `scamcheck://official-orgs` | The curated, sourced official-contacts dataset |
+
+The MCP tools and the web agent call the same `run_tool()` function, so they share behaviour and tests.
+
 Tests run fully offline because network calls are mocked:
 
 ```bash
@@ -140,7 +168,7 @@ pytest --cov=scamcheck
 - [x] Labelled eval set (40 messages incl. prompt-injection cases), `scamcheck eval`, rules-only baseline ([evals/](evals/README.md))
 - [ ] Live agent eval results + a held-out eval set written by someone else
 - [x] Next.js UI: live tool-call trace, verdict card, official channels from the dataset, follow-ups
-- [ ] MCP server over the same tools
+- [x] MCP server (`scamcheck-mcp`) over the same tools, with an analyst prompt and the official-contacts dataset as a resource
 - [ ] Stretch: screenshot input, WhatsApp bot, urlscan.io
 
 ## Limitations
