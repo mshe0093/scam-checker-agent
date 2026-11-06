@@ -1,0 +1,7 @@
+{
+  "_meta": {
+    "description": "Placeholder for community-reported scam numbers. Intentionally EMPTY: there is no public, licensable Malaysian scam-number dataset (PDRM's Semak Mule is a portal with no public API). The tool reports 'unverified' and links to Semak Mule instead of inventing data. Entries added here must include a source_url.",
+    "checked_on": "2026-11-06"
+  },
+  "numbers": []
+}
