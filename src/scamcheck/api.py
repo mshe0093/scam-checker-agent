@@ -27,6 +27,7 @@ from pydantic import BaseModel, Field
 
 from scamcheck import __version__
 from scamcheck.agent import ScamCheckAgent
+from scamcheck.rules_agent import RulesAgent
 
 MAX_MESSAGE_CHARS = 4000
 MAX_QUESTION_CHARS = 1000
@@ -128,13 +129,30 @@ def _stream(
         session.lock.release()
 
 
+def default_engine() -> tuple[str, Callable[[], Any]]:
+    """SCAMCHECK_ENGINE=claude|rules|auto (default auto: Claude when credentials are set)."""
+    choice = os.getenv("SCAMCHECK_ENGINE", "auto").lower()
+    has_key = bool(os.getenv("ANTHROPIC_API_KEY") or os.getenv("ANTHROPIC_AUTH_TOKEN"))
+    if choice == "claude" or (choice == "auto" and has_key):
+        return "claude", ScamCheckAgent
+    return "rules", RulesAgent
+
+
 def create_app(
-    agent_factory: Callable[[], Any] = ScamCheckAgent,
+    agent_factory: Callable[[], Any] | None = None,
     rate_limit: tuple[int, float] = RATE_LIMIT,
 ) -> FastAPI:
+    if agent_factory is None:
+        engine, agent_factory = default_engine()
+    else:
+        engine = getattr(agent_factory, "engine", "claude")
     app = FastAPI(title="Scam Checker Agent API", version=__version__)
+    app.state.engine = engine
     origins = [
-        o.strip() for o in os.getenv("SCAMCHECK_CORS_ORIGINS", "http://localhost:3000").split(",")
+        o.strip()
+        for o in os.getenv(
+            "SCAMCHECK_CORS_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000"
+        ).split(",")
     ]
     app.add_middleware(
         CORSMiddleware, allow_origins=origins, allow_methods=["GET", "POST"], allow_headers=["*"]
@@ -160,14 +178,19 @@ def create_app(
 
     @app.get("/api/health")
     def health() -> dict[str, Any]:
-        return {"status": "ok", "version": __version__, "sessions": len(sessions)}
+        return {
+            "status": "ok",
+            "version": __version__,
+            "engine": engine,
+            "sessions": len(sessions),
+        }
 
     @app.post("/api/check")
     def check(body: CheckRequest, request: Request) -> StreamingResponse:
         check_rate(request)
         agent = agent_factory()
         sid, session = sessions.create(agent)
-        first = {"type": "session", "session_id": sid}
+        first = {"type": "session", "session_id": sid, "engine": engine}
         return StreamingResponse(
             _stream(agent.check(body.message), session, first),
             media_type="text/event-stream",

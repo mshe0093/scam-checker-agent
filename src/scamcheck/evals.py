@@ -14,8 +14,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Any
 
-from scamcheck.models import Severity, ToolResult
-from scamcheck.registry import run_tool
+from scamcheck.rules_agent import RulesAgent
 
 VERDICTS = ["likely_scam", "suspicious", "likely_legitimate", "insufficient_information"]
 # USD per million tokens (input, output) as listed on 2026-10-06. Thinking is billed as output.
@@ -33,44 +32,11 @@ def load_dataset(path: str | Path) -> list[dict[str, Any]]:
 
 # ---- rules-only baseline ------------------------------------------------------------------
 def baseline_verdict(message: str) -> tuple[dict[str, Any], int]:
-    results: list[ToolResult] = []
-
-    def call(name: str, **args: Any) -> ToolResult:
-        res = run_tool(name, args)
-        results.append(res)
-        return res
-
-    ent = call("extract_entities", message=message).evidence
-    claimed = ent["claimed_orgs"][0]["name"] if ent["claimed_orgs"] else ""
-    for url in ent["urls"]:
-        redirect = call("resolve_url_redirects", url=url)
-        call("check_domain", domain_or_url=url, claimed_org=claimed)
-        final = redirect.evidence.get("final_url")
-        if final and redirect.evidence.get("final_domain") not in url:
-            call("check_domain", domain_or_url=final, claimed_org=claimed)
-    for number in ent["phone_numbers"]:
-        call("check_phone_number", number=number)
-    call("match_scam_pattern", message=message)
-
-    signals = [s for r in results for s in r.signals]
-    hard = any(s.severity is Severity.RED and s.deterministic for s in signals)
-    reds = sum(s.severity is Severity.RED for s in signals)
-    ambers = sum(s.severity is Severity.AMBER for s in signals)
-    greens = sum(s.severity is Severity.GREEN for s in signals)
-    pressure = bool(ent["pressure_language"])
-    anything = any(ent[k] for k in ("urls", "phone_numbers", "claimed_orgs", "emails"))
-
-    if hard or (reds and pressure):
-        verdict = "likely_scam"
-    elif reds or ambers >= 2:
-        verdict = "suspicious"
-    elif greens or (anything and not ambers):
-        verdict = "likely_legitimate"
-    elif not anything and not pressure:
-        verdict = "insufficient_information"
-    else:
-        verdict = "suspicious"
-    return {"verdict": verdict}, len(results)
+    agent = RulesAgent()
+    for _ in agent.check(message):
+        pass
+    assert agent.verdict is not None
+    return agent.verdict, agent.usage["tool_calls"]
 
 
 # ---- runners ------------------------------------------------------------------------------

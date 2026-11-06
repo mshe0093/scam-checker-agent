@@ -14,3 +14,5 @@ build/
 node_modules/
 .next/
 evals/results/
+web/next-env.d.ts
+web/*.tsbuildinfo

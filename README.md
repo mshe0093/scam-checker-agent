@@ -8,7 +8,7 @@ channels and known Malaysian scam patterns, then gives a verdict that cites each
 > **calls tools that verify the claims**: RDAP/WHOIS lookups, server-side redirect resolution and
 > a sourced dataset of official contacts. Deterministic red flags can't be argued away by the model.
 
-🚧 **Status: in progress.** Core tools, agent loop, CLI, streaming API and eval harness work. The web UI is next
+🚧 **Status: in progress.** Tools, agent loop, CLI, streaming API, evals and web UI work. MCP server and deployment are next
 (see [docs/PLAN.md](docs/PLAN.md)).
 
 ---
@@ -111,6 +111,22 @@ The API rate-limits each IP (10 requests per 10 minutes) and allows at most 10 f
 expire after 30 minutes. **Pasted messages are never logged or stored.** Set `SCAMCHECK_CORS_ORIGINS` for
 the frontend's origin, and `SCAMCHECK_TRUST_PROXY=1` when the API runs behind a reverse proxy.
 
+### Web UI
+
+```bash
+scamcheck serve                       # terminal 1: API on 127.0.0.1:8000
+cd web && npm install && npm run dev  # terminal 2: UI on localhost:3000
+```
+
+The left panel streams every tool call and its result as it happens. The right panel shows the verdict,
+the findings, what to do, and the claimed organisation's **official channels, taken from the curated
+dataset and never from the model's text**. Links from the pasted message are shown as plain text,
+never as clickable links.
+
+**No API key? The UI still works.** Without `ANTHROPIC_API_KEY`, the API runs an **offline rules engine**
+on the same tools. Its verdicts are labelled "rules engine, no AI", and follow-up questions are switched off.
+Set `SCAMCHECK_ENGINE=claude|rules` to force one engine.
+
 Tests run fully offline because network calls are mocked:
 
 ```bash
@@ -123,7 +139,7 @@ pytest --cov=scamcheck
 - [x] FastAPI with SSE streaming, sessions for follow-ups, rate limiting
 - [x] Labelled eval set (40 messages incl. prompt-injection cases), `scamcheck eval`, rules-only baseline ([evals/](evals/README.md))
 - [ ] Live agent eval results + a held-out eval set written by someone else
-- [ ] Next.js chat UI with a live tool-call trace
+- [x] Next.js UI: live tool-call trace, verdict card, official channels from the dataset, follow-ups
 - [ ] MCP server over the same tools
 - [ ] Stretch: screenshot input, WhatsApp bot, urlscan.io
 

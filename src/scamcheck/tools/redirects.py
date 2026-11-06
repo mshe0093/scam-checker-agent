@@ -15,7 +15,13 @@ import httpx
 from scamcheck.config import Settings, get_settings
 from scamcheck.models import Severity, Signal, Status, ToolResult
 from scamcheck.tools.domain import SHORTENERS, host_of, registrable
-from scamcheck.tools.netsafety import Resolver, UnsafeURLError, assert_safe_url, system_resolver
+from scamcheck.tools.netsafety import (
+    Resolver,
+    UnresolvableHostError,
+    UnsafeURLError,
+    assert_safe_url,
+    system_resolver,
+)
 
 MAX_HOPS = 8
 MAX_BODY = 32_768
@@ -53,6 +59,24 @@ def resolve_url_redirects(
         for _ in range(MAX_HOPS):
             try:
                 assert_safe_url(current, resolver)
+            except UnresolvableHostError as exc:
+                signals.append(
+                    Signal(
+                        id="host_does_not_resolve",
+                        severity=Severity.INFO,
+                        detail=f"{exc}: the link is dead right now (taken down, expired or never "
+                        "set up). That says nothing either way about the message.",
+                    )
+                )
+                return _result(
+                    url,
+                    chain,
+                    current,
+                    None,
+                    signals,
+                    Status.UNVERIFIED,
+                    f"Could not follow {current}: {exc}.",
+                )
             except UnsafeURLError as exc:
                 signals.append(
                     Signal(

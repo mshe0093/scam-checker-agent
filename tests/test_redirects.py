@@ -106,3 +106,11 @@ def test_ssrf_guard_rejects(url):
 
 def test_ssrf_guard_allows_public():
     assert assert_safe_url("https://hop.example/path", resolver) == "hop.example"
+
+
+def test_dead_link_is_info_not_unsafe(settings):
+    res = resolve_url_redirects(
+        "http://nxdomain.example/", client=client_for({}), resolver=resolver, settings=settings
+    )
+    assert res.status == "unverified"
+    assert {s.id for s in res.signals} == {"host_does_not_resolve"}

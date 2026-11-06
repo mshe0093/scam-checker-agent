@@ -17,6 +17,10 @@ class UnsafeURLError(ValueError):
     """Raised when a URL must not be fetched (private address, odd port, bad scheme...)."""
 
 
+class UnresolvableHostError(UnsafeURLError):
+    """The host has no DNS records: nothing to fetch, but not a safety problem either."""
+
+
 def system_resolver(host: str) -> list[str]:
     infos = socket.getaddrinfo(host, None, proto=socket.IPPROTO_TCP)
     return sorted({info[4][0] for info in infos})
@@ -51,9 +55,9 @@ def assert_safe_url(url: str, resolver: Resolver = system_resolver) -> str:
         try:
             ips = resolver(host)
         except OSError as exc:
-            raise UnsafeURLError(f"DNS resolution failed for {host}") from exc
+            raise UnresolvableHostError(f"{host} does not resolve in DNS") from exc
     if not ips:
-        raise UnsafeURLError(f"{host} did not resolve")
+        raise UnresolvableHostError(f"{host} does not resolve in DNS")
     bad = [ip for ip in ips if not is_public_ip(ip)]
     if bad:
         raise UnsafeURLError(f"{host} resolves to non-public address {bad[0]}")

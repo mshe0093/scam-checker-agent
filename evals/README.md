@@ -36,7 +36,7 @@ Results are written to `evals/results/` (git-ignored). Copy the summary table he
 | Legit wrongly called scam | 0% |
 | Legit cleared as legitimate | 64% (9/14) |
 | Abstained | 3 (personal / appointment messages with nothing to check) |
-| Mean tool calls | 3.6 |
+| Mean tool calls | 4.3 |
 
 Misclassified: `l01` (a genuine Maybank TAC SMS whose "never share your TAC" warning reads as a credential
 request) and `l08` (a genuine card-block alert pointing to the real fraud hotline) both came back as `suspicious`.

@@ -98,3 +98,17 @@ def test_session_store_expires_and_caps():
     capped = SessionStore(max_sessions=2)
     ids = [capped.create(FakeAgent())[0] for _ in range(3)]
     assert len(capped) == 2 and capped.get(ids[0]) is None
+
+
+def test_rules_engine_streams_real_tool_events_offline(monkeypatch):
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.delenv("ANTHROPIC_AUTH_TOKEN", raising=False)
+    monkeypatch.setenv("SCAMCHECK_ENGINE", "auto")
+    c = TestClient(create_app(rate_limit=(100, 60)))
+    assert c.get("/api/health").json()["engine"] == "rules"
+    events = parse_sse(
+        c.post("/api/check", json={"message": "Hi mum, new number, transfer RM800 urgently"}).text
+    )
+    assert events[0]["engine"] == "rules"
+    verdict = next(e for e in events if e["type"] == "verdict")["verdict"]
+    assert verdict["engine"] == "rules" and "rules engine" in verdict["headline"]
