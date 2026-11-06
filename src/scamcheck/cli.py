@@ -172,5 +172,65 @@ def serve(
     uvicorn.run(create_app(), host=host, port=port)
 
 
+@app.command("eval")
+def eval_cmd(
+    mode: Annotated[
+        str, typer.Option(help="agent (needs API key) or baseline (rules only)")
+    ] = "agent",
+    dataset: Annotated[
+        str, typer.Option(help="JSONL file of labelled messages")
+    ] = "evals/dataset.jsonl",
+    limit: Annotated[int, typer.Option(help="Only run the first N cases (0 = all)")] = 0,
+    workers: Annotated[int, typer.Option(help="Cases run in parallel")] = 4,
+    out: Annotated[
+        str, typer.Option(help="Directory for the JSON + Markdown results")
+    ] = "evals/results",
+) -> None:
+    """Score the agent (or the rules-only baseline) on the labelled eval set."""
+    from datetime import UTC, datetime
+    from pathlib import Path
+
+    from scamcheck.config import get_settings
+    from scamcheck.evals import load_dataset, run_eval, score, to_markdown
+
+    if mode not in {"agent", "baseline"}:
+        raise typer.BadParameter("mode must be 'agent' or 'baseline'")
+    cases = load_dataset(dataset)
+    cases = cases[:limit] if limit else cases
+    model = get_settings().model if mode == "agent" else None
+    factory = None
+    if mode == "agent":
+        from scamcheck.agent import ScamCheckAgent
+
+        factory = ScamCheckAgent
+        console.print(
+            f"[yellow]Running {len(cases)} live agent checks on {model}; this costs API credits.[/]"
+        )
+
+    def progress(row: dict) -> None:
+        ok = (row["label"] == "scam") == (row["verdict"] in {"likely_scam", "suspicious"})
+        mark = "[green]✓[/]" if ok else "[red]✗[/]"
+        console.print(
+            f"{mark} {row['id']:<4} {row['label']:<5} → {row['verdict']:<24} {row['seconds']}s"
+        )
+
+    rows = run_eval(cases, mode=mode, agent_factory=factory, workers=workers, on_row=progress)
+    metrics = score(rows, model=model)
+    title = (
+        f"{'Agent: ' + model if model else 'Rules-only baseline'} ({datetime.now(UTC):%Y-%m-%d})"
+    )
+    md = to_markdown(metrics, rows, title)
+    out_dir = Path(out)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    stem = f"{mode}-{datetime.now(UTC):%Y%m%dT%H%M%S}"
+    (out_dir / f"{stem}.json").write_text(
+        json.dumps({"metrics": metrics, "rows": rows}, indent=2), encoding="utf-8"
+    )
+    (out_dir / f"{stem}.md").write_text(md, encoding="utf-8")
+    console.print()
+    console.print(md)
+    console.print(f"[dim]Saved to {out_dir / stem}.json/.md[/]")
+
+
 if __name__ == "__main__":
     app()

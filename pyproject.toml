@@ -54,7 +54,7 @@ select = ["E", "W", "F", "I", "UP", "B", "S", "RUF"]
 ignore = ["S101", "E501"]  # line length is owned by `ruff format`; long strings are allowed
 
 [tool.ruff.lint.per-file-ignores]
-"tests/*" = ["S"]
+"tests/*" = ["S", "RUF012"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

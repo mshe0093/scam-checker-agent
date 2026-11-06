@@ -8,7 +8,7 @@ channels and known Malaysian scam patterns, then gives a verdict that cites each
 > **calls tools that verify the claims**: RDAP/WHOIS lookups, server-side redirect resolution and
 > a sourced dataset of official contacts. Deterministic red flags can't be argued away by the model.
 
-🚧 **Status: in progress.** Core tools, agent loop, CLI and streaming API work. Evals and the web UI are next
+🚧 **Status: in progress.** Core tools, agent loop, CLI, streaming API and eval harness work. The web UI is next
 (see [docs/PLAN.md](docs/PLAN.md)).
 
 ---
@@ -121,7 +121,8 @@ pytest --cov=scamcheck
 - [x] Six verification tools with offline tests, SSRF guard and curated sourced data
 - [x] Claude agent loop: parallel tools, strict verdict schema, verdict floor, follow-up Q&A, CLI
 - [x] FastAPI with SSE streaming, sessions for follow-ups, rate limiting
-- [ ] Labelled eval set (scams, legitimate messages, prompt-injection cases) and an accuracy table here
+- [x] Labelled eval set (40 messages incl. prompt-injection cases), `scamcheck eval`, rules-only baseline ([evals/](evals/README.md))
+- [ ] Live agent eval results + a held-out eval set written by someone else
 - [ ] Next.js chat UI with a live tool-call trace
 - [ ] MCP server over the same tools
 - [ ] Stretch: screenshot input, WhatsApp bot, urlscan.io
