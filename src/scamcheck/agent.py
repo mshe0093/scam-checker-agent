@@ -101,6 +101,15 @@ class ScamCheckAgent:
             except anthropic.APIConnectionError:
                 yield {"type": "error", "message": "Could not reach the Claude API."}
                 return
+            except TypeError as exc:
+                # The SDK raises TypeError when no credentials are configured at all.
+                if "authentication" not in str(exc):
+                    raise
+                yield {
+                    "type": "error",
+                    "message": "No Claude API credentials configured: set ANTHROPIC_API_KEY.",
+                }
+                return
             self.usage["input_tokens"] += response.usage.input_tokens
             self.usage["output_tokens"] += response.usage.output_tokens
 

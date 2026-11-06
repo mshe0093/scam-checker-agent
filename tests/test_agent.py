@@ -155,3 +155,12 @@ def test_tool_schemas_are_strict():
         assert t["strict"] is True
         assert t["input_schema"]["additionalProperties"] is False
         assert set(t["input_schema"]["required"]) == set(t["input_schema"]["properties"])
+
+
+def test_missing_credentials_is_a_clear_error(settings):
+    class NoKeyClient(FakeClient):
+        def _create(self, **kwargs):
+            raise TypeError("Could not resolve authentication method. Expected one of api_key")
+
+    events = list(ScamCheckAgent(client=NoKeyClient([]), settings=settings).check("x"))
+    assert "ANTHROPIC_API_KEY" in events[0]["message"]

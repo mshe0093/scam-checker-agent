@@ -8,7 +8,7 @@ channels and known Malaysian scam patterns, then gives a verdict that cites each
 > **calls tools that verify the claims**: RDAP/WHOIS lookups, server-side redirect resolution and
 > a sourced dataset of official contacts. Deterministic red flags can't be argued away by the model.
 
-🚧 **Status: in progress.** Core tools, agent loop and CLI work. Web UI, API and evals are next
+🚧 **Status: in progress.** Core tools, agent loop, CLI and streaming API work. Evals and the web UI are next
 (see [docs/PLAN.md](docs/PLAN.md)).
 
 ---
@@ -93,6 +93,24 @@ export ANTHROPIC_API_KEY=sk-ant-...
 scamcheck check -i "paste the message here"
 ```
 
+### HTTP API (Server-Sent Events)
+
+```bash
+scamcheck serve --port 8000
+curl -N -X POST localhost:8000/api/check -H 'content-type: application/json' \
+  -d '{"message": "MAYBANK: verify now at http://maybank2u-secure-verify.com"}'
+```
+
+| Endpoint | Body | Stream events |
+|---|---|---|
+| `POST /api/check` | `{"message": "..."}` (≤ 4000 chars) | `session` → `tool_call` / `tool_result` / `text` … → `verdict` → `done` |
+| `POST /api/ask` | `{"session_id": "...", "question": "..."}` | `text` / `tool_call` / `tool_result` … → `done` |
+| `GET /api/health` | | JSON status |
+
+The API rate-limits each IP (10 requests per 10 minutes) and allows at most 10 follow-ups per session. Sessions are held in memory and
+expire after 30 minutes. **Pasted messages are never logged or stored.** Set `SCAMCHECK_CORS_ORIGINS` for
+the frontend's origin, and `SCAMCHECK_TRUST_PROXY=1` when the API runs behind a reverse proxy.
+
 Tests run fully offline because network calls are mocked:
 
 ```bash
@@ -102,7 +120,7 @@ pytest --cov=scamcheck
 ## Roadmap
 - [x] Six verification tools with offline tests, SSRF guard and curated sourced data
 - [x] Claude agent loop: parallel tools, strict verdict schema, verdict floor, follow-up Q&A, CLI
-- [ ] FastAPI with SSE streaming
+- [x] FastAPI with SSE streaming, sessions for follow-ups, rate limiting
 - [ ] Labelled eval set (scams, legitimate messages, prompt-injection cases) and an accuracy table here
 - [ ] Next.js chat UI with a live tool-call trace
 - [ ] MCP server over the same tools

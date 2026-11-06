@@ -161,8 +161,8 @@ that `unverified` must never count as evidence either way.
 | M1 | Deterministic tools | 6 tools + `ToolResult` + SSRF guard + offline tests | ✅ |
 | M2 | Curated data | orgs + patterns JSON with sources and verification levels | ✅ (v1) |
 | M3 | Agent + CLI | manual loop, `submit_verdict`, verdict floor, `scamcheck check` | ✅ |
-| M4 | API | FastAPI + SSE streaming `/api/check`, `/api/ask`, rate limit, CORS | ⏳ next |
-| M5 | Evals | labelled set + `scamcheck-eval` + results table in README | ⏳ |
+| M4 | API | FastAPI + SSE streaming `/api/check`, `/api/ask`, rate limit, CORS | ✅ |
+| M5 | Evals | labelled set + `scamcheck-eval` + results table in README | ⏳ next |
 | M6 | Web UI | Next.js chat with live trace panel and verdict card | ⏳ |
 | M7 | MCP server | FastMCP stdio server over `tools/` and Claude Desktop config snippet | ⏳ |
 | M8 | Ship | deploy (Vercel + Render), demo GIF, README polish, LICENSE | ⏳ |

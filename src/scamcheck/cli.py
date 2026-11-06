@@ -159,5 +159,18 @@ def tool(
     console.print_json(json.dumps(res.evidence, default=str))
 
 
+@app.command()
+def serve(
+    host: Annotated[str, typer.Option(help="Bind address")] = "127.0.0.1",
+    port: Annotated[int, typer.Option(help="Port")] = 8000,
+) -> None:
+    """Run the HTTP API (SSE streaming) with uvicorn."""
+    import uvicorn
+
+    from scamcheck.api import create_app
+
+    uvicorn.run(create_app(), host=host, port=port)
+
+
 if __name__ == "__main__":
     app()
