@@ -165,6 +165,7 @@ that `unverified` must never count as evidence either way.
 | M5 | Evals | labelled set + `scamcheck eval` + rules baseline; live agent run pending API key | ✅ (agent run pending) |
 | M6 | Web UI | Next.js chat with live trace panel and verdict card; offline rules engine fallback | ✅ |
 | M7 | MCP server | `MCPServer` (mcp 2.x, formerly FastMCP) stdio server over `tools/` + prompt + resource | ✅ |
+| M7.5 | Detection upgrade from GitHub research | dnstwist permutations of official domains, IDN/punycode folding, URL-shape signals, trust signals, weights + caps in `data/rules.json` (see `docs/RESEARCH-similar-projects.md`) | ✅ |
 | M8 | Ship | deploy (Vercel + Render), demo GIF, README polish, LICENSE | ⏳ next |
 | S1 | Stretch: screenshot input | Claude vision reads the SMS screenshot, then the same pipeline | — |
 | S2 | Stretch: WhatsApp | Twilio sandbox webhook adapter | — |

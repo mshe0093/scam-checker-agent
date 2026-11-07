@@ -17,6 +17,7 @@ from scamcheck.config import Settings, get_settings
 from scamcheck.models import ToolResult
 from scamcheck.prompts import SYSTEM_PROMPT, wrap_message
 from scamcheck.registry import anthropic_tools, run_tool
+from scamcheck.rules_agent import never_legitimate
 
 Event = dict[str, Any]
 FALLBACK_BETA = "server-side-fallback-2026-07-01"
@@ -27,17 +28,16 @@ NUDGE = (
 
 def apply_verdict_floor(verdict: dict[str, Any], results: list[ToolResult]) -> dict[str, Any]:
     """Hard, deterministic red flags (impersonation domain, Safe Browsing hit, domain under 30 days
-    old...) cannot be overruled into 'likely_legitimate' by the model."""
-    hard = [s for r in results for s in r.hard_red_flags]
-    if verdict.get("verdict") == "likely_legitimate" and hard:
+    old...) and the caps in data/rules.json (an unresolvable short link) cannot be overruled into
+    'likely_legitimate' by the model."""
+    reasons = [f"{s.id}: {s.detail}" for r in results for s in r.hard_red_flags]
+    reasons += never_legitimate(results)
+    if verdict.get("verdict") == "likely_legitimate" and reasons:
         verdict = {
             **verdict,
             "verdict": "suspicious",
             "confidence": "low",
-            "floor_applied": {
-                "from": "likely_legitimate",
-                "reasons": [f"{s.id}: {s.detail}" for s in hard],
-            },
+            "floor_applied": {"from": "likely_legitimate", "reasons": reasons},
         }
     return verdict
 

@@ -110,6 +110,24 @@ PRESSURE_TERMS: dict[str, list[str]] = {
 }
 
 
+# Genuine OTP/TAC messages warn the reader to keep the code secret. When these phrases appear,
+# "TAC"/"PIN" in the text is the thing being protected, not a request for it.
+PROTECTIVE_PHRASES = [
+    "never share",
+    "do not share",
+    "don't share",
+    "never disclose",
+    "do not disclose",
+    "will never ask",
+    "never ask",
+    "jangan kongsi",
+    "jangan dedahkan",
+    "jangan berikan",
+    "tidak akan meminta",
+]
+SECRET_TERMS = {"tac", "otp", "pin", "password", "kata laluan"}
+
+
 def _refang(text: str) -> str:
     return (
         text.replace("hxxp", "http")
@@ -160,9 +178,24 @@ def extract_entities(message: str) -> ToolResult:
         kind: [t for t in terms if _contains_term(lower, t)]
         for kind, terms in PRESSURE_TERMS.items()
     }
+    advice = [p for p in PROTECTIVE_PHRASES if _contains_term(lower, p)]
+    if advice and "credential_request" in pressure:
+        pressure["credential_request"] = [
+            t for t in pressure["credential_request"] if t not in SECRET_TERMS
+        ]
     pressure = {k: v for k, v in pressure.items() if v}
 
     signals: list[Signal] = []
+    if advice and not urls:
+        signals.append(
+            Signal(
+                id="security_advice",
+                severity=Severity.GREEN,
+                detail=f"Tells the reader to keep codes secret ('{advice[0]}') and gives no link, "
+                "which is how genuine bank OTP/TAC messages are written. Scammers can copy the "
+                "wording, so this is weak evidence on its own.",
+            )
+        )
     if "threat" in pressure and ("urgency" in pressure or "credential_request" in pressure):
         signals.append(
             Signal(
@@ -211,5 +244,6 @@ def extract_entities(message: str) -> ToolResult:
             "amounts": amounts,
             "claimed_orgs": orgs,
             "pressure_language": pressure,
+            "security_advice": advice,
         },
     )

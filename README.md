@@ -46,7 +46,7 @@ What to do
 | Tool | What it verifies | How |
 |---|---|---|
 | `extract_entities` | URLs (incl. scheme-less and defanged), MY phone formats, RM amounts, claimed orgs, pressure language in **English and Bahasa Malaysia** | Deterministic regex and the curated org aliases |
-| `check_domain` | Official domain? Brand impersonation? Typosquat (`rnaybank2u` → `maybank2u`)? Domain age? Safe Browsing? | `tldextract` (offline PSL), Levenshtein with homoglyph folding, **RDAP → WHOIS:43 fallback**, Google Safe Browsing v4 |
+| `check_domain` | Official domain? Brand impersonation? Typosquat (`rnaybank2u` → `maybank2u`, Cyrillic/punycode look-alikes)? Login-page path on an unofficial domain? Domain age, both as a risk and as trust? Safe Browsing? | `tldextract` (offline PSL), **dnstwist** permutations of every official domain, punycode decoding + confusable folding, Levenshtein, **RDAP → WHOIS:43 fallback**, Google Safe Browsing v4 |
 | `resolve_url_redirects` | Where a link (especially a shortener) really lands, before anyone clicks | Manual hop-by-hop redirects with an **SSRF guard on every hop**. Pages are never rendered |
 | `lookup_official_contact` | The real hotlines, domains and policies of Maybank, CIMB, LHDN, JPJ, PDRM, BNM, Pos Laju, J&T, ... | Curated JSON. **Every entry has a source URL and a verification level** |
 | `match_scam_pattern` | Resemblance to known Malaysian scam types (bank, parcel, LHDN/JPJ/toll, loan, job-task, prize, "hi mum") | TF-IDF cosine and indicator hits over self-written templates |

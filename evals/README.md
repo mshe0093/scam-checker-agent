@@ -27,19 +27,25 @@ Results are written to `evals/results/` (git-ignored). Copy the summary table he
 
 ## Results
 
-### Rules-only baseline (2026-11-06)
+### Rules-only baseline (2026-11-07, after the trust signals and weighted scoring)
 
-| Metric | Value |
-|---|---|
-| Scams flagged | **100%** (26/26) |
-| Scams wrongly called legitimate | **0%** |
-| Legit wrongly called scam | 0% |
-| Legit cleared as legitimate | 64% (9/14) |
-| Abstained | 3 (personal / appointment messages with nothing to check) |
-| Mean tool calls | 4.3 |
+| Metric | 2026-11-06 | 2026-11-07 |
+|---|---|---|
+| Scams flagged | **100%** (26/26) | **100%** (26/26) |
+| Scams wrongly called legitimate | **0%** | **0%** |
+| Legit wrongly called scam | 0% | 0% |
+| Legit cleared as legitimate | 64% (9/14) | **79% (11/14)** |
+| Abstained | 3 | 3 (personal / appointment messages with nothing to check) |
+| Mean tool calls | 4.3 | 4.3 |
 
-Misclassified: `l01` (a genuine Maybank TAC SMS whose "never share your TAC" warning reads as a credential
-request) and `l08` (a genuine card-block alert pointing to the real fraud hotline) both came back as `suspicious`.
+What changed: `l01`, a genuine Maybank TAC SMS, used to fail because its "never share your TAC" warning was read
+as a request for the TAC. `l08`, a genuine card-block alert pointing to the real fraud hotline, failed because
+its scary wording outweighed the official number. Both now come back `likely_legitimate`. Two changes did this:
+protective wording no longer counts as a credential request, and the rules engine weighs trust signals against
+risk using `src/scamcheck/data/rules.json`.
+
+These two fixes were made while looking at these two failures, so the gain is **in-sample**. That's one more
+reason to build the held-out set below.
 
 > ⚠️ **Read the baseline with care.** The same person wrote the messages, the scam templates and the rules,
 > so the baseline is tuned to this set and its scam recall is optimistic. Treat these numbers as a smoke test,

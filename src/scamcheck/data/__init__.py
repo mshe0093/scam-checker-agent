@@ -28,3 +28,7 @@ def patterns() -> list[dict[str, Any]]:
 
 def reported_numbers() -> list[dict[str, Any]]:
     return load("reported_numbers")["numbers"]
+
+
+def rules() -> dict[str, Any]:
+    return load("rules")

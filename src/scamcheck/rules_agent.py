@@ -9,6 +9,7 @@ from __future__ import annotations
 from collections.abc import Iterator
 from typing import Any
 
+from scamcheck import data
 from scamcheck.models import Severity, ToolResult
 from scamcheck.registry import run_tool
 
@@ -77,6 +78,21 @@ class RulesAgent:
         yield {"type": "done", "usage": dict(self.usage)}
 
 
+def weight(signal_id: str, severity: Severity) -> int:
+    cfg = data.rules()
+    return cfg["weights"].get(signal_id, cfg["default_weights"].get(severity.value, 0))
+
+
+def never_legitimate(results: list[ToolResult]) -> list[str]:
+    """Reasons from data/rules.json caps that forbid a likely_legitimate verdict."""
+    ids = {s.id for r in results for s in r.signals}
+    return [
+        cap["reason"]
+        for cap in data.rules()["caps"]["never_legitimate"]
+        if cap["when_signal"] in ids and cap.get("unless_signal") not in ids
+    ]
+
+
 def decide(ent: dict[str, Any], results: list[ToolResult]) -> dict[str, Any]:
     signals = [s for r in results for s in r.signals]
     hard = [s for s in signals if s.severity is Severity.RED and s.deterministic]
@@ -85,16 +101,23 @@ def decide(ent: dict[str, Any], results: list[ToolResult]) -> dict[str, Any]:
     greens = [s for s in signals if s.severity is Severity.GREEN]
     pressure = bool(ent["pressure_language"])
     anything = any(ent[k] for k in ("urls", "phone_numbers", "claimed_orgs", "emails"))
+    risk = sum(weight(s.id, s.severity) for s in [*reds, *ambers])
+    trust = sum(weight(s.id, s.severity) for s in greens)
+    net = risk - trust
+    threshold = data.rules()["thresholds"]["suspicious_net_risk"]
 
     if hard or (reds and pressure):
         verdict, confidence = "likely_scam", "high" if hard else "medium"
-    elif reds or len(ambers) >= 2:
+    elif net >= threshold:
         verdict, confidence = "suspicious", "medium"
-    elif greens or (anything and not ambers):
+    elif (greens and net <= 0) or (anything and risk == 0):
         verdict, confidence = "likely_legitimate", "low"
-    elif not anything and not pressure:
+    elif not anything and not pressure and not greens:
         verdict, confidence = "insufficient_information", "low"
     else:
+        verdict, confidence = "suspicious", "low"
+    capped = never_legitimate(results)
+    if verdict == "likely_legitimate" and capped:
         verdict, confidence = "suspicious", "low"
 
     category = "none"
@@ -115,6 +138,8 @@ def decide(ent: dict[str, Any], results: list[ToolResult]) -> dict[str, Any]:
     for r in results:
         for item in r.evidence.get("could_not_verify", []):
             findings.append({"check": "Not verified", "outcome": "unverified", "detail": item})
+    for reason in capped:
+        findings.append({"check": "Cannot clear", "outcome": "warn", "detail": reason})
 
     actions = {
         "likely_scam": [

@@ -1,0 +1,34 @@
+{
+  "_about": "Weights for the offline rules engine (rules_agent.decide). Risk points come from red/amber signals, trust points from green ones. Deterministic red signals skip the arithmetic and always give likely_scam. Tune against `scamcheck eval --mode baseline`; every change should be justified by the eval, not by a single example.",
+  "default_weights": {
+    "red": 4,
+    "amber": 2,
+    "green": 3
+  },
+  "weights": {
+    "partial_pattern_match": 1,
+    "high_abuse_tld": 1,
+    "random_looking_domain": 1,
+    "excessive_subdomains": 1,
+    "url_shortener": 1,
+    "phishing_path_keywords": 2,
+    "idn_host": 2,
+    "official_domain": 4,
+    "matches_official_number": 3,
+    "established_domain": 2,
+    "security_advice": 2
+  },
+  "thresholds": {
+    "suspicious_net_risk": 3,
+    "_note": "net = risk - trust. net >= suspicious_net_risk -> suspicious (medium). A non-deterministic red plus pressure language -> likely_scam (medium)."
+  },
+  "caps": {
+    "never_legitimate": [
+      {
+        "when_signal": "url_shortener",
+        "unless_signal": "shortener_resolved",
+        "reason": "A short link we could not follow could lead anywhere, so the message cannot be cleared."
+      }
+    ]
+  }
+}
