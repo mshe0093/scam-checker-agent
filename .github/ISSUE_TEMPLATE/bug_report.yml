@@ -1,0 +1,33 @@
+name: Bug report
+description: Something crashes, errors or behaves wrongly (not a wrong verdict)
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what you expected
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: The command, API call or UI steps. Remove personal details from any message.
+      render: shell
+    validations:
+      required: true
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Where
+      options:
+        - CLI
+        - Web UI
+        - HTTP API
+        - MCP server
+        - Eval
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: "OS, Python version, commit"

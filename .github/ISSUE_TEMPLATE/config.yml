@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Lost money to a scam?
+    url: https://www.malaysia.gov.my/en/topics/hotline-nsrc-997
+    about: Call the National Scam Response Centre at 997 straight away, then your bank.
+  - name: Security vulnerability
+    url: https://github.com/mshe0093/scam-checker-agent/security/advisories/new
+    about: Please report security problems privately, not as an issue.

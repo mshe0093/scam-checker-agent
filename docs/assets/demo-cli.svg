@@ -1,0 +1,355 @@
+<svg class="rich-terminal" viewBox="0 0 1238 1806.8" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-2623470307-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-2623470307-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-2623470307-r1 { fill: #c5c8c6;font-weight: bold }
+.terminal-2623470307-r2 { fill: #c5c8c6 }
+.terminal-2623470307-r3 { fill: #98a84b }
+.terminal-2623470307-r4 { fill: #868887 }
+.terminal-2623470307-r5 { fill: #868887;font-weight: bold }
+.terminal-2623470307-r6 { fill: #68a0b3 }
+.terminal-2623470307-r7 { fill: #68a0b3;font-weight: bold }
+.terminal-2623470307-r8 { fill: #d0b344 }
+.terminal-2623470307-r9 { fill: #98729f;font-weight: bold }
+.terminal-2623470307-r10 { fill: #1984e9;text-decoration: underline; }
+.terminal-2623470307-r11 { fill: #cc555a;font-weight: bold }
+.terminal-2623470307-r12 { fill: #cc555a }
+.terminal-2623470307-r13 { fill: #4e707b;font-weight: bold }
+.terminal-2623470307-r14 { fill: #6b546f;font-weight: bold }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-2623470307-clip-terminal">
+      <rect x="0" y="0" width="1219.0" height="1755.8" />
+    </clipPath>
+    <clipPath id="terminal-2623470307-line-0">
+    <rect x="0" y="1.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-1">
+    <rect x="0" y="25.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-2">
+    <rect x="0" y="50.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-3">
+    <rect x="0" y="74.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-4">
+    <rect x="0" y="99.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-5">
+    <rect x="0" y="123.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-6">
+    <rect x="0" y="147.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-7">
+    <rect x="0" y="172.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-8">
+    <rect x="0" y="196.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-9">
+    <rect x="0" y="221.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-10">
+    <rect x="0" y="245.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-11">
+    <rect x="0" y="269.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-12">
+    <rect x="0" y="294.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-13">
+    <rect x="0" y="318.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-14">
+    <rect x="0" y="343.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-15">
+    <rect x="0" y="367.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-16">
+    <rect x="0" y="391.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-17">
+    <rect x="0" y="416.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-18">
+    <rect x="0" y="440.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-19">
+    <rect x="0" y="465.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-20">
+    <rect x="0" y="489.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-21">
+    <rect x="0" y="513.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-22">
+    <rect x="0" y="538.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-23">
+    <rect x="0" y="562.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-24">
+    <rect x="0" y="587.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-25">
+    <rect x="0" y="611.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-26">
+    <rect x="0" y="635.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-27">
+    <rect x="0" y="660.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-28">
+    <rect x="0" y="684.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-29">
+    <rect x="0" y="709.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-30">
+    <rect x="0" y="733.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-31">
+    <rect x="0" y="757.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-32">
+    <rect x="0" y="782.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-33">
+    <rect x="0" y="806.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-34">
+    <rect x="0" y="831.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-35">
+    <rect x="0" y="855.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-36">
+    <rect x="0" y="879.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-37">
+    <rect x="0" y="904.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-38">
+    <rect x="0" y="928.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-39">
+    <rect x="0" y="953.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-40">
+    <rect x="0" y="977.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-41">
+    <rect x="0" y="1001.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-42">
+    <rect x="0" y="1026.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-43">
+    <rect x="0" y="1050.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-44">
+    <rect x="0" y="1075.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-45">
+    <rect x="0" y="1099.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-46">
+    <rect x="0" y="1123.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-47">
+    <rect x="0" y="1148.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-48">
+    <rect x="0" y="1172.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-49">
+    <rect x="0" y="1197.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-50">
+    <rect x="0" y="1221.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-51">
+    <rect x="0" y="1245.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-52">
+    <rect x="0" y="1270.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-53">
+    <rect x="0" y="1294.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-54">
+    <rect x="0" y="1319.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-55">
+    <rect x="0" y="1343.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-56">
+    <rect x="0" y="1367.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-57">
+    <rect x="0" y="1392.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-58">
+    <rect x="0" y="1416.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-59">
+    <rect x="0" y="1441.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-60">
+    <rect x="0" y="1465.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-61">
+    <rect x="0" y="1489.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-62">
+    <rect x="0" y="1514.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-63">
+    <rect x="0" y="1538.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-64">
+    <rect x="0" y="1563.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-65">
+    <rect x="0" y="1587.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-66">
+    <rect x="0" y="1611.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-67">
+    <rect x="0" y="1636.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-68">
+    <rect x="0" y="1660.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-69">
+    <rect x="0" y="1685.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-2623470307-line-70">
+    <rect x="0" y="1709.5" width="1220" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#292929" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="1236" height="1804.8" rx="8"/><text class="terminal-2623470307-title" fill="#c5c8c6" text-anchor="middle" x="618" y="27">scamcheck&#160;check</text>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#terminal-2623470307-clip-terminal)">
+    <rect fill="#cc555a" x="24.4" y="1026.3" width="158.6" height="24.65" shape-rendering="crispEdges"/>
+    <g class="terminal-2623470307-matrix">
+    <text class="terminal-2623470307-r1" x="0" y="20" textLength="12.2" clip-path="url(#terminal-2623470307-line-0)">$</text><text class="terminal-2623470307-r2" x="12.2" y="20" textLength="207.4" clip-path="url(#terminal-2623470307-line-0)">&#160;scamcheck&#160;check&#160;</text><text class="terminal-2623470307-r3" x="219.6" y="20" textLength="902.8" clip-path="url(#terminal-2623470307-line-0)">&quot;MAYBANK:&#160;Akaun&#160;anda&#160;telah&#160;disekat.&#160;Sahkan&#160;segera&#160;dalam&#160;24&#160;jam&#160;untuk&#160;elak&#160;</text><text class="terminal-2623470307-r2" x="1220" y="20" textLength="12.2" clip-path="url(#terminal-2623470307-line-0)">
+</text><text class="terminal-2623470307-r3" x="0" y="44.4" textLength="732" clip-path="url(#terminal-2623470307-line-1)">penutupan:&#160;https://maybank2u-secure-verify.top/akaun/sahkan&quot;</text><text class="terminal-2623470307-r2" x="1220" y="44.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-1)">
+</text><text class="terminal-2623470307-r2" x="1220" y="68.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-2)">
+</text><text class="terminal-2623470307-r4" x="0" y="93.2" textLength="256.2" clip-path="url(#terminal-2623470307-line-3)">Offline&#160;rules&#160;engine&#160;</text><text class="terminal-2623470307-r5" x="256.2" y="93.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-3)">(</text><text class="terminal-2623470307-r4" x="268.4" y="93.2" textLength="244" clip-path="url(#terminal-2623470307-line-3)">no&#160;ANTHROPIC_API_KEY</text><text class="terminal-2623470307-r5" x="512.4" y="93.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-3)">)</text><text class="terminal-2623470307-r4" x="524.6" y="93.2" textLength="207.4" clip-path="url(#terminal-2623470307-line-3)">:&#160;no&#160;AI&#160;involved.</text><text class="terminal-2623470307-r2" x="1220" y="93.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-3)">
+</text><text class="terminal-2623470307-r6" x="0" y="117.6" textLength="24.4" clip-path="url(#terminal-2623470307-line-4)">→&#160;</text><text class="terminal-2623470307-r7" x="24.4" y="117.6" textLength="195.2" clip-path="url(#terminal-2623470307-line-4)">extract_entities</text><text class="terminal-2623470307-r1" x="219.6" y="117.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-4)">(</text><text class="terminal-2623470307-r8" x="231.8" y="117.6" textLength="85.4" clip-path="url(#terminal-2623470307-line-4)">message</text><text class="terminal-2623470307-r2" x="317.2" y="117.6" textLength="695.4" clip-path="url(#terminal-2623470307-line-4)">=&#x27;MAYBANK:&#160;Akaun&#160;anda&#160;telah&#160;disekat.&#160;Sahkan&#160;segera&#160;dalam&#160;</text><text class="terminal-2623470307-r7" x="1012.6" y="117.6" textLength="24.4" clip-path="url(#terminal-2623470307-line-4)">24</text><text class="terminal-2623470307-r2" x="1037" y="117.6" textLength="170.8" clip-path="url(#terminal-2623470307-line-4)">&#160;jam&#160;untuk&#160;ela</text><text class="terminal-2623470307-r1" x="1207.8" y="117.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-4)">)</text><text class="terminal-2623470307-r2" x="1220" y="117.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-4)">
+</text><text class="terminal-2623470307-r3" x="24.4" y="142" textLength="24.4" clip-path="url(#terminal-2623470307-line-5)">ok</text><text class="terminal-2623470307-r7" x="61" y="142" textLength="12.2" clip-path="url(#terminal-2623470307-line-5)">1</text><text class="terminal-2623470307-r9" x="85.4" y="142" textLength="36.6" clip-path="url(#terminal-2623470307-line-5)">URL</text><text class="terminal-2623470307-r1" x="122" y="142" textLength="12.2" clip-path="url(#terminal-2623470307-line-5)">(</text><text class="terminal-2623470307-r2" x="134.2" y="142" textLength="12.2" clip-path="url(#terminal-2623470307-line-5)">s</text><text class="terminal-2623470307-r1" x="146.4" y="142" textLength="12.2" clip-path="url(#terminal-2623470307-line-5)">)</text><text class="terminal-2623470307-r2" x="158.6" y="142" textLength="24.4" clip-path="url(#terminal-2623470307-line-5)">,&#160;</text><text class="terminal-2623470307-r7" x="183" y="142" textLength="12.2" clip-path="url(#terminal-2623470307-line-5)">0</text><text class="terminal-2623470307-r2" x="195.2" y="142" textLength="85.4" clip-path="url(#terminal-2623470307-line-5)">&#160;phone&#160;</text><text class="terminal-2623470307-r9" x="280.6" y="142" textLength="73.2" clip-path="url(#terminal-2623470307-line-5)">number</text><text class="terminal-2623470307-r1" x="353.8" y="142" textLength="12.2" clip-path="url(#terminal-2623470307-line-5)">(</text><text class="terminal-2623470307-r2" x="366" y="142" textLength="12.2" clip-path="url(#terminal-2623470307-line-5)">s</text><text class="terminal-2623470307-r1" x="378.2" y="142" textLength="12.2" clip-path="url(#terminal-2623470307-line-5)">)</text><text class="terminal-2623470307-r2" x="390.4" y="142" textLength="24.4" clip-path="url(#terminal-2623470307-line-5)">,&#160;</text><text class="terminal-2623470307-r7" x="414.8" y="142" textLength="12.2" clip-path="url(#terminal-2623470307-line-5)">0</text><text class="terminal-2623470307-r9" x="439.2" y="142" textLength="61" clip-path="url(#terminal-2623470307-line-5)">email</text><text class="terminal-2623470307-r1" x="500.2" y="142" textLength="12.2" clip-path="url(#terminal-2623470307-line-5)">(</text><text class="terminal-2623470307-r2" x="512.4" y="142" textLength="12.2" clip-path="url(#terminal-2623470307-line-5)">s</text><text class="terminal-2623470307-r1" x="524.6" y="142" textLength="12.2" clip-path="url(#terminal-2623470307-line-5)">)</text><text class="terminal-2623470307-r2" x="536.8" y="142" textLength="24.4" clip-path="url(#terminal-2623470307-line-5)">,&#160;</text><text class="terminal-2623470307-r7" x="561.2" y="142" textLength="12.2" clip-path="url(#terminal-2623470307-line-5)">1</text><text class="terminal-2623470307-r2" x="573.4" y="142" textLength="109.8" clip-path="url(#terminal-2623470307-line-5)">&#160;claimed&#160;</text><text class="terminal-2623470307-r9" x="683.2" y="142" textLength="36.6" clip-path="url(#terminal-2623470307-line-5)">org</text><text class="terminal-2623470307-r1" x="719.8" y="142" textLength="12.2" clip-path="url(#terminal-2623470307-line-5)">(</text><text class="terminal-2623470307-r2" x="732" y="142" textLength="12.2" clip-path="url(#terminal-2623470307-line-5)">s</text><text class="terminal-2623470307-r1" x="744.2" y="142" textLength="12.2" clip-path="url(#terminal-2623470307-line-5)">)</text><text class="terminal-2623470307-r2" x="756.4" y="142" textLength="390.4" clip-path="url(#terminal-2623470307-line-5)">,&#160;pressure&#160;categories:&#160;urgency,&#160;</text><text class="terminal-2623470307-r2" x="1220" y="142" textLength="12.2" clip-path="url(#terminal-2623470307-line-5)">
+</text><text class="terminal-2623470307-r2" x="0" y="166.4" textLength="317.2" clip-path="url(#terminal-2623470307-line-6)">threat,&#160;credential_request</text><text class="terminal-2623470307-r2" x="1220" y="166.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-6)">
+</text><text class="terminal-2623470307-r8" x="48.8" y="190.8" textLength="85.4" clip-path="url(#terminal-2623470307-line-7)">●&#160;amber</text><text class="terminal-2623470307-r2" x="134.2" y="190.8" textLength="317.2" clip-path="url(#terminal-2623470307-line-7)">&#160;Combines&#160;threat&#160;language&#160;</text><text class="terminal-2623470307-r1" x="451.4" y="190.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-7)">(</text><text class="terminal-2623470307-r2" x="463.6" y="190.8" textLength="85.4" clip-path="url(#terminal-2623470307-line-7)">disekat</text><text class="terminal-2623470307-r1" x="549" y="190.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-7)">)</text><text class="terminal-2623470307-r2" x="561.2" y="190.8" textLength="658.8" clip-path="url(#terminal-2623470307-line-7)">&#160;with&#160;urgency&#160;or&#160;a&#160;request&#160;to&#160;verify/log&#160;in,&#160;a&#160;classic</text><text class="terminal-2623470307-r2" x="1220" y="190.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-7)">
+</text><text class="terminal-2623470307-r2" x="0" y="215.2" textLength="207.4" clip-path="url(#terminal-2623470307-line-8)">pressure&#160;pattern.</text><text class="terminal-2623470307-r2" x="1220" y="215.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-8)">
+</text><text class="terminal-2623470307-r8" x="48.8" y="239.6" textLength="85.4" clip-path="url(#terminal-2623470307-line-9)">●&#160;amber</text><text class="terminal-2623470307-r2" x="134.2" y="239.6" textLength="768.6" clip-path="url(#terminal-2623470307-line-9)">&#160;Asks&#160;the&#160;reader&#160;to&#160;verify/log&#160;in&#160;and&#160;supplies&#160;a&#160;link&#160;to&#160;do&#160;it.</text><text class="terminal-2623470307-r2" x="1220" y="239.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-9)">
+</text><text class="terminal-2623470307-r4" x="48.8" y="264" textLength="73.2" clip-path="url(#terminal-2623470307-line-10)">●&#160;info</text><text class="terminal-2623470307-r2" x="122" y="264" textLength="329.4" clip-path="url(#terminal-2623470307-line-10)">&#160;Claims&#160;to&#160;be&#160;from&#160;Maybank&#160;</text><text class="terminal-2623470307-r1" x="451.4" y="264" textLength="12.2" clip-path="url(#terminal-2623470307-line-10)">(</text><text class="terminal-2623470307-r2" x="463.6" y="264" textLength="268.4" clip-path="url(#terminal-2623470307-line-10)">Malayan&#160;Banking&#160;Berhad</text><text class="terminal-2623470307-r1" x="732" y="264" textLength="12.2" clip-path="url(#terminal-2623470307-line-10)">)</text><text class="terminal-2623470307-r2" x="744.2" y="264" textLength="463.6" clip-path="url(#terminal-2623470307-line-10)">&#160;and&#160;includes&#160;a&#160;link;&#160;the&#160;link&#160;domain&#160;</text><text class="terminal-2623470307-r2" x="1220" y="264" textLength="12.2" clip-path="url(#terminal-2623470307-line-10)">
+</text><text class="terminal-2623470307-r2" x="0" y="288.4" textLength="500.2" clip-path="url(#terminal-2623470307-line-11)">must&#160;be&#160;checked&#160;against&#160;official&#160;domains.</text><text class="terminal-2623470307-r2" x="1220" y="288.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-11)">
+</text><text class="terminal-2623470307-r6" x="0" y="312.8" textLength="24.4" clip-path="url(#terminal-2623470307-line-12)">→&#160;</text><text class="terminal-2623470307-r7" x="24.4" y="312.8" textLength="280.6" clip-path="url(#terminal-2623470307-line-12)">lookup_official_contact</text><text class="terminal-2623470307-r1" x="305" y="312.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-12)">(</text><text class="terminal-2623470307-r8" x="317.2" y="312.8" textLength="97.6" clip-path="url(#terminal-2623470307-line-12)">org_name</text><text class="terminal-2623470307-r2" x="414.8" y="312.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-12)">=</text><text class="terminal-2623470307-r3" x="427" y="312.8" textLength="109.8" clip-path="url(#terminal-2623470307-line-12)">&#x27;Maybank&#160;</text><text class="terminal-2623470307-r3" x="536.8" y="312.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-12)">(</text><text class="terminal-2623470307-r3" x="549" y="312.8" textLength="268.4" clip-path="url(#terminal-2623470307-line-12)">Malayan&#160;Banking&#160;Berhad</text><text class="terminal-2623470307-r3" x="817.4" y="312.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-12)">)</text><text class="terminal-2623470307-r3" x="829.6" y="312.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-12)">&#x27;</text><text class="terminal-2623470307-r1" x="841.8" y="312.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-12)">)</text><text class="terminal-2623470307-r2" x="1220" y="312.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-12)">
+</text><text class="terminal-2623470307-r3" x="24.4" y="337.2" textLength="24.4" clip-path="url(#terminal-2623470307-line-13)">ok</text><text class="terminal-2623470307-r2" x="48.8" y="337.2" textLength="109.8" clip-path="url(#terminal-2623470307-line-13)">&#160;Maybank&#160;</text><text class="terminal-2623470307-r1" x="158.6" y="337.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-13)">(</text><text class="terminal-2623470307-r2" x="170.8" y="337.2" textLength="268.4" clip-path="url(#terminal-2623470307-line-13)">Malayan&#160;Banking&#160;Berhad</text><text class="terminal-2623470307-r1" x="439.2" y="337.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-13)">)</text><text class="terminal-2623470307-r2" x="451.4" y="337.2" textLength="610" clip-path="url(#terminal-2623470307-line-13)">:&#160;official&#160;domains&#160;maybank2u.com.my,&#160;maybank.com,&#160;</text><text class="terminal-2623470307-r2" x="1220" y="337.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-13)">
+</text><text class="terminal-2623470307-r2" x="0" y="361.6" textLength="378.2" clip-path="url(#terminal-2623470307-line-14)">maybank.com.my,&#160;maybank2u.com;&#160;</text><text class="terminal-2623470307-r7" x="378.2" y="361.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-14)">3</text><text class="terminal-2623470307-r2" x="390.4" y="361.6" textLength="256.2" clip-path="url(#terminal-2623470307-line-14)">&#160;verified-or-sourced&#160;</text><text class="terminal-2623470307-r9" x="646.6" y="361.6" textLength="85.4" clip-path="url(#terminal-2623470307-line-14)">contact</text><text class="terminal-2623470307-r1" x="732" y="361.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-14)">(</text><text class="terminal-2623470307-r2" x="744.2" y="361.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-14)">s</text><text class="terminal-2623470307-r1" x="756.4" y="361.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-14)">)</text><text class="terminal-2623470307-r2" x="768.6" y="361.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-14)">.</text><text class="terminal-2623470307-r2" x="1220" y="361.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-14)">
+</text><text class="terminal-2623470307-r4" x="48.8" y="386" textLength="73.2" clip-path="url(#terminal-2623470307-line-15)">●&#160;info</text><text class="terminal-2623470307-r2" x="122" y="386" textLength="1037" clip-path="url(#terminal-2623470307-line-15)">&#160;Malaysian&#160;banks&#160;do&#160;not&#160;ask&#160;customers&#160;for&#160;personal&#160;or&#160;login&#160;details&#160;through&#160;links&#160;in&#160;</text><text class="terminal-2623470307-r2" x="1220" y="386" textLength="12.2" clip-path="url(#terminal-2623470307-line-15)">
+</text><text class="terminal-2623470307-r2" x="0" y="410.4" textLength="256.2" clip-path="url(#terminal-2623470307-line-16)">SMS/online&#160;messages.&#160;</text><text class="terminal-2623470307-r2" x="1220" y="410.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-16)">
+</text><text class="terminal-2623470307-r6" x="0" y="434.8" textLength="24.4" clip-path="url(#terminal-2623470307-line-17)">→&#160;</text><text class="terminal-2623470307-r7" x="24.4" y="434.8" textLength="256.2" clip-path="url(#terminal-2623470307-line-17)">resolve_url_redirects</text><text class="terminal-2623470307-r1" x="280.6" y="434.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-17)">(</text><text class="terminal-2623470307-r8" x="292.8" y="434.8" textLength="36.6" clip-path="url(#terminal-2623470307-line-17)">url</text><text class="terminal-2623470307-r2" x="329.4" y="434.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-17)">=</text><text class="terminal-2623470307-r3" x="341.6" y="434.8" textLength="610" clip-path="url(#terminal-2623470307-line-17)">&#x27;https://maybank2u-secure-verify.top/akaun/sahkan&#x27;</text><text class="terminal-2623470307-r1" x="951.6" y="434.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-17)">)</text><text class="terminal-2623470307-r2" x="1220" y="434.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-17)">
+</text><text class="terminal-2623470307-r8" x="24.4" y="459.2" textLength="122" clip-path="url(#terminal-2623470307-line-18)">unverified</text><text class="terminal-2623470307-r2" x="146.4" y="459.2" textLength="219.6" clip-path="url(#terminal-2623470307-line-18)">&#160;Could&#160;not&#160;follow&#160;</text><text class="terminal-2623470307-r10" x="366" y="459.2" textLength="597.8" clip-path="url(#terminal-2623470307-line-18)">https://maybank2u-secure-verify.top/akaun/sahkan:</text><text class="terminal-2623470307-r2" x="1220" y="459.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-18)">
+</text><text class="terminal-2623470307-r2" x="0" y="483.6" textLength="634.4" clip-path="url(#terminal-2623470307-line-19)">maybank2u-secure-verify.top&#160;does&#160;not&#160;resolve&#160;in&#160;DNS.</text><text class="terminal-2623470307-r2" x="1220" y="483.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-19)">
+</text><text class="terminal-2623470307-r4" x="48.8" y="508" textLength="73.2" clip-path="url(#terminal-2623470307-line-20)">●&#160;info</text><text class="terminal-2623470307-r2" x="122" y="508" textLength="988.2" clip-path="url(#terminal-2623470307-line-20)">&#160;maybank2u-secure-verify.top&#160;does&#160;not&#160;resolve&#160;in&#160;DNS:&#160;the&#160;link&#160;is&#160;dead&#160;right&#160;now&#160;</text><text class="terminal-2623470307-r1" x="1110.2" y="508" textLength="12.2" clip-path="url(#terminal-2623470307-line-20)">(</text><text class="terminal-2623470307-r2" x="1122.4" y="508" textLength="73.2" clip-path="url(#terminal-2623470307-line-20)">taken&#160;</text><text class="terminal-2623470307-r2" x="1220" y="508" textLength="12.2" clip-path="url(#terminal-2623470307-line-20)">
+</text><text class="terminal-2623470307-r2" x="0" y="532.4" textLength="353.8" clip-path="url(#terminal-2623470307-line-21)">down,&#160;expired&#160;or&#160;never&#160;set&#160;up</text><text class="terminal-2623470307-r1" x="353.8" y="532.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-21)">)</text><text class="terminal-2623470307-r2" x="366" y="532.4" textLength="597.8" clip-path="url(#terminal-2623470307-line-21)">.&#160;That&#160;says&#160;nothing&#160;either&#160;way&#160;about&#160;the&#160;message.</text><text class="terminal-2623470307-r2" x="1220" y="532.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-21)">
+</text><text class="terminal-2623470307-r6" x="0" y="556.8" textLength="24.4" clip-path="url(#terminal-2623470307-line-22)">→&#160;</text><text class="terminal-2623470307-r7" x="24.4" y="556.8" textLength="146.4" clip-path="url(#terminal-2623470307-line-22)">check_domain</text><text class="terminal-2623470307-r1" x="170.8" y="556.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-22)">(</text><text class="terminal-2623470307-r8" x="183" y="556.8" textLength="158.6" clip-path="url(#terminal-2623470307-line-22)">domain_or_url</text><text class="terminal-2623470307-r2" x="341.6" y="556.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-22)">=</text><text class="terminal-2623470307-r3" x="353.8" y="556.8" textLength="610" clip-path="url(#terminal-2623470307-line-22)">&#x27;https://maybank2u-secure-verify.top/akaun/sahkan&#x27;</text><text class="terminal-2623470307-r2" x="963.8" y="556.8" textLength="24.4" clip-path="url(#terminal-2623470307-line-22)">,&#160;</text><text class="terminal-2623470307-r2" x="1220" y="556.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-22)">
+</text><text class="terminal-2623470307-r8" x="0" y="581.2" textLength="134.2" clip-path="url(#terminal-2623470307-line-23)">claimed_org</text><text class="terminal-2623470307-r2" x="134.2" y="581.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-23)">=</text><text class="terminal-2623470307-r3" x="146.4" y="581.2" textLength="109.8" clip-path="url(#terminal-2623470307-line-23)">&#x27;Maybank&#160;</text><text class="terminal-2623470307-r3" x="256.2" y="581.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-23)">(</text><text class="terminal-2623470307-r3" x="268.4" y="581.2" textLength="268.4" clip-path="url(#terminal-2623470307-line-23)">Malayan&#160;Banking&#160;Berhad</text><text class="terminal-2623470307-r3" x="536.8" y="581.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-23)">)</text><text class="terminal-2623470307-r3" x="549" y="581.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-23)">&#x27;</text><text class="terminal-2623470307-r1" x="561.2" y="581.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-23)">)</text><text class="terminal-2623470307-r2" x="1220" y="581.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-23)">
+</text><text class="terminal-2623470307-r3" x="24.4" y="605.6" textLength="24.4" clip-path="url(#terminal-2623470307-line-24)">ok</text><text class="terminal-2623470307-r2" x="48.8" y="605.6" textLength="963.8" clip-path="url(#terminal-2623470307-line-24)">&#160;maybank2u-secure-verify.top:&#160;claimed_org_domain_mismatch;&#160;brand_impersonation&#160;</text><text class="terminal-2623470307-r1" x="1012.6" y="605.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-24)">(</text><text class="terminal-2623470307-r2" x="1024.8" y="605.6" textLength="122" clip-path="url(#terminal-2623470307-line-24)">could&#160;not&#160;</text><text class="terminal-2623470307-r2" x="1220" y="605.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-24)">
+</text><text class="terminal-2623470307-r2" x="0" y="630" textLength="317.2" clip-path="url(#terminal-2623470307-line-25)">verify:&#160;registration&#160;date&#160;</text><text class="terminal-2623470307-r1" x="317.2" y="630" textLength="12.2" clip-path="url(#terminal-2623470307-line-25)">(</text><text class="terminal-2623470307-r2" x="329.4" y="630" textLength="549" clip-path="url(#terminal-2623470307-line-25)">WHOIS&#160;answered&#160;but&#160;published&#160;no&#160;creation&#160;date</text><text class="terminal-2623470307-r1" x="878.4" y="630" textLength="12.2" clip-path="url(#terminal-2623470307-line-25)">)</text><text class="terminal-2623470307-r2" x="890.6" y="630" textLength="280.6" clip-path="url(#terminal-2623470307-line-25)">,&#160;Google&#160;Safe&#160;Browsing&#160;</text><text class="terminal-2623470307-r1" x="1171.2" y="630" textLength="12.2" clip-path="url(#terminal-2623470307-line-25)">(</text><text class="terminal-2623470307-r2" x="1183.4" y="630" textLength="36.6" clip-path="url(#terminal-2623470307-line-25)">no&#160;</text><text class="terminal-2623470307-r2" x="1220" y="630" textLength="12.2" clip-path="url(#terminal-2623470307-line-25)">
+</text><text class="terminal-2623470307-r2" x="0" y="654.4" textLength="219.6" clip-path="url(#terminal-2623470307-line-26)">API&#160;key&#160;configured</text><text class="terminal-2623470307-r1" x="219.6" y="654.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-26)">)</text><text class="terminal-2623470307-r1" x="231.8" y="654.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-26)">)</text><text class="terminal-2623470307-r2" x="1220" y="654.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-26)">
+</text><text class="terminal-2623470307-r11" x="48.8" y="678.8" textLength="61" clip-path="url(#terminal-2623470307-line-27)">●&#160;red</text><text class="terminal-2623470307-r2" x="109.8" y="678.8" textLength="366" clip-path="url(#terminal-2623470307-line-27)">&#160;Message&#160;claims&#160;to&#160;be&#160;Maybank&#160;</text><text class="terminal-2623470307-r1" x="475.8" y="678.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-27)">(</text><text class="terminal-2623470307-r2" x="488" y="678.8" textLength="268.4" clip-path="url(#terminal-2623470307-line-27)">Malayan&#160;Banking&#160;Berhad</text><text class="terminal-2623470307-r1" x="756.4" y="678.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-27)">)</text><text class="terminal-2623470307-r2" x="768.6" y="678.8" textLength="439.2" clip-path="url(#terminal-2623470307-line-27)">&#160;but&#160;maybank2u-secure-verify.top&#160;is&#160;</text><text class="terminal-2623470307-r2" x="1220" y="678.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-27)">
+</text><text class="terminal-2623470307-r2" x="0" y="703.2" textLength="390.4" clip-path="url(#terminal-2623470307-line-28)">not&#160;one&#160;of&#160;its&#160;official&#160;domains&#160;</text><text class="terminal-2623470307-r1" x="390.4" y="703.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-28)">(</text><text class="terminal-2623470307-r2" x="402.6" y="703.2" textLength="732" clip-path="url(#terminal-2623470307-line-28)">maybank2u.com.my,&#160;maybank.com,&#160;maybank.com.my,&#160;maybank2u.com</text><text class="terminal-2623470307-r1" x="1134.6" y="703.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-28)">)</text><text class="terminal-2623470307-r2" x="1146.8" y="703.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-28)">.</text><text class="terminal-2623470307-r2" x="1220" y="703.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-28)">
+</text><text class="terminal-2623470307-r11" x="48.8" y="727.6" textLength="61" clip-path="url(#terminal-2623470307-line-29)">●&#160;red</text><text class="terminal-2623470307-r2" x="109.8" y="727.6" textLength="524.6" clip-path="url(#terminal-2623470307-line-29)">&#160;Domain&#160;contains&#160;the&#160;brand&#160;name&#160;of&#160;Maybank&#160;</text><text class="terminal-2623470307-r1" x="634.4" y="727.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-29)">(</text><text class="terminal-2623470307-r2" x="646.6" y="727.6" textLength="268.4" clip-path="url(#terminal-2623470307-line-29)">Malayan&#160;Banking&#160;Berhad</text><text class="terminal-2623470307-r1" x="915" y="727.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-29)">)</text><text class="terminal-2623470307-r2" x="927.2" y="727.6" textLength="292.8" clip-path="url(#terminal-2623470307-line-29)">&#160;but&#160;is&#160;not&#160;an&#160;official&#160;</text><text class="terminal-2623470307-r2" x="1220" y="727.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-29)">
+</text><text class="terminal-2623470307-r2" x="0" y="752" textLength="97.6" clip-path="url(#terminal-2623470307-line-30)">Maybank&#160;</text><text class="terminal-2623470307-r1" x="97.6" y="752" textLength="12.2" clip-path="url(#terminal-2623470307-line-30)">(</text><text class="terminal-2623470307-r2" x="109.8" y="752" textLength="268.4" clip-path="url(#terminal-2623470307-line-30)">Malayan&#160;Banking&#160;Berhad</text><text class="terminal-2623470307-r1" x="378.2" y="752" textLength="12.2" clip-path="url(#terminal-2623470307-line-30)">)</text><text class="terminal-2623470307-r2" x="390.4" y="752" textLength="97.6" clip-path="url(#terminal-2623470307-line-30)">&#160;domain&#160;</text><text class="terminal-2623470307-r1" x="488" y="752" textLength="12.2" clip-path="url(#terminal-2623470307-line-30)">(</text><text class="terminal-2623470307-r2" x="500.2" y="752" textLength="573.4" clip-path="url(#terminal-2623470307-line-30)">maybank2u.com.my,&#160;maybank.com,&#160;maybank.com.my,&#160;</text><text class="terminal-2623470307-r2" x="1220" y="752" textLength="12.2" clip-path="url(#terminal-2623470307-line-30)">
+</text><text class="terminal-2623470307-r2" x="0" y="776.4" textLength="158.6" clip-path="url(#terminal-2623470307-line-31)">maybank2u.com</text><text class="terminal-2623470307-r1" x="158.6" y="776.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-31)">)</text><text class="terminal-2623470307-r2" x="170.8" y="776.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-31)">.</text><text class="terminal-2623470307-r2" x="1220" y="776.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-31)">
+</text><text class="terminal-2623470307-r8" x="48.8" y="800.8" textLength="85.4" clip-path="url(#terminal-2623470307-line-32)">●&#160;amber</text><text class="terminal-2623470307-r2" x="134.2" y="800.8" textLength="1049.2" clip-path="url(#terminal-2623470307-line-32)">&#160;The&#160;link&#160;path&#160;contains&#160;akaun,&#160;sahkan&#160;on&#160;a&#160;domain&#160;that&#160;is&#160;not&#160;the&#160;organisation&#x27;s,&#160;the&#160;</text><text class="terminal-2623470307-r2" x="1220" y="800.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-32)">
+</text><text class="terminal-2623470307-r2" x="0" y="825.2" textLength="402.6" clip-path="url(#terminal-2623470307-line-33)">usual&#160;shape&#160;of&#160;a&#160;fake&#160;login&#160;page.</text><text class="terminal-2623470307-r2" x="1220" y="825.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-33)">
+</text><text class="terminal-2623470307-r8" x="48.8" y="849.6" textLength="85.4" clip-path="url(#terminal-2623470307-line-34)">●&#160;amber</text><text class="terminal-2623470307-r2" x="134.2" y="849.6" textLength="561.2" clip-path="url(#terminal-2623470307-line-34)">&#160;.top&#160;is&#160;a&#160;cheap&#160;TLD&#160;heavily&#160;used&#160;in&#160;phishing&#160;</text><text class="terminal-2623470307-r1" x="695.4" y="849.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-34)">(</text><text class="terminal-2623470307-r2" x="707.6" y="849.6" textLength="244" clip-path="url(#terminal-2623470307-line-34)">heuristic,&#160;not&#160;proof</text><text class="terminal-2623470307-r1" x="951.6" y="849.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-34)">)</text><text class="terminal-2623470307-r2" x="963.8" y="849.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-34)">.</text><text class="terminal-2623470307-r2" x="1220" y="849.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-34)">
+</text><text class="terminal-2623470307-r6" x="0" y="874" textLength="24.4" clip-path="url(#terminal-2623470307-line-35)">→&#160;</text><text class="terminal-2623470307-r7" x="24.4" y="874" textLength="219.6" clip-path="url(#terminal-2623470307-line-35)">match_scam_pattern</text><text class="terminal-2623470307-r1" x="244" y="874" textLength="12.2" clip-path="url(#terminal-2623470307-line-35)">(</text><text class="terminal-2623470307-r8" x="256.2" y="874" textLength="85.4" clip-path="url(#terminal-2623470307-line-35)">message</text><text class="terminal-2623470307-r2" x="341.6" y="874" textLength="695.4" clip-path="url(#terminal-2623470307-line-35)">=&#x27;MAYBANK:&#160;Akaun&#160;anda&#160;telah&#160;disekat.&#160;Sahkan&#160;segera&#160;dalam&#160;</text><text class="terminal-2623470307-r7" x="1037" y="874" textLength="24.4" clip-path="url(#terminal-2623470307-line-35)">24</text><text class="terminal-2623470307-r2" x="1061.4" y="874" textLength="134.2" clip-path="url(#terminal-2623470307-line-35)">&#160;jam&#160;untuk&#160;</text><text class="terminal-2623470307-r2" x="1220" y="874" textLength="12.2" clip-path="url(#terminal-2623470307-line-35)">
+</text><text class="terminal-2623470307-r2" x="0" y="898.4" textLength="36.6" clip-path="url(#terminal-2623470307-line-36)">ela</text><text class="terminal-2623470307-r1" x="36.6" y="898.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-36)">)</text><text class="terminal-2623470307-r2" x="1220" y="898.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-36)">
+</text><text class="terminal-2623470307-r3" x="24.4" y="922.8" textLength="24.4" clip-path="url(#terminal-2623470307-line-37)">ok</text><text class="terminal-2623470307-r2" x="48.8" y="922.8" textLength="439.2" clip-path="url(#terminal-2623470307-line-37)">&#160;Best&#160;match:&#160;bank-suspended-link-bm&#160;</text><text class="terminal-2623470307-r1" x="488" y="922.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-37)">(</text><text class="terminal-2623470307-r2" x="500.2" y="922.8" textLength="158.6" clip-path="url(#terminal-2623470307-line-37)">bank_phishing</text><text class="terminal-2623470307-r1" x="658.8" y="922.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-37)">)</text><text class="terminal-2623470307-r2" x="671" y="922.8" textLength="85.4" clip-path="url(#terminal-2623470307-line-37)">&#160;score&#160;</text><text class="terminal-2623470307-r7" x="756.4" y="922.8" textLength="61" clip-path="url(#terminal-2623470307-line-37)">0.614</text><text class="terminal-2623470307-r2" x="817.4" y="922.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-37)">.</text><text class="terminal-2623470307-r2" x="1220" y="922.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-37)">
+</text><text class="terminal-2623470307-r11" x="48.8" y="947.2" textLength="61" clip-path="url(#terminal-2623470307-line-38)">●&#160;red</text><text class="terminal-2623470307-r2" x="109.8" y="947.2" textLength="329.4" clip-path="url(#terminal-2623470307-line-38)">&#160;Closely&#160;matches&#160;the&#160;known&#160;</text><text class="terminal-2623470307-r3" x="439.2" y="947.2" textLength="183" clip-path="url(#terminal-2623470307-line-38)">&#x27;bank_phishing&#x27;</text><text class="terminal-2623470307-r2" x="622.2" y="947.2" textLength="183" clip-path="url(#terminal-2623470307-line-38)">&#160;scam&#160;template&#160;</text><text class="terminal-2623470307-r3" x="805.2" y="947.2" textLength="292.8" clip-path="url(#terminal-2623470307-line-38)">&#x27;bank-suspended-link-bm&#x27;</text><text class="terminal-2623470307-r1" x="1110.2" y="947.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-38)">(</text><text class="terminal-2623470307-r2" x="1122.4" y="947.2" textLength="73.2" clip-path="url(#terminal-2623470307-line-38)">score&#160;</text><text class="terminal-2623470307-r2" x="1220" y="947.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-38)">
+</text><text class="terminal-2623470307-r7" x="0" y="971.6" textLength="61" clip-path="url(#terminal-2623470307-line-39)">0.614</text><text class="terminal-2623470307-r2" x="61" y="971.6" textLength="451.4" clip-path="url(#terminal-2623470307-line-39)">;&#160;indicators:&#160;disekat,&#160;sahkan,&#160;segera</text><text class="terminal-2623470307-r1" x="512.4" y="971.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-39)">)</text><text class="terminal-2623470307-r2" x="524.6" y="971.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-39)">.</text><text class="terminal-2623470307-r2" x="1220" y="971.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-39)">
+</text><text class="terminal-2623470307-r2" x="1220" y="996" textLength="12.2" clip-path="url(#terminal-2623470307-line-40)">
+</text><text class="terminal-2623470307-r2" x="0" y="1020.4" textLength="24.4" clip-path="url(#terminal-2623470307-line-41)">┌─</text><text class="terminal-2623470307-r2" x="24.4" y="1020.4" textLength="915" clip-path="url(#terminal-2623470307-line-41)">─────────────────────────────────&#160;Verdict&#160;─────────────────────────────────</text><text class="terminal-2623470307-r2" x="939.4" y="1020.4" textLength="24.4" clip-path="url(#terminal-2623470307-line-41)">─┐</text><text class="terminal-2623470307-r2" x="1220" y="1020.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-41)">
+</text><text class="terminal-2623470307-r2" x="0" y="1044.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-42)">│</text><text class="terminal-2623470307-r1" x="24.4" y="1044.8" textLength="158.6" clip-path="url(#terminal-2623470307-line-42)">&#160;LIKELY&#160;SCAM&#160;</text><text class="terminal-2623470307-r2" x="183" y="1044.8" textLength="219.6" clip-path="url(#terminal-2623470307-line-42)">&#160;(high&#160;confidence)</text><text class="terminal-2623470307-r2" x="951.6" y="1044.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-42)">│</text><text class="terminal-2623470307-r2" x="1220" y="1044.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-42)">
+</text><text class="terminal-2623470307-r2" x="0" y="1069.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-43)">│</text><text class="terminal-2623470307-r2" x="951.6" y="1069.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-43)">│</text><text class="terminal-2623470307-r2" x="1220" y="1069.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-43)">
+</text><text class="terminal-2623470307-r2" x="0" y="1093.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-44)">│</text><text class="terminal-2623470307-r2" x="24.4" y="1093.6" textLength="915" clip-path="url(#terminal-2623470307-line-44)">Strong&#160;scam&#160;indicators&#160;found&#160;by&#160;the&#160;automated&#160;checks.&#160;(rules&#160;engine,&#160;no&#160;AI)</text><text class="terminal-2623470307-r2" x="951.6" y="1093.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-44)">│</text><text class="terminal-2623470307-r2" x="1220" y="1093.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-44)">
+</text><text class="terminal-2623470307-r2" x="0" y="1118" textLength="963.8" clip-path="url(#terminal-2623470307-line-45)">└─────────────────────────────────────────────────────────────────────────────┘</text><text class="terminal-2623470307-r2" x="1220" y="1118" textLength="12.2" clip-path="url(#terminal-2623470307-line-45)">
+</text><text class="terminal-2623470307-r12" x="12.2" y="1142.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-46)">✗</text><text class="terminal-2623470307-r1" x="48.8" y="1142.4" textLength="329.4" clip-path="url(#terminal-2623470307-line-46)">Claimed&#160;org&#160;domain&#160;mismatch</text><text class="terminal-2623470307-r2" x="414.8" y="1142.4" textLength="793" clip-path="url(#terminal-2623470307-line-46)">Message&#160;claims&#160;to&#160;be&#160;Maybank&#160;(Malayan&#160;Banking&#160;Berhad)&#160;but&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-2623470307-r2" x="1220" y="1142.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-46)">
+</text><text class="terminal-2623470307-r2" x="414.8" y="1166.8" textLength="793" clip-path="url(#terminal-2623470307-line-47)">maybank2u-secure-verify.top&#160;is&#160;not&#160;one&#160;of&#160;its&#160;official&#160;domains&#160;&#160;&#160;</text><text class="terminal-2623470307-r2" x="1220" y="1166.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-47)">
+</text><text class="terminal-2623470307-r2" x="414.8" y="1191.2" textLength="793" clip-path="url(#terminal-2623470307-line-48)">(maybank2u.com.my,&#160;maybank.com,&#160;maybank.com.my,&#160;maybank2u.com).&#160;&#160;</text><text class="terminal-2623470307-r2" x="1220" y="1191.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-48)">
+</text><text class="terminal-2623470307-r12" x="12.2" y="1215.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-49)">✗</text><text class="terminal-2623470307-r1" x="48.8" y="1215.6" textLength="231.8" clip-path="url(#terminal-2623470307-line-49)">Brand&#160;impersonation</text><text class="terminal-2623470307-r2" x="414.8" y="1215.6" textLength="793" clip-path="url(#terminal-2623470307-line-49)">Domain&#160;contains&#160;the&#160;brand&#160;name&#160;of&#160;Maybank&#160;(Malayan&#160;Banking&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-2623470307-r2" x="1220" y="1215.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-49)">
+</text><text class="terminal-2623470307-r2" x="414.8" y="1240" textLength="793" clip-path="url(#terminal-2623470307-line-50)">Berhad)&#160;but&#160;is&#160;not&#160;an&#160;official&#160;Maybank&#160;(Malayan&#160;Banking&#160;Berhad)&#160;&#160;</text><text class="terminal-2623470307-r2" x="1220" y="1240" textLength="12.2" clip-path="url(#terminal-2623470307-line-50)">
+</text><text class="terminal-2623470307-r2" x="414.8" y="1264.4" textLength="793" clip-path="url(#terminal-2623470307-line-51)">domain&#160;(maybank2u.com.my,&#160;maybank.com,&#160;maybank.com.my,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-2623470307-r2" x="1220" y="1264.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-51)">
+</text><text class="terminal-2623470307-r2" x="414.8" y="1288.8" textLength="793" clip-path="url(#terminal-2623470307-line-52)">maybank2u.com).&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-2623470307-r2" x="1220" y="1288.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-52)">
+</text><text class="terminal-2623470307-r12" x="12.2" y="1313.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-53)">✗</text><text class="terminal-2623470307-r1" x="48.8" y="1313.2" textLength="244" clip-path="url(#terminal-2623470307-line-53)">Strong&#160;pattern&#160;match</text><text class="terminal-2623470307-r2" x="414.8" y="1313.2" textLength="793" clip-path="url(#terminal-2623470307-line-53)">Closely&#160;matches&#160;the&#160;known&#160;&#x27;bank_phishing&#x27;&#160;scam&#160;template&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-2623470307-r2" x="1220" y="1313.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-53)">
+</text><text class="terminal-2623470307-r2" x="414.8" y="1337.6" textLength="793" clip-path="url(#terminal-2623470307-line-54)">&#x27;bank-suspended-link-bm&#x27;&#160;(score&#160;0.614;&#160;indicators:&#160;disekat,&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-2623470307-r2" x="1220" y="1337.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-54)">
+</text><text class="terminal-2623470307-r2" x="414.8" y="1362" textLength="793" clip-path="url(#terminal-2623470307-line-55)">sahkan,&#160;segera).&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-2623470307-r2" x="1220" y="1362" textLength="12.2" clip-path="url(#terminal-2623470307-line-55)">
+</text><text class="terminal-2623470307-r8" x="12.2" y="1386.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-56)">!</text><text class="terminal-2623470307-r1" x="48.8" y="1386.4" textLength="195.2" clip-path="url(#terminal-2623470307-line-56)">Pressure&#160;tactics</text><text class="terminal-2623470307-r2" x="414.8" y="1386.4" textLength="793" clip-path="url(#terminal-2623470307-line-56)">Combines&#160;threat&#160;language&#160;(disekat)&#160;with&#160;urgency&#160;or&#160;a&#160;request&#160;to&#160;&#160;</text><text class="terminal-2623470307-r2" x="1220" y="1386.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-56)">
+</text><text class="terminal-2623470307-r2" x="414.8" y="1410.8" textLength="793" clip-path="url(#terminal-2623470307-line-57)">verify/log&#160;in,&#160;a&#160;classic&#160;pressure&#160;pattern.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-2623470307-r2" x="1220" y="1410.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-57)">
+</text><text class="terminal-2623470307-r8" x="12.2" y="1435.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-58)">!</text><text class="terminal-2623470307-r1" x="48.8" y="1435.2" textLength="341.6" clip-path="url(#terminal-2623470307-line-58)">Link&#160;with&#160;credential&#160;request</text><text class="terminal-2623470307-r2" x="414.8" y="1435.2" textLength="793" clip-path="url(#terminal-2623470307-line-58)">Asks&#160;the&#160;reader&#160;to&#160;verify/log&#160;in&#160;and&#160;supplies&#160;a&#160;link&#160;to&#160;do&#160;it.&#160;&#160;&#160;</text><text class="terminal-2623470307-r2" x="1220" y="1435.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-58)">
+</text><text class="terminal-2623470307-r8" x="12.2" y="1459.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-59)">!</text><text class="terminal-2623470307-r1" x="48.8" y="1459.6" textLength="268.4" clip-path="url(#terminal-2623470307-line-59)">Phishing&#160;path&#160;keywords</text><text class="terminal-2623470307-r2" x="414.8" y="1459.6" textLength="793" clip-path="url(#terminal-2623470307-line-59)">The&#160;link&#160;path&#160;contains&#160;akaun,&#160;sahkan&#160;on&#160;a&#160;domain&#160;that&#160;is&#160;not&#160;the&#160;</text><text class="terminal-2623470307-r2" x="1220" y="1459.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-59)">
+</text><text class="terminal-2623470307-r2" x="414.8" y="1484" textLength="793" clip-path="url(#terminal-2623470307-line-60)">organisation&#x27;s,&#160;the&#160;usual&#160;shape&#160;of&#160;a&#160;fake&#160;login&#160;page.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-2623470307-r2" x="1220" y="1484" textLength="12.2" clip-path="url(#terminal-2623470307-line-60)">
+</text><text class="terminal-2623470307-r8" x="12.2" y="1508.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-61)">!</text><text class="terminal-2623470307-r1" x="48.8" y="1508.4" textLength="170.8" clip-path="url(#terminal-2623470307-line-61)">High&#160;abuse&#160;tld</text><text class="terminal-2623470307-r2" x="414.8" y="1508.4" textLength="793" clip-path="url(#terminal-2623470307-line-61)">.top&#160;is&#160;a&#160;cheap&#160;TLD&#160;heavily&#160;used&#160;in&#160;phishing&#160;(heuristic,&#160;not&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-2623470307-r2" x="1220" y="1508.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-61)">
+</text><text class="terminal-2623470307-r2" x="414.8" y="1532.8" textLength="793" clip-path="url(#terminal-2623470307-line-62)">proof).&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-2623470307-r2" x="1220" y="1532.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-62)">
+</text><text class="terminal-2623470307-r4" x="12.2" y="1557.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-63)">?</text><text class="terminal-2623470307-r1" x="48.8" y="1557.2" textLength="146.4" clip-path="url(#terminal-2623470307-line-63)">Not&#160;verified</text><text class="terminal-2623470307-r2" x="414.8" y="1557.2" textLength="793" clip-path="url(#terminal-2623470307-line-63)">registration&#160;date&#160;(WHOIS&#160;answered&#160;but&#160;published&#160;no&#160;creation&#160;date)</text><text class="terminal-2623470307-r2" x="1220" y="1557.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-63)">
+</text><text class="terminal-2623470307-r4" x="12.2" y="1581.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-64)">?</text><text class="terminal-2623470307-r1" x="48.8" y="1581.6" textLength="146.4" clip-path="url(#terminal-2623470307-line-64)">Not&#160;verified</text><text class="terminal-2623470307-r2" x="414.8" y="1581.6" textLength="793" clip-path="url(#terminal-2623470307-line-64)">Google&#160;Safe&#160;Browsing&#160;(no&#160;API&#160;key&#160;configured)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-2623470307-r2" x="1220" y="1581.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-64)">
+</text><text class="terminal-2623470307-r2" x="1220" y="1606" textLength="12.2" clip-path="url(#terminal-2623470307-line-65)">
+</text><text class="terminal-2623470307-r1" x="0" y="1630.4" textLength="122" clip-path="url(#terminal-2623470307-line-66)">What&#160;to&#160;do</text><text class="terminal-2623470307-r2" x="1220" y="1630.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-66)">
+</text><text class="terminal-2623470307-r2" x="0" y="1654.8" textLength="427" clip-path="url(#terminal-2623470307-line-67)">&#160;&#160;•&#160;Do&#160;not&#160;click&#160;any&#160;link&#160;or&#160;reply.</text><text class="terminal-2623470307-r2" x="1220" y="1654.8" textLength="12.2" clip-path="url(#terminal-2623470307-line-67)">
+</text><text class="terminal-2623470307-r2" x="0" y="1679.2" textLength="597.8" clip-path="url(#terminal-2623470307-line-68)">&#160;&#160;•&#160;Never&#160;share&#160;TAC/OTP&#160;codes,&#160;PINs&#160;or&#160;passwords.</text><text class="terminal-2623470307-r2" x="1220" y="1679.2" textLength="12.2" clip-path="url(#terminal-2623470307-line-68)">
+</text><text class="terminal-2623470307-r2" x="0" y="1703.6" textLength="817.4" clip-path="url(#terminal-2623470307-line-69)">&#160;&#160;•&#160;If&#160;you&#160;already&#160;paid&#160;or&#160;shared&#160;details,&#160;call&#160;your&#160;bank&#160;and&#160;NSRC&#160;</text><text class="terminal-2623470307-r7" x="817.4" y="1703.6" textLength="36.6" clip-path="url(#terminal-2623470307-line-69)">997</text><text class="terminal-2623470307-r2" x="854" y="1703.6" textLength="158.6" clip-path="url(#terminal-2623470307-line-69)">&#160;immediately.</text><text class="terminal-2623470307-r2" x="1220" y="1703.6" textLength="12.2" clip-path="url(#terminal-2623470307-line-69)">
+</text><text class="terminal-2623470307-r2" x="1220" y="1728" textLength="12.2" clip-path="url(#terminal-2623470307-line-70)">
+</text><text class="terminal-2623470307-r13" x="0" y="1752.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-71)">5</text><text class="terminal-2623470307-r4" x="12.2" y="1752.4" textLength="73.2" clip-path="url(#terminal-2623470307-line-71)">&#160;tool&#160;</text><text class="terminal-2623470307-r14" x="85.4" y="1752.4" textLength="48.8" clip-path="url(#terminal-2623470307-line-71)">call</text><text class="terminal-2623470307-r5" x="134.2" y="1752.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-71)">(</text><text class="terminal-2623470307-r4" x="146.4" y="1752.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-71)">s</text><text class="terminal-2623470307-r5" x="158.6" y="1752.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-71)">)</text><text class="terminal-2623470307-r2" x="1220" y="1752.4" textLength="12.2" clip-path="url(#terminal-2623470307-line-71)">
+</text>
+    </g>
+    </g>
+</svg>

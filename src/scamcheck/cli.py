@@ -86,13 +86,20 @@ def check(
         bool, typer.Option("-i", help="Ask follow-up questions afterwards")
     ] = False,
 ) -> None:
-    """Investigate a suspicious message with the full agent (needs ANTHROPIC_API_KEY)."""
-    from scamcheck.agent import ScamCheckAgent
+    """Investigate a suspicious message.
+
+    Uses the Claude agent when ANTHROPIC_API_KEY is set, otherwise the offline rules engine.
+    SCAMCHECK_ENGINE=claude|rules forces one.
+    """
+    from scamcheck.api import default_engine
 
     text = _read_message(message)
     if not text:
         raise typer.BadParameter("empty message")
-    agent = ScamCheckAgent()
+    engine, factory = default_engine()
+    if engine == "rules":
+        console.print("[dim]Offline rules engine (no ANTHROPIC_API_KEY): no AI involved.[/]")
+    agent = factory()
     _render(agent.check(text), as_json)
     while interactive:
         q = console.input("\n[bold cyan]Follow-up (blank to quit)> [/]").strip()
@@ -120,10 +127,13 @@ def _render(events, as_json: bool) -> None:
             console.print(f"[red]Error:[/] {ev['message']}")
         elif kind == "done":
             u = ev["usage"]
-            console.print(
-                f"\n[dim]{u['model_calls']} model call(s), {u['tool_calls']} tool call(s), "
-                f"{u['input_tokens']} in / {u['output_tokens']} out tokens[/]"
-            )
+            line = f"{u['tool_calls']} tool call(s)"
+            if u["model_calls"]:
+                line = (
+                    f"{u['model_calls']} model call(s), {line}, "
+                    f"{u['input_tokens']} in / {u['output_tokens']} out tokens"
+                )
+            console.print(f"\n[dim]{line}[/]")
 
 
 TOOL_ALIASES = {
