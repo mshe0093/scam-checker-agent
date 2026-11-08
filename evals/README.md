@@ -10,11 +10,27 @@ modelled on patterns from public Malaysian advisories. The set covers:
 
 Fake scam domains are made up. The IP-literal case uses a reserved TEST-NET address, so no real host is contacted.
 
+### Challenge set
+
+`challenge.jsonl` holds 32 more messages (20 scams, 12 genuine), written on 2026-11-08 **before** the
+scam-tactic detectors existed, to find what the rules engine was missing. It covers scam types the
+first set doesn't:
+
+- malicious `.apk` "wedding invitations" and promo apps
+- WhatsApp code hijacking
+- a Macau-style "safe account" scam with no link
+- bank-account rental (money mules)
+- crypto romance, Telegram task jobs and fake marketplace buyers
+- TNB, KWSP, STR, telco and Touch 'n Go impersonation
+- CEO gift-card requests, sextortion and "hi dad" messages in BM
+- genuine Shopee, Grab, TNB, school, work and family messages
+
 ## Running
 
 ```bash
-scamcheck eval --mode baseline   # same tools, fixed if/else rules, no LLM, no API key
-scamcheck eval --mode agent      # full Claude agent; costs API credits (~40 runs)
+scamcheck eval --mode baseline                                # rules engine on dataset.jsonl
+scamcheck eval --mode baseline --dataset evals/challenge.jsonl
+scamcheck eval --mode agent                                   # full Claude agent; costs API credits
 ```
 
 Results are written to `evals/results/` (git-ignored). Copy the summary table here when it is worth keeping.
@@ -26,6 +42,44 @@ Results are written to `evals/results/` (git-ignored). Copy the summary table he
 - **Legit cleared**: real messages correctly called `likely_legitimate`.
 
 ## Results
+
+### Rules-only baseline (2026-11-08, after the scam-tactic detectors)
+
+**Challenge set** (20 scams, 12 genuine):
+
+| Metric | Before tactics | After tactics |
+|---|---|---|
+| Scams flagged | 80% (16/20) | **100%** (20/20) |
+| Scams given a firm `likely_scam` | 4 | **19** |
+| Scams wrongly called legitimate | **5%** (the "safe account" scam) | **0%** |
+| Genuine messages marked suspicious | 3 | **0** |
+| Genuine messages cleared | 5 | 5 (the other 7 have nothing to check) |
+
+**Original set** (26 scams, 14 genuine):
+
+| Metric | 2026-11-07 | 2026-11-08 |
+|---|---|---|
+| Scams flagged | 100% | 100% (all 26 now `likely_scam`, up from 25) |
+| Scams wrongly called legitimate | 0% | 0% |
+| Genuine messages marked suspicious | 0 | 0 |
+| Genuine messages cleared | 79% (11/14) | 71% (10/14) |
+
+What changed:
+
+- `extract_entities` now detects 25 scam tactics from [`data/tactics.json`](../src/scamcheck/data/tactics.json),
+  such as an `.apk` link, a request for a code, a "safe account" or renting out a bank account.
+- **Naming an organisation no longer counts as evidence.** A message is only cleared if a link or
+  phone number was checked, or a trust signal outweighs the risk. Before this, the fake Bank Negara "safe account"
+  scam was cleared simply because it named Bank Negara and had no link to check. The Touch 'n Go
+  reload receipt (`l05`) also used to be cleared for the same reason, and now gets "not enough to judge".
+  That is the honest answer and the only reason the original set's cleared rate dropped.
+- Everyday words ("today", "pay", "transfer") no longer count as pressure on their own, and a single weak hint
+  no longer triggers a warning. Those two rules removed the three false "suspicious" verdicts.
+- Twelve scam templates and eighteen organisations were added.
+
+> ⚠️ **Still in-sample.** The challenge set was written before the detectors, but the same person then
+> wrote the detectors while looking at its failures. Some of the new templates also resemble challenge
+> messages. Treat the "after" column as proof that the gaps are closed, not as a measure of real-world accuracy.
 
 ### Rules-only baseline (2026-11-07, after the trust signals and weighted scoring)
 

@@ -1,5 +1,5 @@
 {
-  "_about": "Weights for the offline rules engine (rules_agent.decide). Risk points come from red/amber signals, trust points from green ones. Deterministic red signals skip the arithmetic and always give likely_scam. Tune against `scamcheck eval --mode baseline`; every change should be justified by the eval, not by a single example.",
+  "_about": "Weights for the offline rules engine (rules_agent.decide). Risk points come from red/amber signals, trust points from green ones. Deterministic red signals skip the arithmetic and always give likely_scam. Tactic signal ids come from tactics.json. Tune against `scamcheck eval --mode baseline` on both evals/dataset.jsonl and evals/challenge.jsonl; every change should be justified by the evals, not by a single example.",
   "default_weights": {
     "red": 4,
     "amber": 2,
@@ -13,6 +13,8 @@
     "url_shortener": 1,
     "phishing_path_keywords": 2,
     "idn_host": 2,
+    "off_platform_contact": 1,
+    "personal_account_payment": 1,
     "official_domain": 4,
     "matches_official_number": 3,
     "established_domain": 2,
@@ -20,7 +22,9 @@
   },
   "thresholds": {
     "suspicious_net_risk": 3,
-    "_note": "net = risk - trust. net >= suspicious_net_risk -> suspicious (medium). A non-deterministic red plus pressure language -> likely_scam (medium)."
+    "likely_scam_net_risk": 8,
+    "min_risk_to_warn": 2,
+    "_note": "net = risk - trust. net >= likely_scam_net_risk -> likely_scam (medium); net >= suspicious_net_risk -> suspicious (medium). Risk below min_risk_to_warn with nothing verified -> insufficient_information. Any red signal plus strong pressure language -> likely_scam (medium)."
   },
   "caps": {
     "never_legitimate": [

@@ -48,8 +48,19 @@ The verdict cites every check, and a red flag found by deterministic code can't 
   "ignore previous instructions" just becomes more evidence.
 - **Built for Malaysia.** It understands English and Bahasa Malaysia pressure language, Malaysian phone
   formats, `.my` WHOIS, and the banks, agencies and couriers scammers impersonate most.
-- **Works without an API key.** An offline rules engine runs the same tools, so the CLI, API and
-  web UI all work for free. Its verdicts are labelled "rules engine, no AI".
+- **Recognises 25 scam tactics.** Examples:
+  - `.apk` "wedding invitations"
+  - requests to share a TAC or WhatsApp code
+  - "safe account" transfers
+  - renting out your bank account
+  - task-job and guaranteed-return pitches
+  - gift-card requests
+  - sextortion
+
+  Each one comes with a plain-language explanation and specific advice.
+- **Works without an API key.** An offline rules engine runs the same tools and explains each verdict
+  in plain words, such as "Likely scam: the link is not Maybank's real website and…". It gives advice
+  for that type of scam and the organisation's real hotline. Its verdicts are labelled "rules engine, no AI".
 - **One toolset, three front ends.** The Claude agent, the rules engine and the
   [MCP server](docs/usage.md#mcp-server) call the same `run_tool()` function.
 
@@ -123,11 +134,11 @@ The design decisions are in [docs/PLAN.md](docs/PLAN.md).
 
 | Tool | Question it answers | How |
 |---|---|---|
-| `extract_entities` | What does the message claim and how does it pressure you? | Regex for URLs (including scheme-less and defanged), MY phone formats and RM amounts. Pressure terms in English and BM. Protective wording like "never share your TAC" is recognised |
+| `extract_entities` | What does the message claim, ask for, and how does it pressure you? | Regex for URLs (including scheme-less and defanged), MY phone formats and RM amounts. Pressure terms in English and BM. **25 scam tactics** from [`tactics.json`](src/scamcheck/data/tactics.json), with protective wording like "never share your TAC" recognised as advice, not a request |
 | `check_domain` | Is this link really the organisation's? | Offline public suffix list. **dnstwist** permutations of every official domain. Punycode decoding and confusable-letter folding. Login-path, subdomain and random-name checks. Domain age via **RDAP with a WHOIS:43 fallback**. Google Safe Browsing (optional) |
 | `resolve_url_redirects` | Where does the link (often a short link) really land? | Hop-by-hop redirects with an **SSRF guard on every hop**. Pages are never rendered |
-| `lookup_official_contact` | What are the real hotlines and domains? | Hand-curated JSON for 15 organisations. **Every entry has a source URL and a verification level** |
-| `match_scam_pattern` | Does it look like a known Malaysian scam? | TF-IDF similarity and indicator hits over 21 templates: bank, parcel, LHDN/JPJ/PDRM, loan, job-task, prize, "hi mum" |
+| `lookup_official_contact` | What are the real hotlines and domains? | Hand-curated JSON for 33 organisations: banks, agencies, couriers, telcos, TNB, KWSP and marketplaces. **Every contact has a source URL and a verification level** |
+| `match_scam_pattern` | Does it look like a known Malaysian scam? | TF-IDF similarity and indicator hits over 33 sourced templates in English and BM, covering 13 scam types |
 | `check_phone_number` | Is the number an official hotline? | E.164 normalisation and an official-number match, with a caller-ID-spoofing caveat |
 
 "Couldn't verify" is a result, not a failure. For example, `.my` has no RDAP and PDRM's Semak Mule
@@ -136,27 +147,34 @@ never counts as evidence either way.
 
 ## Evaluation
 
-40 labelled messages (26 scams, 14 genuine), including prompt-injection and "scary but real" cases.
-The rules-only baseline, 2026-11-07:
+Two labelled sets, 72 messages in all:
+- the original 40, including prompt-injection and "scary but real" cases
+- a 32-message challenge set of newer scam types (`.apk` invites, WhatsApp code theft, money mules,
+  Macau scams, task jobs) written to find gaps
 
-| Metric | Result |
-|---|---|
-| Scams flagged (`likely_scam` or `suspicious`) | **100%** (26/26) |
-| Scams wrongly called legitimate | **0%** |
-| Genuine messages wrongly called scams | **0%** |
-| Genuine messages cleared as legitimate | 79% (11/14) |
+These are the rules-only baseline results from 2026-11-08:
+
+| Metric | Original (26 scams / 14 genuine) | Challenge (20 / 12) |
+|---|---|---|
+| Scams flagged (`likely_scam` or `suspicious`) | **100%** | **100%** |
+| Scams given a firm `likely_scam` | 26 | 19 |
+| Scams wrongly called legitimate | **0%** | **0%** |
+| Genuine messages marked suspicious or scam | **0** | **0** |
+| Genuine messages cleared as legitimate | 71% | 42%* |
+
+\* The rest of the genuine messages have nothing to check (no link, number or warning sign), so the honest answer is "not enough to judge".
 
 > [!IMPORTANT]
-> The same person wrote the dataset and the rules, so treat these numbers as a smoke test, not a
-> benchmark. A held-out set written by someone else is on the roadmap. The method and caveats are in
-> [evals/README.md](evals/README.md).
+> The same person wrote the messages and the rules, so treat these numbers as a smoke test, not a
+> benchmark. A held-out set written by someone else is on the roadmap. The method, the before/after
+> numbers and the caveats are in [evals/README.md](evals/README.md).
 
 ## Project layout
 
 ```text
 src/scamcheck/
 ├── tools/           # the six verification tools (plain Python, no LLM inside)
-├── data/            # curated datasets and rules.json (weights, thresholds, caps)
+├── data/            # curated datasets, tactics.json, rules.json and explanations.json
 ├── agent.py         # Claude tool-use loop and verdict floor
 ├── rules_agent.py   # offline rules engine with the same event stream
 ├── api.py           # FastAPI with Server-Sent Events, sessions and rate limiting
@@ -183,6 +201,7 @@ docs/                # usage guide, design plan, research notes
 - [x] FastAPI SSE API, Next.js live-trace UI, MCP server
 - [x] Labelled eval set and rules-only baseline
 - [x] dnstwist lookalikes, IDN folding, URL-shape and trust signals, data-driven weights
+- [x] 25 scam tactics, self-explaining rules-engine verdicts, challenge eval set
 - [ ] Public deployment (rules engine, free tier)
 - [ ] Held-out eval set and live agent eval results
 - [ ] Shareable BM/EN summary to forward to family
@@ -198,7 +217,8 @@ docs/                # usage guide, design plan, research notes
 
 ## Contributing
 
-Bug reports, wrong verdicts and new scam patterns are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
+Bug reports, wrong verdicts, new scam tactics and new scam patterns are welcome. See
+[CONTRIBUTING.md](CONTRIBUTING.md) and the [code of conduct](CODE_OF_CONDUCT.md).
 **Please remove personal details from any real message before sharing it.** To report a security
 issue, see [SECURITY.md](SECURITY.md).
 

@@ -26,6 +26,22 @@ def _schema(props: dict[str, Any], required: list[str]) -> dict[str, Any]:
 
 
 _STR = {"type": "string"}
+# Scam categories a verdict can name, shared by the agent's verdict schema and the rules engine.
+CATEGORIES = (
+    "bank_phishing",
+    "parcel_courier",
+    "government_impersonation",
+    "loan_investment",
+    "job_task",
+    "prize",
+    "impersonation",
+    "malware_apk",
+    "account_takeover",
+    "money_mule",
+    "online_shopping",
+    "extortion",
+    "utility_telco",
+)
 
 TOOL_SPECS: list[dict[str, Any]] = [
     {
@@ -97,20 +113,7 @@ VERDICT_SPEC: dict[str, Any] = {
                 ],
             },
             "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
-            "category": {
-                "type": "string",
-                "enum": [
-                    "bank_phishing",
-                    "parcel_courier",
-                    "government_impersonation",
-                    "loan_investment",
-                    "job_task",
-                    "prize",
-                    "impersonation",
-                    "other",
-                    "none",
-                ],
-            },
+            "category": {"type": "string", "enum": [*CATEGORIES, "other", "none"]},
             "headline": _STR,
             "findings": {"type": "array", "items": FINDING},
             "recommended_actions": {"type": "array", "items": _STR},

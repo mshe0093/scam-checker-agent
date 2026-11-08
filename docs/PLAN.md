@@ -166,6 +166,7 @@ that `unverified` must never count as evidence either way.
 | M6 | Web UI | Next.js chat with live trace panel and verdict card; offline rules engine fallback | ✅ |
 | M7 | MCP server | `MCPServer` (mcp 2.x, formerly FastMCP) stdio server over `tools/` + prompt + resource | ✅ |
 | M7.5 | Detection upgrade from GitHub research | dnstwist permutations of official domains, IDN/punycode folding, URL-shape signals, trust signals, weights + caps in `data/rules.json` (see `docs/RESEARCH-similar-projects.md`) | ✅ |
+| M7.6 | Rules engine made usable on its own | 25 data-driven scam tactics (`data/tactics.json`), self-explaining verdicts with tailored advice and real hotlines (`data/explanations.json`), 18 more organisations, 12 more templates, `evals/challenge.jsonl` | ✅ |
 | M8 | Ship | deploy (Vercel + Render), demo GIF, README polish, LICENSE | ⏳ next |
 | S1 | Stretch: screenshot input | Claude vision reads the SMS screenshot, then the same pipeline | — |
 | S2 | Stretch: WhatsApp | Twilio sandbox webhook adapter | — |

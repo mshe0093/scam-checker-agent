@@ -1,0 +1,433 @@
+{
+  "_about": "Scam tactics detected in message text by extract_entities. A tactic fires when every group in `all` has a regex match in the lower-cased, refanged message. `negatable` skips a match that comes just after 'never / do not / jangan'. `needs_url` only fires when the message has a link. `unless` suppresses the tactic. `title`, `detail` and `advice` are shown to users. Deterministic red tactics trigger the verdict floor, so only mark a tactic deterministic when no genuine sender makes that request.",
+  "tactics": [
+    {
+      "id": "apk_download",
+      "severity": "red",
+      "deterministic": true,
+      "category": "malware_apk",
+      "title": "Android app file (.apk)",
+      "all": [
+        [
+          "\\.apk\\b",
+          "\\bapk\\b"
+        ]
+      ],
+      "detail": "Asks you to open or install an Android app file (.apk) sent in a message. Fake wedding invitations, cleaning promos and 'government' apps use this to take over the phone and read banking SMS and TAC codes.",
+      "advice": "Don't open the .apk file. Only install apps from Google Play or the App Store. If you already installed it, turn on airplane mode, call your bank from another phone, and remove the app.",
+      "source_url": "https://www.thevibes.com/articles/news/102258/beware-of-wedding-invites-carrying-malware-says-bukit-aman",
+      "reason": "it asks you to install an Android app file (.apk)"
+    },
+    {
+      "id": "remote_access_app",
+      "severity": "red",
+      "deterministic": false,
+      "category": "other",
+      "title": "Remote-control app",
+      "all": [
+        [
+          "\\b(anydesk|teamviewer|quicksupport|rustdesk|airdroid|screen ?shar(e|ing)|kongsi skrin|remote access|akses jauh)\\b"
+        ]
+      ],
+      "detail": "Mentions a screen-sharing or remote-control app. Scammers use these to watch you log in to your bank or to control your phone.",
+      "advice": "Never install a remote-control app or share your screen because someone in a message or call asked you to.",
+      "reason": "it wants you to use a remote-control or screen-sharing app"
+    },
+    {
+      "id": "code_sharing_request",
+      "severity": "red",
+      "deterministic": true,
+      "category": "account_takeover",
+      "title": "Asks you to share a code",
+      "negatable": true,
+      "all": [
+        [
+          "\\b(send|give|forward|share|reply with|reply|tell me|pass|key in|provide|screenshot)\\b[^.!?\\n]{0,40}\\b(code|codes|kod|tac|otp|pin|6-digit|6 digit|six-digit|verification)\\b",
+          "\\b(hantar|berikan|bagi|kongsi|forward|beritahu|bagitahu|balas|sebut)\\b[^.!?\\n]{0,40}\\b(kod|tac|otp|pin|6 digit|6-digit)\\b",
+          "\\b(code|kod)\\b[^.!?\\n]{0,40}\\b(to your number|ke nombor (anda|awak|kau)|by mistake|tersilap|salah hantar|send it back|hantar balik)\\b"
+        ]
+      ],
+      "detail": "Asks you to send, reply with or forward a one-time code (TAC/OTP/PIN or a WhatsApp 6-digit code). Banks, apps and friends never need your code: whoever has it can take over your account or approve a payment.",
+      "advice": "Never share a TAC, OTP, PIN or WhatsApp code with anyone, even a friend or family member. Turn on WhatsApp two-step verification.",
+      "source_url": "https://help.celcomdigi.com/support/solutions/articles/70000654932-fake-6-digit-verification-codes-scam-on-whatsapp",
+      "reason": "it asks you to share a one-time code"
+    },
+    {
+      "id": "secret_credentials_request",
+      "severity": "red",
+      "deterministic": true,
+      "category": "bank_phishing",
+      "title": "Asks for your login details",
+      "negatable": true,
+      "all": [
+        [
+          "\\b(provide|enter|reply with|send|give|key in|confirm|submit|update|berikan|masukkan|hantar|isi|sahkan|balas)\\b[^.!?\\n]{0,50}\\b(username|user id|user name|password|passcode|kata laluan|nama pengguna|online banking (login|details|credentials)|card pin|atm pin|cvv|cvc|security (code|question))\\b"
+        ]
+      ],
+      "detail": "Asks for your online banking username, password, card PIN or CVV. No bank, government agency or shop ever asks for these in a message.",
+      "advice": "Never give your username, password, PIN or CVV to anyone. If you already did, call your bank's fraud line now and change your password.",
+      "reason": "it asks for your banking login or PIN"
+    },
+    {
+      "id": "bank_details_request",
+      "severity": "red",
+      "deterministic": false,
+      "category": "bank_phishing",
+      "title": "Asks for your bank or card details",
+      "negatable": true,
+      "all": [
+        [
+          "\\b(provide|enter|send|give|key in|fill in|fill|submit|update|verify|confirm|berikan|masukkan|hantar|isi|kemas kini|sahkan)\\b[^.!?\\n]{0,50}\\b(bank details|banking details|account details|your bank to receive|akaun bank untuk menerima|card details|card number|bank account (number|details)|maklumat (bank|perbankan|akaun|kad)|butiran (bank|perbankan|akaun|kad)|nombor (akaun|kad))\\b"
+        ]
+      ],
+      "detail": "Asks you to send or fill in bank account or card details. Refunds, aid payments and prize payouts never need you to type your card or banking details into a link from a message.",
+      "advice": "Don't enter bank or card details on a page you reached from a message. Open the organisation's official app or type its website address yourself.",
+      "reason": "it asks for your bank or card details"
+    },
+    {
+      "id": "identity_document_request",
+      "severity": "red",
+      "deterministic": false,
+      "category": "other",
+      "title": "Asks for your IC or a selfie",
+      "negatable": true,
+      "all": [
+        [
+          "\\b(update|upload|send|provide|submit|verify|hantar|kemas kini|muat naik|isi|sahkan|berikan)\\b[^.!?\\n]{0,40}\\b(mykad|my kad|ic number|ic no|nombor ic|no\\.? ic|kad pengenalan|passport|pasport|selfie|ic photo|gambar ic|salinan ic|copy of (your )?ic)\\b"
+        ]
+      ],
+      "detail": "Asks you to send or upload your MyKad, passport or a selfie. Scammers use these to open bank accounts or take loans in your name.",
+      "advice": "Only give IC details inside an organisation's official app or at its counter, never through a link or a chat.",
+      "reason": "it asks for your IC, passport or a selfie"
+    },
+    {
+      "id": "safe_account_transfer",
+      "severity": "red",
+      "deterministic": true,
+      "category": "government_impersonation",
+      "title": "Asks you to move money to a 'safe account'",
+      "all": [
+        [
+          "\\b(safe account|secure account|safety account|akaun selamat|akaun keselamatan|akaun simpanan selamat|akaun sementara|akaun amanah|holding account)\\b"
+        ]
+      ],
+      "detail": "Tells you to move your money into a 'safe' or 'secure' account. This is the classic Macau scam: police, Bank Negara, banks and courts never ask anyone to transfer money for safekeeping or investigation.",
+      "advice": "Hang up and don't transfer anything. Call your bank using the number on the back of your card, and NSRC on 997 if money has already left.",
+      "source_url": "https://says.com/my/news/pdrm-warns-public-to-be-wary-of-telecommunication-fraud-macau-scam",
+      "reason": "it tells you to move money to a 'safe account'"
+    },
+    {
+      "id": "police_case_transfer",
+      "severity": "red",
+      "deterministic": true,
+      "category": "government_impersonation",
+      "title": "Fake criminal case with a transfer demand",
+      "all": [
+        [
+          "\\b(money laundering|pengubahan wang haram|wang haram|anti-money|amla|drug trafficking|pengedaran dadah|criminal case|kes jenayah|investigation|siasatan|warrant|waran|court case|kes mahkamah|dakwaan|terlibat dalam kes)\\b"
+        ],
+        [
+          "\\b(transfer|pindahkan|pindah|masukkan wang|deposit|bank in|serahkan wang)\\b"
+        ]
+      ],
+      "detail": "Says you are linked to a criminal case (money laundering, drugs, a warrant) and asks you to transfer or deposit money. Police and Bank Negara never ask for money to settle or investigate a case.",
+      "advice": "Hang up. Check any police claim yourself at the nearest station or with PDRM's official line, never with a number the caller gives you.",
+      "reason": "it claims you're in a criminal case and asks for a transfer"
+    },
+    {
+      "id": "secrecy_demand",
+      "severity": "amber",
+      "deterministic": false,
+      "category": "other",
+      "title": "Tells you to keep it secret",
+      "all": [
+        [
+          "\\b(keep (this|it) (confidential|secret|between us)|don'?t tell (anyone|anybody|your family)|do not tell (anyone|anybody|your family)|jangan (beritahu|bagitahu|bagitau|cerita kepada) (sesiapa|orang|keluarga)|rahsiakan|confidential matter|sulit dan rahsia)\\b"
+        ]
+      ],
+      "detail": "Tells you to keep it secret. Scammers isolate victims so that family, friends or the bank can't warn them.",
+      "advice": "Talk to someone you trust before acting on any message that asks for secrecy.",
+      "reason": "it tells you to keep it secret"
+    },
+    {
+      "id": "gift_card_request",
+      "severity": "red",
+      "deterministic": false,
+      "category": "impersonation",
+      "title": "Asks for gift cards",
+      "all": [
+        [
+          "\\b(gift ?cards?|kad hadiah|google play (card|gift|code)|itunes (card|gift)|apple (gift )?card|steam (wallet )?(card|code)|razer gold|reload pin|top-?up pin|kad tambah nilai)\\b"
+        ],
+        [
+          "\\b(buy|purchase|beli|send|hantar|codes?|kod|scratch|photo|gambar)\\b"
+        ]
+      ],
+      "detail": "Asks you to buy gift cards or reload PINs and send the codes. Real bosses, relatives and agencies never ask to be paid in gift cards: the codes are untraceable cash for scammers.",
+      "advice": "Never buy gift cards or reload PINs for someone who asked by message. Call the person on a number you already know.",
+      "reason": "it asks for gift cards or reload PINs"
+    },
+    {
+      "id": "account_rental",
+      "severity": "red",
+      "deterministic": true,
+      "category": "money_mule",
+      "title": "Wants to rent or use your bank account",
+      "all": [
+        [
+          "\\b(sewa(kan)? akaun|akaun (bank )?(untuk )?disewa|rent (out )?(your|ur) (bank )?account|rent (out )?bank accounts?|sell (your|ur) bank account|jual akaun( bank)?|pinjam(kan)? akaun|lend (me )?(your|ur) (bank )?account|use (your|ur) (bank )?account to receive|guna akaun (anda|awak|kau) untuk terima|terima (bayaran|duit|wang) (syarikat|untuk kami|bagi pihak)|receive (payments|money|funds) (for|on behalf of) (us|our company|the company))\\b"
+        ]
+      ],
+      "detail": "Offers money to rent, buy or 'borrow' your bank account. This is money-mule recruitment: scammers pass stolen money through your account, and you can be charged under the Penal Code mule-account offences and have your accounts frozen.",
+      "advice": "Never let anyone use your bank account, card or online banking. If you already did, tell your bank and make a police report.",
+      "source_url": "https://www.thestar.com.my/news/nation/2026/01/30/dont-fall-for-bank-account-rental-scam-warns-johor-mca-youth",
+      "reason": "it wants to rent or use your bank account"
+    },
+    {
+      "id": "new_number_family",
+      "severity": "amber",
+      "deterministic": false,
+      "category": "impersonation",
+      "title": "'New number' from a relative",
+      "all": [
+        [
+          "(new (phone )?number|nombor baru|nombor baharu|no\\.? baru|number baru|changed my number|tukar (nombor|no)|(phone|handphone|hp|fon|telefon|sim)( lama)? (broke|broken|rosak|hilang|lost|spoil|spoiled|jatuh|stolen|dicuri))"
+        ],
+        [
+          "\\b(mum|mom|mummy|mommy|mama|mak|mek|ibu|umi|emak|dad|daddy|papa|ayah|abah|bapa|walid|adik|kakak|kak|abang|along|angah|son|daughter|anak|uncle|aunty|pakcik|makcik)\\b"
+        ]
+      ],
+      "detail": "Claims to be a family member writing from a new number. This is how 'hi mum' scams start.",
+      "advice": "Call the relative on their old number, or ask a question only they would know, before doing anything.",
+      "reason": "a 'relative' writes from a new number"
+    },
+    {
+      "id": "family_money_request",
+      "severity": "red",
+      "deterministic": false,
+      "category": "impersonation",
+      "title": "'New number' and asks for money",
+      "all": [
+        [
+          "(new (phone )?number|nombor baru|nombor baharu|no\\.? baru|number baru|changed my number|tukar (nombor|no)|(phone|handphone|hp|fon|telefon|sim)( lama)? (broke|broken|rosak|hilang|lost|spoil|spoiled|jatuh|stolen|dicuri))"
+        ],
+        [
+          "(bank in|bank-in|banking in|transfer|pindahkan|pinjam(kan)? (duit|wang|rm)|send (me )?money|hantar duit|tolong bayar|help (me )?pay|duitnow|\\brm ?\\d)"
+        ]
+      ],
+      "detail": "Writes from a 'new number' and asks for money. Scammers pretend to be a child, parent or friend whose phone broke and who urgently needs a transfer.",
+      "advice": "Don't send money until you've spoken to the person on their old number or met them.",
+      "reason": "a 'relative' on a new number asks for money"
+    },
+    {
+      "id": "off_platform_contact",
+      "severity": "amber",
+      "deterministic": false,
+      "category": "other",
+      "title": "Moves you to Telegram or WhatsApp",
+      "all": [
+        [
+          "(\\btelegram\\b|\\bt\\.me/|\\bwa\\.me/|\\bwhatsapp (me|saya|kami|us|our)\\b|\\bcontact (our|my) (hr|agent|admin|manager|mentor)\\b|\\bhubungi (hr|ejen|admin)\\b|\\badd (me|our hr|our admin)\\b|(?<![\\w.])@[a-z][a-z0-9_]{3,}(?![\\w.@]))"
+        ]
+      ],
+      "detail": "Asks you to continue on Telegram, WhatsApp or another private chat. Job, investment and romance scams move victims off public platforms where they can be reported.",
+      "advice": "Be very careful with any job, investment or offer that is only handled through a private chat.",
+      "reason": "it moves you to a private chat"
+    },
+    {
+      "id": "job_task_offer",
+      "severity": "red",
+      "deterministic": false,
+      "category": "job_task",
+      "title": "Easy job with high pay",
+      "all": [
+        [
+          "\\b(part[- ]?time|kerja sambilan|kerja separuh masa|work from home|kerja dari rumah|wfh|remote (job|staff|work|worker)|hiring|jawatan kosong|no experience|tiada pengalaman|like (videos|posts|youtube)|subscribe (to )?(channels|youtube)|rate (merchants|products|hotels|apps)|review (products|hotels|apps)|online tasks?|tugasan( online)?|simple tasks?|kerja mudah)\\b"
+        ],
+        [
+          "(\\b(earn|earning|pendapatan|gaji|income|komisen|commission|bayaran|dapat)\\b.{0,40}\\brm ?\\d|\\brm ?\\d[\\d,]*(\\s?-\\s?rm ?\\d[\\d,]*)?\\s?(a day|daily|per day|/day|sehari|setiap hari|per task|satu tugasan|weekly|seminggu|an hour|sejam))"
+        ]
+      ],
+      "detail": "Offers easy work (liking videos, rating shops, simple tasks) for high pay. This is the task-scam pattern: small payouts first, then 'deposits' to unlock bigger tasks that are never paid back.",
+      "advice": "Real jobs never ask you to pay or deposit money to get tasks or withdraw earnings. Check the company with SSM and the offer on the official job portal.",
+      "source_url": "https://www.thestar.com.my/news/nation/2026/04/07/easy-part-time-jobs-now-top-tactic-in-online-scam-wave-says-bukit-aman",
+      "reason": "it offers easy work for high pay"
+    },
+    {
+      "id": "guaranteed_returns",
+      "severity": "red",
+      "deterministic": false,
+      "category": "loan_investment",
+      "title": "Promises guaranteed or very high returns",
+      "all": [
+        [
+          "(\\bguaranteed (returns?|profits?|income|payouts?)\\b|\\bpulangan\\b.{0,25}\\bdijamin\\b|\\bdijamin\\b.{0,25}\\b(pulangan|untung|keuntungan)\\b|\\bkeuntungan dijamin\\b|\\bfixed returns?\\b|\\b\\d{1,3}(\\.\\d+)? ?% (profit|returns?|pulangan|keuntungan|untung|sebulan|a month|per month|monthly|weekly|seminggu|daily|sehari|a week|per week)\\b|\\b(profit|pulangan|keuntungan|untung) (of )?\\d{1,3} ?%|\\brisk[- ]free\\b|\\btanpa risiko\\b|\\bdouble your (money|investment)\\b|\\bgandakan (wang|duit|pelaburan)\\b|\\bpassive income\\b)"
+        ]
+      ],
+      "detail": "Promises guaranteed, risk-free or very high returns. Legitimate investments never guarantee returns, and anything paying several percent a month is almost certainly a Ponzi scheme or a fake trading platform.",
+      "advice": "Check the company on Bank Negara's Financial Consumer Alert list and the Securities Commission's investor alert list before investing anything.",
+      "reason": "it promises guaranteed or very high returns"
+    },
+    {
+      "id": "crypto_pitch",
+      "severity": "amber",
+      "deterministic": false,
+      "category": "loan_investment",
+      "title": "Crypto or trading pitch",
+      "all": [
+        [
+          "\\b(usdt|crypto|cryptocurrency|bitcoin|btc|eth|forex|binary options?|trading (platform|account|signals?)|mining pool|token sale|kripto)\\b"
+        ],
+        [
+          "\\b(deposit|invest|register|daftar|modal|top ?up|join|sertai|profit|untung|keuntungan|guide you|ajar)\\b"
+        ]
+      ],
+      "detail": "Pitches crypto, forex or a trading platform and asks you to sign up or deposit. Romance and investment scams use fake trading sites that show made-up profits.",
+      "advice": "Never deposit money on a platform introduced by someone you met online. Check it on the Securities Commission's investor alert list.",
+      "reason": "it pitches crypto or trading"
+    },
+    {
+      "id": "extortion",
+      "severity": "red",
+      "deterministic": true,
+      "category": "extortion",
+      "title": "Threatens to leak private images",
+      "all": [
+        [
+          "\\b((private|intimate|nude|naked|sex|sexual|explicit|personal) (video|videos|photos?|pictures?|images?|recording)|video (peribadi|lucah|bogel|intim)|gambar (bogel|lucah|peribadi))\\b"
+        ],
+        [
+          "\\b(send (it|them|this) to|share (it|them) with|leak|publish|post (it|them)|sebarkan|tularkan|hantar kepada|your contacts|kenalan anda|your family|keluarga anda|unless|or else|or we will|jika tidak|kalau tidak)\\b"
+        ]
+      ],
+      "detail": "Threatens to share private images or videos unless you pay. Paying never stops this: scammers usually come back for more, and many such threats are bluffs.",
+      "advice": "Don't pay or reply. Keep the messages as evidence, report to the police, and ask a trusted person for help. Block the sender on every platform.",
+      "reason": "it threatens to leak private images"
+    },
+    {
+      "id": "advance_fee",
+      "severity": "red",
+      "deterministic": false,
+      "category": "loan_investment",
+      "title": "Pay a fee to get money",
+      "all": [
+        [
+          "\\b(loan|pinjaman|financing|pembiayaan|refund|bayaran balik|prize|hadiah|won|menang|parcel|bungkusan|package|withdraw|withdrawal|pengeluaran|investment|pelaburan|profit|keuntungan|earnings|commission|komisen|compensation|pampasan|baucar|voucher)\\b"
+        ],
+        [
+          "\\b((processing|admin|administration|insurance|stamp duty|legal|release|activation|unlock|clearance|tax|withdrawal|verification|handling|upgrade) (fee|fees|charge|charges)|yuran (pemprosesan|proses|guaman|insurans|duti setem|pengaktifan|pengeluaran)|caj (pemprosesan|pelepasan|pengaktifan|pengeluaran)|duti setem|pay .{0,25}\\bfirst\\b|bayar .{0,25}\\b(dahulu|dulu)\\b|deposit (first|dahulu|dulu)|security deposit|deposit keselamatan)\\b"
+        ]
+      ],
+      "detail": "Says you must pay a fee or deposit first to receive a loan, prize, refund, parcel or earnings. Genuine lenders and payouts deduct fees from the money or charge nothing up front, so advance-fee demands are a hallmark of scams.",
+      "advice": "Never pay up front to receive money. Check any lender on Bank Negara's list of licensed lenders, or the KPKT list for moneylenders.",
+      "reason": "you must pay a fee to receive money"
+    },
+    {
+      "id": "fake_payment_claim",
+      "severity": "amber",
+      "deterministic": false,
+      "category": "online_shopping",
+      "needs_url": true,
+      "title": "Says payment is waiting for you",
+      "all": [
+        [
+          "\\b(i have paid|i've paid|already paid|have made (the )?payment|payment (has been )?(made|sent|completed)|dah bayar|sudah bayar|telah membuat bayaran|duit (dah|sudah) (masuk|dihantar))\\b"
+        ],
+        [
+          "\\b(verify|confirm|claim|receive|release|terima|tuntut|sahkan|withdraw)\\b"
+        ]
+      ],
+      "detail": "A 'buyer' says they have already paid and you must verify or claim the money through a link. Marketplaces never make sellers log in through a chat link to receive payment; the page steals your banking login.",
+      "advice": "Only check payments in the marketplace's own app or your bank's app. Never log in through a link a buyer sends.",
+      "reason": "it says a payment is waiting behind a link"
+    },
+    {
+      "id": "pay_before_delivery",
+      "severity": "amber",
+      "deterministic": false,
+      "category": "online_shopping",
+      "title": "Pay first, goods later",
+      "all": [
+        [
+          "\\b(pay (the )?deposit|deposit first|pay first|bayar deposit|bayar (dulu|dahulu)|transfer (first|dulu|dahulu)|full payment (first|before)|bayar penuh dahulu)\\b"
+        ]
+      ],
+      "detail": "Asks you to pay or put down a deposit before you receive anything, outside a platform's buyer protection. This is the most common online-shopping scam.",
+      "advice": "Pay only through the marketplace's own checkout, or cash on delivery. Check the seller's account number on PDRM's Semak Mule site first.",
+      "reason": "it wants payment before you get anything"
+    },
+    {
+      "id": "personal_account_payment",
+      "severity": "amber",
+      "deterministic": false,
+      "category": "other",
+      "title": "Payment to a personal account",
+      "all": [
+        [
+          "(\\b(account|akaun|acc|a/c)\\b\\s*(no\\.?|number|nombor)?\\s*:?\\s*\\d{4}[\\s-]?\\d{2,4}[\\s-]?\\d{2,8}\\b|\\b(bank in|bank-in|banking in)\\b|\\bduitnow (to|ke) (my|this|nombor|akaun)\\b|\\btransfer (to|into) (my|this|the following)\\b|\\b(pindahkan|masukkan|bank in) (semua wang )?(ke|kepada|dalam) (akaun|nombor)\\b)"
+        ]
+      ],
+      "detail": "Asks you to pay into a specific bank account or DuitNow number. Organisations collect payments through their own app or portal, not personal accounts.",
+      "advice": "Before paying anyone, check the account or phone number on PDRM's Semak Mule site (semakmule.rmp.gov.my).",
+      "reason": "it asks you to pay a personal account"
+    },
+    {
+      "id": "disconnection_threat",
+      "severity": "amber",
+      "deterministic": false,
+      "category": "utility_telco",
+      "title": "Threatens to cut a service",
+      "all": [
+        [
+          "\\b(electricity|power|water|supply|bekalan( elektrik| air)?|line|sim|sim card|service|services|perkhidmatan|nombor (anda|telefon)|talian)\\b[^.!?\\n]{0,40}\\b(cut|cut off|disconnected|terminated|dipotong|diputuskan|ditamatkan|deactivated|dinyahaktifkan|barred)\\b"
+        ]
+      ],
+      "detail": "Threatens to cut off electricity, water, a phone line or a service. TNB and the telcos don't send SMS links demanding immediate payment to avoid disconnection.",
+      "advice": "Check your bill in the provider's official app or by calling its official careline before paying.",
+      "source_url": "https://www.thestar.com.my/news/true-or-not/2024/11/15/quickcheck-does-a-utility-company-send-smses-with-links-to-customers-with-overdue-bills",
+      "reason": "it threatens to cut off a service"
+    },
+    {
+      "id": "aid_or_prize_claim",
+      "severity": "amber",
+      "deterministic": false,
+      "category": "prize",
+      "needs_url": true,
+      "title": "Claim money or aid through a link",
+      "all": [
+        [
+          "\\b(you (have )?won|anda (telah )?menang|layak (menerima|mendapat|untuk)|eligible (for|to)|claim (your|now|here)|tuntut|lucky draw|cabutan bertuah|bantuan|sumbangan|str|sara|subsidi|rebat|rebate|baucar|voucher|insentif|incentive|compensation|pampasan|refund|bayaran balik)\\b"
+        ],
+        [
+          "\\b(claim|tuntut|semak|daftar|register|isi|fill|apply|mohon|redeem|tebus|klik|click|link|pautan)\\b"
+        ]
+      ],
+      "detail": "Offers money, aid, a voucher or a refund that you claim through a link. Government aid is checked only on .gov.my sites, and real prizes don't need you to log in or pay.",
+      "advice": "Check aid only on official .gov.my portals you type in yourself. Ignore prize messages for draws you never entered.",
+      "source_url": "https://www.malaymail.com/amp/news/malaysia/2025/05/05/only-trust-govmy-sites-for-sumbangan-tunai-rahmah-updates-teo-warns-as-scam-links-spread/175632",
+      "reason": "it offers money or aid you claim through a link"
+    },
+    {
+      "id": "app_install_request",
+      "severity": "amber",
+      "deterministic": false,
+      "category": "malware_apk",
+      "needs_url": true,
+      "title": "Install an app from a link",
+      "all": [
+        [
+          "\\b(download|install|muat turun|pasang|get) (our |the |this |aplikasi |app )?(app|apps|aplikasi|application|booking app)\\b",
+          "\\bmuat turun\\b"
+        ]
+      ],
+      "unless": [
+        "play\\.google\\.com",
+        "apps\\.apple\\.com",
+        "\\b(play store|google play|app store|apple store|huawei appgallery)\\b"
+      ],
+      "detail": "Asks you to download an app through a link instead of from Google Play or the App Store.",
+      "advice": "Only install apps from Google Play or the App Store, by searching for them yourself.",
+      "reason": "it asks you to install an app from a link"
+    }
+  ]
+}

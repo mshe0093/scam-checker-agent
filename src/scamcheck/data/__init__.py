@@ -32,3 +32,11 @@ def reported_numbers() -> list[dict[str, Any]]:
 
 def rules() -> dict[str, Any]:
     return load("rules")
+
+
+def tactics() -> list[dict[str, Any]]:
+    return load("tactics")["tactics"]
+
+
+def explanations() -> dict[str, Any]:
+    return load("explanations")

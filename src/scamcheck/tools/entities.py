@@ -6,6 +6,7 @@ import re
 
 from scamcheck import data
 from scamcheck.models import Severity, Signal, Status, ToolResult
+from scamcheck.tools import tactics
 
 # Common TLDs we accept for scheme-less URLs ("maybank2u-verify.com/login"), to avoid matching "e.g".
 _TLDS = (
@@ -42,10 +43,19 @@ PRESSURE_TERMS: dict[str, list[str]] = {
         "today",
         "now",
         "asap",
+        "before midnight",
+        "expires today",
+        "last chance",
+        "limited slots",
         "segera",
         "sekarang",
         "dalam masa 24 jam",
         "hari ini",
+        "tamat hari ini",
+        "sebelum tamat",
+        "slot terhad",
+        "peluang terakhir",
+        "cepat",
     ],
     "threat": [
         "suspended",
@@ -65,6 +75,13 @@ PRESSURE_TERMS: dict[str, list[str]] = {
         "senarai hitam",
         "waran",
         "tangkap",
+        "dipotong",
+        "ditamatkan",
+        "dinyahaktifkan",
+        "disconnected",
+        "terminated",
+        "money laundering",
+        "pengubahan wang haram",
     ],
     "credential_request": [
         "verify",
@@ -79,6 +96,11 @@ PRESSURE_TERMS: dict[str, list[str]] = {
         "sahkan",
         "kata laluan",
         "kemas kini maklumat",
+        "username",
+        "nama pengguna",
+        "bank details",
+        "maklumat bank",
+        "butiran perbankan",
     ],
     "payment_request": [
         "pay",
@@ -92,22 +114,30 @@ PRESSURE_TERMS: dict[str, list[str]] = {
         "yuran",
         "pindahkan",
         "caj",
+        "bank in",
+        "duitnow",
+        "modal",
     ],
     "too_good": [
         "congratulations",
-        "won",
+        "you won",
+        "you have won",
         "prize",
         "guaranteed",
         "approved",
-        "free",
         "reward",
+        "lucky draw",
         "tahniah",
         "menang",
         "hadiah",
         "diluluskan",
-        "percuma",
+        "dijamin",
+        "cabutan bertuah",
     ],
 }
+# Words a scam uses that genuine senders also use often. These only count together with a
+# stronger tactic, so "see you today" or "pay via the app" alone don't make a message suspicious.
+WEAK_TERMS = {"today", "now", "hari ini", "sekarang", "pay", "payment", "bayar", "transfer"}
 
 
 # Genuine OTP/TAC messages warn the reader to keep the code secret. When these phrases appear,
@@ -126,6 +156,12 @@ PROTECTIVE_PHRASES = [
     "tidak akan meminta",
 ]
 SECRET_TERMS = {"tac", "otp", "pin", "password", "kata laluan"}
+
+
+def strong_pressure(pressure: dict[str, list[str]]) -> dict[str, list[str]]:
+    """Pressure language without the everyday words that genuine messages use too."""
+    strong = {k: [t for t in v if t not in WEAK_TERMS] for k, v in pressure.items()}
+    return {k: v for k, v in strong.items() if v}
 
 
 def _refang(text: str) -> str:
@@ -184,8 +220,9 @@ def extract_entities(message: str) -> ToolResult:
             t for t in pressure["credential_request"] if t not in SECRET_TERMS
         ]
     pressure = {k: v for k, v in pressure.items() if v}
+    hits = tactics.detect(lower, has_url=bool(urls))
 
-    signals: list[Signal] = []
+    signals: list[Signal] = [tactics.to_signal(h) for h in hits]
     if advice and not urls:
         signals.append(
             Signal(
@@ -244,6 +281,8 @@ def extract_entities(message: str) -> ToolResult:
             "amounts": amounts,
             "claimed_orgs": orgs,
             "pressure_language": pressure,
+            "strong_pressure": strong_pressure(pressure),
             "security_advice": advice,
+            "tactics": hits,
         },
     )

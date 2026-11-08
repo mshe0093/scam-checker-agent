@@ -1,169 +1,894 @@
 {
   "_meta": {
     "description": "Hand-curated sample of Malaysian organisations commonly impersonated in scams. NOT exhaustive. Every contact carries a verification level: official_page (seen on the organisation's own site), secondary_source (reputable news/aggregator, not the org itself), unverified (sources conflict or none found).",
-    "checked_on": "2026-11-06",
-    "verification_levels": ["official_page", "secondary_source", "unverified"]
+    "checked_on": "2026-11-08",
+    "verification_levels": [
+      "official_page",
+      "secondary_source",
+      "unverified"
+    ]
   },
   "generic_reporting": [
-    {"label": "National Scam Response Centre (NSRC)", "value": "997", "note": "Call immediately if money was lost; calls are treated as police reports (2026). Operating hours are reported inconsistently (8am-8pm vs 24h).", "verification": "official_page", "source_url": "https://www.malaysia.gov.my/en/topics/hotline-nsrc-997"},
-    {"label": "Semak Mule (PDRM CCID): check a phone number or bank account", "value": "https://semakmule.rmp.gov.my", "verification": "official_page", "source_url": "https://semakmule.rmp.gov.my"},
-    {"label": "BNM Financial Consumer Alert list (unlicensed companies)", "value": "https://www.bnm.gov.my/financial-consumer-alert-list", "note": "Not exhaustive: absence from the list does not mean a company is legitimate.", "verification": "official_page", "source_url": "https://www.bnm.gov.my/-/update-on-financial-consumer-alert-list"}
+    {
+      "label": "National Scam Response Centre (NSRC)",
+      "value": "997",
+      "note": "Call immediately if money was lost; calls are treated as police reports (2026). Operating hours are reported inconsistently (8am-8pm vs 24h).",
+      "verification": "official_page",
+      "source_url": "https://www.malaysia.gov.my/en/topics/hotline-nsrc-997"
+    },
+    {
+      "label": "Semak Mule (PDRM CCID): check a phone number or bank account",
+      "value": "https://semakmule.rmp.gov.my",
+      "verification": "official_page",
+      "source_url": "https://semakmule.rmp.gov.my"
+    },
+    {
+      "label": "BNM Financial Consumer Alert list (unlicensed companies)",
+      "value": "https://www.bnm.gov.my/financial-consumer-alert-list",
+      "note": "Not exhaustive: absence from the list does not mean a company is legitimate.",
+      "verification": "official_page",
+      "source_url": "https://www.bnm.gov.my/-/update-on-financial-consumer-alert-list"
+    }
   ],
   "orgs": [
     {
-      "id": "maybank", "name": "Maybank (Malayan Banking Berhad)", "type": "bank",
-      "aliases": ["maybank", "maybank2u", "m2u", "malayan banking"],
-      "brand_tokens": ["maybank", "maybank2u"],
-      "official_domains": ["maybank2u.com.my", "maybank.com", "maybank.com.my", "maybank2u.com"],
+      "id": "maybank",
+      "name": "Maybank (Malayan Banking Berhad)",
+      "type": "bank",
+      "aliases": [
+        "maybank",
+        "maybank2u",
+        "m2u",
+        "malayan banking"
+      ],
+      "brand_tokens": [
+        "maybank",
+        "maybank2u"
+      ],
+      "official_domains": [
+        "maybank2u.com.my",
+        "maybank.com",
+        "maybank.com.my",
+        "maybank2u.com"
+      ],
       "contacts": [
-        {"label": "24h Fraud Hotline", "value": "03-5891 4744", "verification": "official_page", "source_url": "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/frequent_queries/scam-awareness/report-scam.page"},
-        {"label": "Scam report email", "value": "mgcc@maybank.com.my", "verification": "secondary_source", "source_url": "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/frequent_queries/scam-awareness/report-scam.page"},
-        {"label": "General customer care", "value": "1-300-88-6688", "verification": "secondary_source", "source_url": "https://www.maybank2u.com.my/maybank2u"}
+        {
+          "label": "24h Fraud Hotline",
+          "value": "03-5891 4744",
+          "verification": "official_page",
+          "source_url": "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/frequent_queries/scam-awareness/report-scam.page"
+        },
+        {
+          "label": "Scam report email",
+          "value": "mgcc@maybank.com.my",
+          "verification": "secondary_source",
+          "source_url": "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/frequent_queries/scam-awareness/report-scam.page"
+        },
+        {
+          "label": "General customer care",
+          "value": "1-300-88-6688",
+          "verification": "secondary_source",
+          "source_url": "https://www.maybank2u.com.my/maybank2u"
+        }
       ],
       "policies": [
-        {"text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.", "verification": "secondary_source", "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"}
+        {
+          "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
+          "verification": "secondary_source",
+          "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
       ]
     },
     {
-      "id": "cimb", "name": "CIMB Bank", "type": "bank",
-      "aliases": ["cimb", "cimb clicks", "cimbclicks", "cimb octo", "octo"],
-      "brand_tokens": ["cimb", "cimbclicks"],
-      "official_domains": ["cimb.com.my", "cimbclicks.com.my", "cimb.com"],
+      "id": "cimb",
+      "name": "CIMB Bank",
+      "type": "bank",
+      "aliases": [
+        "cimb",
+        "cimb clicks",
+        "cimbclicks",
+        "cimb octo",
+        "octo"
+      ],
+      "brand_tokens": [
+        "cimb",
+        "cimbclicks"
+      ],
+      "official_domains": [
+        "cimb.com.my",
+        "cimbclicks.com.my",
+        "cimb.com"
+      ],
       "contacts": [
-        {"label": "24h hotline (fraud / suspicious activity)", "value": "+603 6204 7788", "verification": "official_page", "source_url": "https://www.cimb.com.my/en/personal/help-support/security-and-fraud/sms-phone-call-scam.html"}
+        {
+          "label": "24h hotline (fraud / suspicious activity)",
+          "value": "+603 6204 7788",
+          "verification": "official_page",
+          "source_url": "https://www.cimb.com.my/en/personal/help-support/security-and-fraud/sms-phone-call-scam.html"
+        }
       ],
       "policies": [
-        {"text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.", "verification": "secondary_source", "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"}
+        {
+          "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
+          "verification": "secondary_source",
+          "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
       ]
     },
     {
-      "id": "publicbank", "name": "Public Bank", "type": "bank",
-      "aliases": ["public bank", "pbe", "pbebank", "pb engage"],
-      "brand_tokens": ["pbebank", "publicbank"],
-      "official_domains": ["pbebank.com", "publicbank.com.my"],
+      "id": "publicbank",
+      "name": "Public Bank",
+      "type": "bank",
+      "aliases": [
+        "public bank",
+        "pbe",
+        "pbebank",
+        "pb engage"
+      ],
+      "brand_tokens": [
+        "pbebank",
+        "publicbank"
+      ],
+      "official_domains": [
+        "pbebank.com",
+        "publicbank.com.my"
+      ],
       "contacts": [
-        {"label": "Customer service (sources conflict: 03-2177 3555 vs 03-2179 5000), confirm on pbebank.com", "value": "03-2177 3555", "verification": "unverified", "source_url": "https://www.imoney.my/articles/scam-alert-resources"}
+        {
+          "label": "Customer service (sources conflict: 03-2177 3555 vs 03-2179 5000), confirm on pbebank.com",
+          "value": "03-2177 3555",
+          "verification": "unverified",
+          "source_url": "https://www.imoney.my/articles/scam-alert-resources"
+        }
       ],
       "policies": []
     },
     {
-      "id": "rhb", "name": "RHB Bank", "type": "bank",
-      "aliases": ["rhb", "rhb bank", "rhb now"],
-      "brand_tokens": ["rhbbank", "rhbgroup", "rhbnow"],
-      "official_domains": ["rhbgroup.com", "rhbbank.com.my"],
+      "id": "rhb",
+      "name": "RHB Bank",
+      "type": "bank",
+      "aliases": [
+        "rhb",
+        "rhb bank",
+        "rhb now"
+      ],
+      "brand_tokens": [
+        "rhbbank",
+        "rhbgroup",
+        "rhbnow"
+      ],
+      "official_domains": [
+        "rhbgroup.com",
+        "rhbbank.com.my"
+      ],
       "contacts": [
-        {"label": "Customer contact centre", "value": "03-9206 8118", "verification": "secondary_source", "source_url": "https://paynet.my/mydebit/MyDebit-Participant-Banks-HELPDESK-CONTACT-CENTRE.pdf"}
+        {
+          "label": "Customer contact centre",
+          "value": "03-9206 8118",
+          "verification": "secondary_source",
+          "source_url": "https://paynet.my/mydebit/MyDebit-Participant-Banks-HELPDESK-CONTACT-CENTRE.pdf"
+        }
       ],
       "policies": []
     },
     {
-      "id": "hongleong", "name": "Hong Leong Bank", "type": "bank",
-      "aliases": ["hong leong", "hong leong bank", "hlb", "hlb connect"],
-      "brand_tokens": ["hongleong", "hlbconnect"],
-      "official_domains": ["hlb.com.my", "hongleongconnect.my"],
+      "id": "hongleong",
+      "name": "Hong Leong Bank",
+      "type": "bank",
+      "aliases": [
+        "hong leong",
+        "hong leong bank",
+        "hlb",
+        "hlb connect"
+      ],
+      "brand_tokens": [
+        "hongleong",
+        "hlbconnect"
+      ],
+      "official_domains": [
+        "hlb.com.my",
+        "hongleongconnect.my"
+      ],
       "contacts": [
-        {"label": "Customer contact centre", "value": "03-7626 8899", "verification": "secondary_source", "source_url": "https://paynet.my/mydebit/MyDebit-Participant-Banks-HELPDESK-CONTACT-CENTRE.pdf"}
+        {
+          "label": "Customer contact centre",
+          "value": "03-7626 8899",
+          "verification": "secondary_source",
+          "source_url": "https://paynet.my/mydebit/MyDebit-Participant-Banks-HELPDESK-CONTACT-CENTRE.pdf"
+        }
       ],
       "policies": []
     },
     {
-      "id": "bankislam", "name": "Bank Islam", "type": "bank",
-      "aliases": ["bank islam", "go by bank islam"],
-      "brand_tokens": ["bankislam"],
-      "official_domains": ["bankislam.com"],
+      "id": "bankislam",
+      "name": "Bank Islam",
+      "type": "bank",
+      "aliases": [
+        "bank islam",
+        "go by bank islam"
+      ],
+      "brand_tokens": [
+        "bankislam"
+      ],
+      "official_domains": [
+        "bankislam.com"
+      ],
       "contacts": [],
       "policies": []
     },
     {
-      "id": "bsn", "name": "Bank Simpanan Nasional (BSN)", "type": "bank",
-      "aliases": ["bsn", "bank simpanan nasional", "mybsn"],
-      "brand_tokens": ["mybsn"],
-      "official_domains": ["mybsn.com.my"],
+      "id": "bsn",
+      "name": "Bank Simpanan Nasional (BSN)",
+      "type": "bank",
+      "aliases": [
+        "bsn",
+        "bank simpanan nasional",
+        "mybsn"
+      ],
+      "brand_tokens": [
+        "mybsn"
+      ],
+      "official_domains": [
+        "mybsn.com.my"
+      ],
       "contacts": [],
       "policies": []
     },
     {
-      "id": "lhdn", "name": "LHDN / HASiL (Inland Revenue Board)", "type": "government",
-      "aliases": ["lhdn", "hasil", "lembaga hasil", "lembaga hasil dalam negeri", "inland revenue", "irb", "mytax"],
-      "brand_tokens": ["lhdn", "mytax", "hasilgov"],
-      "official_domains": ["hasil.gov.my"],
+      "id": "lhdn",
+      "name": "LHDN / HASiL (Inland Revenue Board)",
+      "type": "government",
+      "aliases": [
+        "lhdn",
+        "hasil",
+        "lembaga hasil",
+        "lembaga hasil dalam negeri",
+        "inland revenue",
+        "irb",
+        "mytax"
+      ],
+      "brand_tokens": [
+        "lhdn",
+        "mytax",
+        "hasilgov"
+      ],
+      "official_domains": [
+        "hasil.gov.my"
+      ],
       "contacts": [
-        {"label": "HASiL Contact Centre", "value": "03-8911 1000", "verification": "official_page", "source_url": "https://www.hasil.gov.my/en/polisi-portal/peringatan-penipuan/"}
+        {
+          "label": "HASiL Contact Centre",
+          "value": "03-8911 1000",
+          "verification": "official_page",
+          "source_url": "https://www.hasil.gov.my/en/polisi-portal/peringatan-penipuan/"
+        }
       ],
       "policies": [
-        {"text": "Official LHDN emails come only from addresses ending in @hasil.gov.my.", "verification": "secondary_source", "source_url": "https://www.malaymail.com/news/malaysia/2026/06/10/received-an-lhdn-email-demanding-action-in-72-hours-heres-how-to-spot-if-its-a-scam/223213"},
-        {"text": "LHDN does not discuss tax matters with the public by phone or transfer calls to police/court officers.", "verification": "secondary_source", "source_url": "https://thestar.com.my/news/true-or-not/2023/02/13/quickcheck-do-lhdn-officers-call-you-on-the-phone-for-official-matters"},
-        {"text": "Tax is paid only through official LHDN channels, never to an individual's bank account.", "verification": "official_page", "source_url": "https://www.hasil.gov.my/en/polisi-portal/peringatan-penipuan/"}
+        {
+          "text": "Official LHDN emails come only from addresses ending in @hasil.gov.my.",
+          "verification": "secondary_source",
+          "source_url": "https://www.malaymail.com/news/malaysia/2026/06/10/received-an-lhdn-email-demanding-action-in-72-hours-heres-how-to-spot-if-its-a-scam/223213"
+        },
+        {
+          "text": "LHDN does not discuss tax matters with the public by phone or transfer calls to police/court officers.",
+          "verification": "secondary_source",
+          "source_url": "https://thestar.com.my/news/true-or-not/2023/02/13/quickcheck-do-lhdn-officers-call-you-on-the-phone-for-official-matters"
+        },
+        {
+          "text": "Tax is paid only through official LHDN channels, never to an individual's bank account.",
+          "verification": "official_page",
+          "source_url": "https://www.hasil.gov.my/en/polisi-portal/peringatan-penipuan/"
+        }
       ]
     },
     {
-      "id": "jpj", "name": "JPJ (Road Transport Department)", "type": "government",
-      "aliases": ["jpj", "jabatan pengangkutan jalan", "road transport department", "myjpj"],
-      "brand_tokens": ["jpj", "myjpj"],
-      "official_domains": ["jpj.gov.my"],
+      "id": "jpj",
+      "name": "JPJ (Road Transport Department)",
+      "type": "government",
+      "aliases": [
+        "jpj",
+        "jabatan pengangkutan jalan",
+        "road transport department",
+        "myjpj"
+      ],
+      "brand_tokens": [
+        "jpj",
+        "myjpj"
+      ],
+      "official_domains": [
+        "jpj.gov.my"
+      ],
       "contacts": [],
       "policies": [
-        {"text": "Check summons/blacklist status in the official MyJPJ app or jpj.gov.my, not via links in SMS. Official domains end in .gov.my.", "verification": "secondary_source", "source_url": "https://www.motorist.my/article/6079/scam-alert-jpj-blacklist-sms-2026-don-t-click-that-link"}
+        {
+          "text": "Check summons/blacklist status in the official MyJPJ app or jpj.gov.my, not via links in SMS. Official domains end in .gov.my.",
+          "verification": "secondary_source",
+          "source_url": "https://www.motorist.my/article/6079/scam-alert-jpj-blacklist-sms-2026-don-t-click-that-link"
+        }
       ]
     },
     {
-      "id": "pdrm", "name": "PDRM (Royal Malaysia Police)", "type": "government",
-      "aliases": ["pdrm", "polis", "police", "polis diraja malaysia", "royal malaysia police", "mybayar", "ccid"],
-      "brand_tokens": ["pdrm", "mybayar"],
-      "official_domains": ["rmp.gov.my"],
+      "id": "pdrm",
+      "name": "PDRM (Royal Malaysia Police)",
+      "type": "government",
+      "aliases": [
+        "pdrm",
+        "polis",
+        "police",
+        "polis diraja malaysia",
+        "royal malaysia police",
+        "mybayar",
+        "ccid"
+      ],
+      "brand_tokens": [
+        "pdrm",
+        "mybayar"
+      ],
+      "official_domains": [
+        "rmp.gov.my"
+      ],
       "contacts": [
-        {"label": "National Scam Response Centre", "value": "997", "verification": "official_page", "source_url": "https://www.malaysia.gov.my/en/topics/hotline-nsrc-997"}
+        {
+          "label": "National Scam Response Centre",
+          "value": "997",
+          "verification": "official_page",
+          "source_url": "https://www.malaysia.gov.my/en/topics/hotline-nsrc-997"
+        }
       ],
       "policies": [
-        {"text": "PDRM warned (Jan 2026) of scam messages misusing PDRM and MyBayar names to claim unpaid tolls or traffic fines.", "verification": "secondary_source", "source_url": "https://www.thevibes.com/articles/news/117747/cops-warn-public-against-scams-using-pdrm-and-mybayar-names"},
-        {"text": "Police do not handle cases by transferring phone calls or asking you to move money to a 'safe account'.", "verification": "secondary_source", "source_url": "https://www.malaymail.com/news/malaysia/2026/01/25/phone-scam-syndicate-uses-caller-id-spoofing-to-impersonate-telcos-agencies-says-bukit-aman-commercial-crime-chief/206732"}
+        {
+          "text": "PDRM warned (Jan 2026) of scam messages misusing PDRM and MyBayar names to claim unpaid tolls or traffic fines.",
+          "verification": "secondary_source",
+          "source_url": "https://www.thevibes.com/articles/news/117747/cops-warn-public-against-scams-using-pdrm-and-mybayar-names"
+        },
+        {
+          "text": "Police do not handle cases by transferring phone calls or asking you to move money to a 'safe account'.",
+          "verification": "secondary_source",
+          "source_url": "https://www.malaymail.com/news/malaysia/2026/01/25/phone-scam-syndicate-uses-caller-id-spoofing-to-impersonate-telcos-agencies-says-bukit-aman-commercial-crime-chief/206732"
+        }
       ]
     },
     {
-      "id": "bnm", "name": "Bank Negara Malaysia (BNM)", "type": "government",
-      "aliases": ["bank negara", "bnm", "bank negara malaysia", "central bank"],
-      "brand_tokens": ["banknegara"],
-      "official_domains": ["bnm.gov.my"],
+      "id": "bnm",
+      "name": "Bank Negara Malaysia (BNM)",
+      "type": "government",
+      "aliases": [
+        "bank negara",
+        "bnm",
+        "bank negara malaysia",
+        "central bank"
+      ],
+      "brand_tokens": [
+        "banknegara"
+      ],
+      "official_domains": [
+        "bnm.gov.my"
+      ],
       "contacts": [
-        {"label": "BNMTELELINK (Mon-Fri 9am-5pm)", "value": "1-300-88-5465", "verification": "official_page", "source_url": "https://www.bnm.gov.my/-/update-on-financial-consumer-alert-list"}
+        {
+          "label": "BNMTELELINK (Mon-Fri 9am-5pm)",
+          "value": "1-300-88-5465",
+          "verification": "official_page",
+          "source_url": "https://www.bnm.gov.my/-/update-on-financial-consumer-alert-list"
+        }
       ],
       "policies": []
     },
     {
-      "id": "posmalaysia", "name": "Pos Malaysia / Pos Laju", "type": "courier",
-      "aliases": ["pos malaysia", "poslaju", "pos laju", "pos"],
-      "brand_tokens": ["poslaju", "posmalaysia"],
-      "official_domains": ["pos.com.my"],
+      "id": "posmalaysia",
+      "name": "Pos Malaysia / Pos Laju",
+      "type": "courier",
+      "aliases": [
+        "pos malaysia",
+        "poslaju",
+        "pos laju",
+        "pos"
+      ],
+      "brand_tokens": [
+        "poslaju",
+        "posmalaysia"
+      ],
+      "official_domains": [
+        "pos.com.my"
+      ],
       "contacts": [],
       "policies": [
-        {"text": "Couriers do not hold parcels pending payment of 'duties', redelivery or verification fees requested via SMS links; track only through the courier's official site/app.", "verification": "secondary_source", "source_url": "https://www.bernama.com/en/news.php?id=2572009"}
+        {
+          "text": "Couriers do not hold parcels pending payment of 'duties', redelivery or verification fees requested via SMS links; track only through the courier's official site/app.",
+          "verification": "secondary_source",
+          "source_url": "https://www.bernama.com/en/news.php?id=2572009"
+        }
       ]
     },
     {
-      "id": "jnt", "name": "J&T Express Malaysia", "type": "courier",
-      "aliases": ["j&t", "jnt", "j&t express", "jt express"],
-      "brand_tokens": ["jtexpress", "jntexpress"],
-      "official_domains": ["jtexpress.my"],
+      "id": "jnt",
+      "name": "J&T Express Malaysia",
+      "type": "courier",
+      "aliases": [
+        "j&t",
+        "jnt",
+        "j&t express",
+        "jt express"
+      ],
+      "brand_tokens": [
+        "jtexpress",
+        "jntexpress"
+      ],
+      "official_domains": [
+        "jtexpress.my"
+      ],
       "contacts": [],
       "policies": [
-        {"text": "Couriers do not hold parcels pending payment of 'duties', redelivery or verification fees requested via SMS links; track only through the courier's official site/app.", "verification": "secondary_source", "source_url": "https://www.bernama.com/en/news.php?id=2572009"}
+        {
+          "text": "Couriers do not hold parcels pending payment of 'duties', redelivery or verification fees requested via SMS links; track only through the courier's official site/app.",
+          "verification": "secondary_source",
+          "source_url": "https://www.bernama.com/en/news.php?id=2572009"
+        }
       ]
     },
     {
-      "id": "tng", "name": "Touch 'n Go eWallet", "type": "ewallet",
-      "aliases": ["touch n go", "touch 'n go", "tng", "tng ewallet", "touchngo"],
-      "brand_tokens": ["touchngo", "tngdigital"],
-      "official_domains": ["tngdigital.com.my", "touchngo.com.my"],
+      "id": "tng",
+      "name": "Touch 'n Go eWallet",
+      "type": "ewallet",
+      "aliases": [
+        "touch n go",
+        "touch 'n go",
+        "tng",
+        "tng ewallet",
+        "touchngo"
+      ],
+      "brand_tokens": [
+        "touchngo",
+        "tngdigital"
+      ],
+      "official_domains": [
+        "tngdigital.com.my",
+        "touchngo.com.my"
+      ],
       "contacts": [],
       "policies": []
     },
     {
-      "id": "myeg", "name": "MyEG", "type": "services",
-      "aliases": ["myeg", "my eg"],
-      "brand_tokens": ["myeg"],
-      "official_domains": ["myeg.com.my"],
+      "id": "myeg",
+      "name": "MyEG",
+      "type": "services",
+      "aliases": [
+        "myeg",
+        "my eg"
+      ],
+      "brand_tokens": [
+        "myeg"
+      ],
+      "official_domains": [
+        "myeg.com.my"
+      ],
       "contacts": [],
       "policies": []
+    },
+    {
+      "id": "kwsp",
+      "name": "KWSP / EPF (Employees Provident Fund)",
+      "type": "government",
+      "aliases": [
+        "kwsp",
+        "epf",
+        "i-akaun",
+        "kumpulan wang simpanan pekerja",
+        "employees provident fund"
+      ],
+      "brand_tokens": [
+        "kwsp"
+      ],
+      "official_domains": [
+        "kwsp.gov.my"
+      ],
+      "contacts": [
+        {
+          "label": "Contact Management Centre",
+          "value": "03-8922 6000",
+          "verification": "secondary_source",
+          "source_url": "https://www.malaymail.com/news/malaysia/2017/06/15/epf-warns-members-of-false-messages-and-scams-on-social-media/1399903"
+        }
+      ],
+      "policies": [
+        {
+          "text": "EPF says all information about its services is on www.kwsp.gov.my, and members should not call numbers given in SMS or WhatsApp messages about their account.",
+          "verification": "secondary_source",
+          "source_url": "https://www.malaymail.com/news/malaysia/2017/06/15/epf-warns-members-of-false-messages-and-scams-on-social-media/1399903"
+        }
+      ]
+    },
+    {
+      "id": "perkeso",
+      "name": "PERKESO / SOCSO",
+      "type": "government",
+      "aliases": [
+        "perkeso",
+        "socso"
+      ],
+      "brand_tokens": [
+        "perkeso",
+        "socso"
+      ],
+      "official_domains": [
+        "perkeso.gov.my"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Only trust government aid or account links on sites ending in .gov.my.",
+          "verification": "secondary_source",
+          "source_url": "https://www.malaymail.com/amp/news/malaysia/2025/05/05/only-trust-govmy-sites-for-sumbangan-tunai-rahmah-updates-teo-warns-as-scam-links-spread/175632"
+        }
+      ]
+    },
+    {
+      "id": "mof_aid",
+      "name": "Ministry of Finance (STR / SARA cash aid)",
+      "type": "government",
+      "aliases": [
+        "sumbangan tunai rahmah",
+        "sumbangan asas rahmah",
+        "kementerian kewangan",
+        "ministry of finance",
+        "bantuan str",
+        "str 2026",
+        "str 2025"
+      ],
+      "brand_tokens": [
+        "sumbangantunai",
+        "bantuanstr"
+      ],
+      "official_domains": [
+        "mof.gov.my"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Only trust government aid or account links on sites ending in .gov.my.",
+          "verification": "secondary_source",
+          "source_url": "https://www.malaymail.com/amp/news/malaysia/2025/05/05/only-trust-govmy-sites-for-sumbangan-tunai-rahmah-updates-teo-warns-as-scam-links-spread/175632"
+        },
+        {
+          "text": "The Finance Ministry says it never asks for any payment in relation to STR or SARA.",
+          "verification": "secondary_source",
+          "source_url": "https://www.therakyatpost.com/news/2026/08/07/scammers-pose-as-mof-officers-to-target-str-and-sara-recipients-ministry-warns/"
+        }
+      ]
+    },
+    {
+      "id": "tnb",
+      "name": "TNB (Tenaga Nasional Berhad)",
+      "type": "utility",
+      "aliases": [
+        "tnb",
+        "tenaga nasional",
+        "mytnb"
+      ],
+      "brand_tokens": [
+        "mytnb"
+      ],
+      "official_domains": [
+        "tnb.com.my",
+        "mytnb.com.my"
+      ],
+      "contacts": [
+        {
+          "label": "TNB CareLine",
+          "value": "1300-88-5454",
+          "verification": "official_page",
+          "source_url": "https://www.tnb.com.my/scam-alert/impersonation-scam/"
+        },
+        {
+          "label": "Power outage or breakdown",
+          "value": "15454",
+          "verification": "official_page",
+          "source_url": "https://www.tnb.com.my/scam-alert/impersonation-scam/"
+        }
+      ],
+      "policies": [
+        {
+          "text": "TNB does not send SMS messages with links asking customers to pay overdue bills.",
+          "verification": "secondary_source",
+          "source_url": "https://www.thestar.com.my/news/true-or-not/2024/11/15/quickcheck-does-a-utility-company-send-smses-with-links-to-customers-with-overdue-bills"
+        }
+      ]
+    },
+    {
+      "id": "celcomdigi",
+      "name": "CelcomDigi",
+      "type": "telco",
+      "aliases": [
+        "celcom",
+        "digi",
+        "celcomdigi",
+        "xpax"
+      ],
+      "brand_tokens": [
+        "celcom",
+        "celcomdigi"
+      ],
+      "official_domains": [
+        "celcomdigi.com",
+        "celcom.com.my",
+        "digi.com.my"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Never share a WhatsApp 6-digit verification code with anyone; scammers use it to take over your account.",
+          "verification": "official_page",
+          "source_url": "https://help.celcomdigi.com/support/solutions/articles/70000654932-fake-6-digit-verification-codes-scam-on-whatsapp"
+        }
+      ]
+    },
+    {
+      "id": "maxis",
+      "name": "Maxis / Hotlink",
+      "type": "telco",
+      "aliases": [
+        "maxis",
+        "hotlink"
+      ],
+      "brand_tokens": [
+        "maxis"
+      ],
+      "official_domains": [
+        "maxis.com.my",
+        "hotlink.com.my"
+      ],
+      "contacts": [],
+      "policies": []
+    },
+    {
+      "id": "umobile",
+      "name": "U Mobile",
+      "type": "telco",
+      "aliases": [
+        "u mobile",
+        "umobile"
+      ],
+      "brand_tokens": [
+        "umobile"
+      ],
+      "official_domains": [
+        "u.com.my"
+      ],
+      "contacts": [],
+      "policies": []
+    },
+    {
+      "id": "shopee",
+      "name": "Shopee",
+      "type": "ecommerce",
+      "aliases": [
+        "shopee",
+        "shopeepay",
+        "shopee pay"
+      ],
+      "brand_tokens": [
+        "shopee"
+      ],
+      "official_domains": [
+        "shopee.com.my",
+        "shopee.com",
+        "shp.ee"
+      ],
+      "contacts": [],
+      "policies": []
+    },
+    {
+      "id": "lazada",
+      "name": "Lazada",
+      "type": "ecommerce",
+      "aliases": [
+        "lazada"
+      ],
+      "brand_tokens": [
+        "lazada"
+      ],
+      "official_domains": [
+        "lazada.com.my",
+        "lazada.com"
+      ],
+      "contacts": [],
+      "policies": []
+    },
+    {
+      "id": "carousell",
+      "name": "Carousell",
+      "type": "ecommerce",
+      "aliases": [
+        "carousell"
+      ],
+      "brand_tokens": [
+        "carousell"
+      ],
+      "official_domains": [
+        "carousell.com.my",
+        "carousell.com"
+      ],
+      "contacts": [],
+      "policies": []
+    },
+    {
+      "id": "grab",
+      "name": "Grab",
+      "type": "ewallet",
+      "aliases": [
+        "grabpay",
+        "grab pay",
+        "grabfood",
+        "grabcar",
+        "grab malaysia"
+      ],
+      "brand_tokens": [
+        "grabpay"
+      ],
+      "official_domains": [
+        "grab.com"
+      ],
+      "contacts": [],
+      "policies": []
+    },
+    {
+      "id": "ambank",
+      "name": "AmBank",
+      "type": "bank",
+      "aliases": [
+        "ambank",
+        "amonline"
+      ],
+      "brand_tokens": [
+        "ambank"
+      ],
+      "official_domains": [
+        "ambank.com.my",
+        "ambankgroup.com"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
+          "verification": "secondary_source",
+          "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
+      ]
+    },
+    {
+      "id": "bankrakyat",
+      "name": "Bank Rakyat",
+      "type": "bank",
+      "aliases": [
+        "bank rakyat",
+        "irakyat"
+      ],
+      "brand_tokens": [
+        "bankrakyat"
+      ],
+      "official_domains": [
+        "bankrakyat.com.my"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
+          "verification": "secondary_source",
+          "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
+      ]
+    },
+    {
+      "id": "ocbc",
+      "name": "OCBC Bank Malaysia",
+      "type": "bank",
+      "aliases": [
+        "ocbc"
+      ],
+      "brand_tokens": [
+        "ocbc"
+      ],
+      "official_domains": [
+        "ocbc.com.my"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
+          "verification": "secondary_source",
+          "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
+      ]
+    },
+    {
+      "id": "uob",
+      "name": "UOB Malaysia",
+      "type": "bank",
+      "aliases": [
+        "uob",
+        "united overseas bank"
+      ],
+      "brand_tokens": [],
+      "official_domains": [
+        "uob.com.my"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
+          "verification": "secondary_source",
+          "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
+      ]
+    },
+    {
+      "id": "hsbc",
+      "name": "HSBC Malaysia",
+      "type": "bank",
+      "aliases": [
+        "hsbc"
+      ],
+      "brand_tokens": [
+        "hsbc"
+      ],
+      "official_domains": [
+        "hsbc.com.my"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
+          "verification": "secondary_source",
+          "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
+      ]
+    },
+    {
+      "id": "alliance",
+      "name": "Alliance Bank",
+      "type": "bank",
+      "aliases": [
+        "alliance bank",
+        "allianceonline"
+      ],
+      "brand_tokens": [
+        "alliancebank"
+      ],
+      "official_domains": [
+        "alliancebank.com.my"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
+          "verification": "secondary_source",
+          "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
+      ]
+    },
+    {
+      "id": "affin",
+      "name": "Affin Bank",
+      "type": "bank",
+      "aliases": [
+        "affin",
+        "affin bank",
+        "affinalways"
+      ],
+      "brand_tokens": [
+        "affinbank"
+      ],
+      "official_domains": [
+        "affinbank.com.my"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
+          "verification": "secondary_source",
+          "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
+      ]
     }
   ]
 }

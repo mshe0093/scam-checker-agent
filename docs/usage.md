@@ -60,16 +60,52 @@ scamcheck eval --mode agent                   # Claude agent eval, uses API cred
 By default the CLI and API use the Claude agent when `ANTHROPIC_API_KEY` (or `ANTHROPIC_AUTH_TOKEN`)
 is set, and the rules engine otherwise. Set `SCAMCHECK_ENGINE=claude` or `SCAMCHECK_ENGINE=rules` to force one.
 
+### How the rules engine decides
+
+Every red or amber signal adds risk points, and every green signal adds trust points. The rules
+below are applied in order, and the first one that matches gives the verdict:
+
+| Condition | Verdict |
+|---|---|
+| Any deterministic red signal, such as a fake bank domain, a request for your TAC, an `.apk` link or a "safe account" | `likely_scam`, high confidence |
+| Any red signal plus strong pressure language, or net risk ≥ `likely_scam_net_risk` | `likely_scam`, medium confidence |
+| Net risk ≥ `suspicious_net_risk` | `suspicious`, medium confidence |
+| Trust outweighs risk, or a link or phone number was checked and nothing was wrong | `likely_legitimate` |
+| Risk below `min_risk_to_warn` | `insufficient_information` |
+| Anything else | `suspicious`, low confidence |
+
+Naming an organisation is a claim, not evidence. A message that only says "Maybank" with nothing to
+check is never cleared. Everyday words such as "today", "pay" and "transfer" don't count as pressure on their own.
+
+Each verdict explains itself:
+- **A headline** with the two strongest, non-overlapping reasons.
+- **Findings**, strongest first, each quoting the words that triggered it.
+- **Advice** for the tactics found, at most one piece per type of scam.
+- **The claimed organisation's real hotline**, taken from the dataset.
+- **Next steps**, such as NSRC 997.
+
+The API also returns `score` (`risk`, `trust`, `net`), so you can see how close a message was to the next verdict.
+
 ### Tuning the rules engine
 
-[`src/scamcheck/data/rules.json`](../src/scamcheck/data/rules.json) has these settings:
+All of the rules engine's behaviour is in four JSON files in [`src/scamcheck/data/`](../src/scamcheck/data/):
 
-- `default_weights`: how much a red, amber or green signal counts by default
-- `weights`: an override for one signal, such as `"url_shortener": 1`
-- `thresholds.suspicious_net_risk`: the net risk (risk minus trust) at which a message becomes `suspicious`
-- `caps.never_legitimate`: conditions that block a `likely_legitimate` verdict in **both** engines
+| File | What it controls |
+|---|---|
+| `tactics.json` | The 25 scam tactics. A tactic fires when every group in `all` has a regex match in the lower-cased message. `negatable` ignores a match right after "never / do not / jangan". `needs_url` needs a link in the message. `unless` suppresses the tactic. Each tactic also sets its severity, whether it's deterministic, its category, and the `title`, `reason`, `detail` and `advice` users see |
+| `rules.json` | `default_weights` and per-signal `weights`, the thresholds `suspicious_net_risk`, `likely_scam_net_risk` and `min_risk_to_warn`, and `caps.never_legitimate`, which blocks `likely_legitimate` in **both** engines |
+| `explanations.json` | The headline clause for each non-tactic signal (`{org}` becomes the organisation's name), groups of signals that mean the same thing, and the advice for each scam category |
+| `official_orgs.json`, `scam_patterns.json` | The organisations, with their domains, hotlines and sources, and the scam templates |
 
-Run `scamcheck eval --mode baseline` after every change to see what it did.
+Only mark a tactic `deterministic` if no genuine sender ever makes that request, because it skips the
+scoring and can't be outweighed. After every change, run both evals and `pytest`.
+`tests/test_tactics.py` checks that each tactic fires on its example and that none fire on a list of genuine messages:
+
+```bash
+scamcheck eval --mode baseline
+scamcheck eval --mode baseline --dataset evals/challenge.jsonl
+pytest tests/test_tactics.py
+```
 
 ## Web UI
 

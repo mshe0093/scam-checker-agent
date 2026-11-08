@@ -50,6 +50,14 @@ The datasets live in [`src/scamcheck/data/`](src/scamcheck/data/).
 - Don't copy news articles word for word.
 - Give it an `id`, a `category`, a `lang` (`en` or `ms`), its `indicators`, and the `source_url` of the advisory it's based on.
 
+**Scam tactics** (`tactics.json`)
+- A tactic describes something scammers *ask for or claim*, not just a word they use.
+- Add an example message to `POSITIVE` in `tests/test_tactics.py`. If the tactic could plausibly fire on a
+  genuine message, add that message to `CLEAN` as well.
+- Write the `detail` and `advice` for someone who has never heard of the scam. Say what it is and what to do.
+- Only mark a tactic `deterministic` if no genuine sender ever makes that request.
+- Check both eval sets before and after the change.
+
 **Rules** (`rules.json`)
 - Run `scamcheck eval --mode baseline` before and after a change, and put both results in the pull request.
 - A change that lets any scam come back `likely_legitimate` won't be merged.

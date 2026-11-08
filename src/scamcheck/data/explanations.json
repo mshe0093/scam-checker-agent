@@ -1,0 +1,76 @@
+{
+  "_about": "Plain-language text the rules engine uses to explain its verdicts. `reasons` gives a short clause per signal id for the headline ({org} is replaced with the organisation the message names); tactics use their own title from tactics.json. `category_advice` is added to the recommended actions for that scam type. Keep the wording short, concrete and free of jargon: it is read by people who may have just been scammed.",
+  "reasons": {
+    "safe_browsing_hit": "Google Safe Browsing lists the link as dangerous",
+    "unsafe_destination": "the link redirects to a page Google Safe Browsing lists as dangerous",
+    "embedded_official_domain": "the link hides {org}'s real address inside a fake one",
+    "brand_impersonation": "the link imitates {org}'s website",
+    "claimed_org_domain_mismatch": "the link is not {org}'s real website",
+    "org_domain_mismatch": "the link belongs to a different organisation than the one named",
+    "lookalike_domain": "the link uses a look-alike of {org}'s web address",
+    "very_new_domain": "the website was registered only days ago",
+    "new_domain": "the website is very new",
+    "unregistered_domain": "the web address isn't even registered",
+    "ip_literal_host": "the link is a bare IP address instead of a website name",
+    "reported_scam_number": "the phone number has been reported for scams",
+    "strong_pattern_match": "it closely matches a known Malaysian scam message",
+    "partial_pattern_match": "it resembles a known scam message",
+    "pressure_tactics": "it combines threats with urgency",
+    "link_with_credential_request": "it asks you to log in or verify through a link",
+    "phishing_path_keywords": "the link looks like a fake login page",
+    "url_shortener": "the real link is hidden behind a short link",
+    "cross_domain_redirects": "the link bounces through other websites",
+    "too_many_redirects": "the link redirects many times",
+    "idn_host": "the web address uses letters from other alphabets",
+    "high_abuse_tld": "the web address ends in a domain type scammers use heavily",
+    "free_hosting": "the page is on a free hosting service",
+    "random_looking_domain": "the web address looks randomly generated",
+    "excessive_subdomains": "the web address is stacked with extra parts",
+    "personal_mobile": "it gives a personal mobile number instead of an official line",
+    "international_number": "it gives an overseas phone number",
+    "official_domain": "the link goes to {org}'s official website",
+    "matches_official_number": "the phone number is {org}'s official line",
+    "established_domain": "the website has been registered for years",
+    "security_advice": "it warns you to keep your codes secret and contains no link",
+    "safe_browsing_clean": "Google Safe Browsing has no record of the link"
+  },
+  "org_type_category": {
+    "bank": "bank_phishing",
+    "ewallet": "bank_phishing",
+    "government": "government_impersonation",
+    "courier": "parcel_courier",
+    "utility": "utility_telco",
+    "telco": "utility_telco",
+    "ecommerce": "online_shopping"
+  },
+  "category_advice": {
+    "bank_phishing": "Open your bank's official app, or call the number on the back of your card, to check your account.",
+    "parcel_courier": "Track parcels only in the courier's official app or website, using the tracking number from the shop you bought from.",
+    "government_impersonation": "Government agencies don't demand payment or bank details by SMS or WhatsApp. Check on the agency's .gov.my portal or at its counter.",
+    "loan_investment": "Check lenders on Bank Negara's licensed list and investments on the Securities Commission's investor alert list.",
+    "job_task": "Real employers never ask you to pay to start a job or to withdraw your earnings.",
+    "prize": "You can't win a draw you never entered. Real prizes never need a fee or your banking login.",
+    "impersonation": "Call the person on the number you already have for them before sending anything.",
+    "malware_apk": "Install apps only from Google Play or the App Store.",
+    "account_takeover": "Turn on two-step verification in WhatsApp, Telegram and your email.",
+    "money_mule": "Letting others use your bank account is a crime, even if you didn't know where the money came from.",
+    "online_shopping": "Pay only through the marketplace's checkout, and check sellers on PDRM's Semak Mule site.",
+    "extortion": "Don't pay or reply. Keep the messages and report to the police.",
+    "utility_telco": "Check bills only in the provider's official app or by calling its official careline."
+  },
+  "reason_groups": {
+    "_about": "Signals in one group are the same finding said different ways; a headline uses at most one of them.",
+    "fake_domain": [
+      "embedded_official_domain",
+      "brand_impersonation",
+      "claimed_org_domain_mismatch",
+      "org_domain_mismatch",
+      "lookalike_domain"
+    ],
+    "new_domain": [
+      "very_new_domain",
+      "new_domain",
+      "unregistered_domain"
+    ]
+  }
+}
