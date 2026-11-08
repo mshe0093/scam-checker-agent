@@ -8,4 +8,5 @@
 | [Evaluation](../evals/README.md) | The labelled dataset, metrics, results and caveats |
 | [Changelog](../CHANGELOG.md) | What changed in each milestone |
 | [Contributing](../CONTRIBUTING.md) | How to report a wrong verdict, add a scam pattern or an official contact, and send a pull request |
+| [Code of conduct](../CODE_OF_CONDUCT.md) | How we treat each other and the people in shared messages |
 | [Security policy](../SECURITY.md) | How to report a vulnerability |
