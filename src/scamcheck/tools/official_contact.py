@@ -4,26 +4,12 @@ from __future__ import annotations
 
 from scamcheck import data
 from scamcheck.models import Severity, Signal, Status, ToolResult
-from scamcheck.tools.domain import levenshtein
-
-
-def _match_org(name: str) -> dict | None:
-    q = name.strip().lower()
-    best, best_score = None, 99
-    for org in data.orgs():
-        candidates = [org["id"], org["name"].lower(), *(a.lower() for a in org["aliases"])]
-        for cand in candidates:
-            if q == cand or (len(q) >= 4 and (q in cand or cand in q)):
-                return org
-            score = levenshtein(q, cand)
-            if score < best_score:
-                best, best_score = org, score
-    return best if best_score <= 2 else None
+from scamcheck.tools.orgs import match_org
 
 
 def lookup_official_contact(org_name: str) -> ToolResult:
     """Return official domains, hotlines and stated policies for a Malaysian organisation."""
-    org = _match_org(org_name)
+    org = match_org(org_name)
     generic = data.generic_reporting()
     if org is None:
         return ToolResult(

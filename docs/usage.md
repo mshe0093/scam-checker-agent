@@ -92,10 +92,10 @@ All of the rules engine's behaviour is in four JSON files in [`src/scamcheck/dat
 
 | File | What it controls |
 |---|---|
-| `tactics.json` | The 25 scam tactics. A tactic fires when every group in `all` has a regex match in the lower-cased message. `negatable` ignores a match right after "never / do not / jangan". `needs_url` needs a link in the message. `unless` suppresses the tactic. Each tactic also sets its severity, whether it's deterministic, its category, and the `title`, `reason`, `detail` and `advice` users see |
+| `tactics.json` | The 32 scam tactics. A tactic fires when every group in `all` has a regex match in the lower-cased message. `negatable` ignores a match right after "never / do not / jangan". `needs_url` needs a link in the message. `unless` suppresses the tactic. Each tactic also sets its severity, whether it's deterministic, its category, and the `title`, `reason`, `detail` and `advice` users see |
 | `rules.json` | `default_weights` and per-signal `weights`, the thresholds `suspicious_net_risk`, `likely_scam_net_risk` and `min_risk_to_warn`, and `caps.never_legitimate`, which blocks `likely_legitimate` in **both** engines |
 | `explanations.json` | The headline clause for each non-tactic signal (`{org}` becomes the organisation's name), groups of signals that mean the same thing, and the advice for each scam category |
-| `official_orgs.json`, `scam_patterns.json` | The organisations, with their domains, hotlines and sources, and the scam templates |
+| `official_orgs.json`, `scam_patterns.json` | The organisations, with their domains, hotlines and sources, and the scam templates. Before adding an official domain, check it the way [data-sources.md](data-sources.md) describes: a wrong domain whitelists scams |
 
 Only mark a tactic `deterministic` if no genuine sender ever makes that request, because it skips the
 scoring and can't be outweighed. After every change, run both evals and `pytest`.
@@ -104,6 +104,7 @@ scoring and can't be outweighed. After every change, run both evals and `pytest`
 ```bash
 scamcheck eval --mode baseline
 scamcheck eval --mode baseline --dataset evals/challenge.jsonl
+scamcheck eval --mode baseline --dataset evals/regression.jsonl
 pytest tests/test_tactics.py
 ```
 

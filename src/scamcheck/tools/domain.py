@@ -233,13 +233,9 @@ def _official_owner(reg_domain: str) -> dict | None:
 
 
 def _find_claimed_org(claimed: str | None) -> dict | None:
-    if not claimed:
-        return None
-    c = claimed.strip().lower()
-    for org in data.orgs():
-        if c == org["id"] or c in (a.lower() for a in org["aliases"]) or c in org["name"].lower():
-            return org
-    return None
+    from scamcheck.tools.orgs import match_org
+
+    return match_org(claimed)
 
 
 def _brand_impersonation(host: str) -> dict | None:

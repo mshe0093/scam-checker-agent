@@ -5,6 +5,36 @@ releases yet, so entries are grouped by milestone (see [docs/PLAN.md](docs/PLAN.
 
 ## [Unreleased]
 
+### Added (Malaysia coverage round)
+- **Every consumer-facing bank on Bank Negara's register.** The list is taken from BNM's Financial Sector
+  Participants Directory, and each domain was checked by loading its homepage. It covers:
+  - Islamic banks: Al Rajhi, Bank Muamalat, KFH, MBSB, Standard Chartered Saadiq
+  - development banks: Agrobank, Bank Pembangunan, EXIM
+  - Bank of China
+  - digital banks: AEON Bank, Boost Bank, GXBank, KAF Digital, Ryt Bank
+- E-wallets: Boost, BigPay, Setel and PayPal. Agencies: NSRC, MCMC and the Securities Commission.
+- Extra official domains:
+  - `affinalways.com` (Affin's live site)
+  - `rhb.com.my`
+  - `hsbcamanah.com.my`
+  - `hlbislamic.com.my`
+- 7 tactics from 2026 police and regulator warnings:
+  - fake NSRC officers
+  - paid "fund recovery"
+  - investments claiming celebrity or government backing (deepfakes)
+  - QR codes to "receive" money
+  - affectionate strangers asking for money
+  - "press 1 for an officer" scripts
+  - deposits before viewing a rental
+- 10 scam templates with sources for those scams, plus COD parcels and too-cheap e-commerce deals.
+- `evals/regression.jsonl` (28 messages) and `docs/data-sources.md`, which records where each domain
+  and pattern came from and how it was checked.
+
+### Fixed
+- Organisation matching: short IDs no longer match inside other names. Before, "sc" matched inside
+  "NSRC", so fake NSRC calls got the Securities Commission's contacts. Both tools now share one matcher (`tools/orgs.py`).
+- The CLI no longer crashes on Windows consoles or pipes that can't print "●".
+
 ### Added
 - **25 scam tactics** in `data/tactics.json`, detected by `extract_entities`. Examples:
   - `.apk` app files and app installs from links

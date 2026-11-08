@@ -18,7 +18,8 @@
     "official_domain": 4,
     "matches_official_number": 3,
     "established_domain": 2,
-    "security_advice": 2
+    "security_advice": 2,
+    "romance_money_request": 1
   },
   "thresholds": {
     "suspicious_net_risk": 3,

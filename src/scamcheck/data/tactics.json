@@ -383,7 +383,7 @@
         ]
       ],
       "detail": "Threatens to cut off electricity, water, a phone line or a service. TNB and the telcos don't send SMS links demanding immediate payment to avoid disconnection.",
-      "advice": "Check your bill in the provider's official app or by calling its official careline before paying.",
+      "advice": "Check with the provider through its official app or careline, using a number you look up yourself, before paying or doing anything else.",
       "source_url": "https://www.thestar.com.my/news/true-or-not/2024/11/15/quickcheck-does-a-utility-company-send-smses-with-links-to-customers-with-overdue-bills",
       "reason": "it threatens to cut off a service"
     },
@@ -428,6 +428,132 @@
       "detail": "Asks you to download an app through a link instead of from Google Play or the App Store.",
       "advice": "Only install apps from Google Play or the App Store, by searching for them yourself.",
       "reason": "it asks you to install an app from a link"
+    },
+    {
+      "id": "nsrc_impersonation",
+      "severity": "red",
+      "deterministic": false,
+      "category": "government_impersonation",
+      "title": "Claims to be the NSRC",
+      "all": [
+        [
+          "\\b(nsrc officer|pegawai (dari |daripada )?nsrc|(this is|from|here is) (the )?(nsrc|national scam response cent(re|er))|(ini|dari|daripada|wakil) (pihak )?(nsrc|pusat respons scam)|nsrc (team|here|department|unit)|pasukan nsrc|997 officer|pegawai 997)\\b"
+        ]
+      ],
+      "detail": "Claims to be from the National Scam Response Centre (NSRC) and asks you to act. Police say the NSRC never calls or messages the public; you contact 997 yourself.",
+      "advice": "The NSRC never contacts you first. Hang up or ignore the message, and if you need to report a scam, call 997 yourself.",
+      "source_url": "https://thesun.my/news/malaysia-news/police-receive-23-reports-of-bogus-nsrc-officers-involving-over-rm700000-in-losses-an11857447/",
+      "reason": "it claims to be from the NSRC, which never contacts the public"
+    },
+    {
+      "id": "fund_recovery_offer",
+      "severity": "red",
+      "deterministic": false,
+      "category": "other",
+      "title": "Offers to recover lost money",
+      "all": [
+        [
+          "\\b(recover (your |the )?(lost )?(money|funds|losses)|fund recovery|recovery (service|agent|team|specialist)|get (your|the) money back|dapatkan (semula|balik) (wang|duit)|pulihkan (wang|duit|dana)|pemulihan (wang|dana)|tuntut (semula|balik) wang)\\b"
+        ]
+      ],
+      "detail": "Offers to get back money you lost to a scam. Police warn of a 'double scam': fake recovery agents, often posing as NSRC or lawyers, charge fees and recover nothing.",
+      "advice": "Only the police, NSRC (997) and your bank can trace scam money, and they never charge a fee for it. Don't pay any 'recovery' service.",
+      "source_url": "https://www.malaymail.com/news/malaysia/2026/04/13/pay-more-lose-more-police-warn-of-double-scam-trapping-victims-with-fake-recovery-offers/216147",
+      "reason": "it offers to recover money lost to scams"
+    },
+    {
+      "id": "endorsed_investment",
+      "severity": "red",
+      "deterministic": false,
+      "category": "loan_investment",
+      "title": "Says a celebrity or the government backs an investment",
+      "all": [
+        [
+          "\\b(government[- ]approved|approved by (the )?(government|bank negara|bnm|securities commission)|endorsed by|backed by (the )?(government|bank negara)|diluluskan (oleh )?(kerajaan|bank negara)|disokong (oleh )?kerajaan|diiktiraf kerajaan|program kerajaan|elon musk|siti nurhaliza|lee chong wei|as seen on (tv|the news)|seperti di berita)\\b"
+        ],
+        [
+          "\\b(invest|investment|pelaburan|labur|profit|returns?|pulangan|keuntungan|untung|trading|platform|modal|deposit|income)\\b"
+        ]
+      ],
+      "detail": "Claims an investment is approved by the government or Bank Negara, or promoted by a celebrity. BNM and the Securities Commission warn about deepfake videos of officials and celebrities used to sell fake schemes; neither endorses private investments.",
+      "advice": "Check any investment on the SC Investment Checker (sc.com.my/investment-checker) and BNM's Financial Consumer Alert list. Celebrity videos can be deepfakes.",
+      "source_url": "https://www.thevibes.com/articles/news/128334/bnm-sc-warn-of-deepfake-videos-using-senior-officials-to-promote-investment-scams",
+      "reason": "it claims a celebrity or the government backs an investment"
+    },
+    {
+      "id": "qr_to_receive",
+      "severity": "red",
+      "deterministic": false,
+      "category": "bank_phishing",
+      "title": "Scan a QR code to receive money",
+      "all": [
+        [
+          "\\b(scan|scanning|scanned|imbas|imbaskan|mengimbas)\\b[^.!?\\n]{0,30}\\b(qr|kod qr|qr code)\\b|\\bqr( code)?\\b[^.!?\\n]{0,30}\\b(scan|scanning|imbas)\\b"
+        ],
+        [
+          "\\b(receive|claim|refund|verify|unlock|activate|terima|tuntut|bayaran balik|sahkan|aktifkan|collect|redeem)\\b"
+        ]
+      ],
+      "detail": "Asks you to scan a QR code to receive, claim or verify something. You never need to scan a code to receive money; scam QR codes open fake payment or login pages.",
+      "advice": "Don't scan QR codes sent in messages. To receive money you only share your own DuitNow details; never scan someone else's code.",
+      "source_url": "https://www.thestar.com.my/news/nation/2026/09/03/watch-out-for-scan-artists-public-urged",
+      "reason": "it asks you to scan a QR code to receive or claim something"
+    },
+    {
+      "id": "romance_money_request",
+      "severity": "amber",
+      "deterministic": false,
+      "category": "impersonation",
+      "title": "Affectionate stranger asks for money",
+      "all": [
+        [
+          "\\b(my dear|dear,|honey|darling|sweetheart|my love|i love you|baby,|sayangku|cintaku)\\b"
+        ],
+        [
+          "\\b(customs|kastam|clearance|gift|parcel|package|ticket|tiket|hospital|stuck|terkandas|stranded|lend me|loan me|pinjam|send (me )?money|transfer|western union|usdt|bitcoin)\\b"
+        ]
+      ],
+      "detail": "Uses affectionate language and asks for money or mentions a parcel, ticket or emergency. Love scams build an online relationship, then invent customs fees, travel costs or emergencies.",
+      "advice": "Never send money to someone you've only met online, however close you feel. Do a reverse image search on their photos.",
+      "source_url": "https://bernama.com/en/crime_courts/news.php?id=2526281",
+      "reason": "an affectionate contact brings up money"
+    },
+    {
+      "id": "press_to_connect",
+      "severity": "amber",
+      "deterministic": false,
+      "category": "other",
+      "title": "'Press 1' to speak to an officer",
+      "all": [
+        [
+          "\\b(press|tekan) ?[0-9]\\b"
+        ],
+        [
+          "\\b(officer|pegawai|operator|customer service|khidmat pelanggan|bank|court|mahkamah|police|polis|lhdn|mcmc|telco)\\b"
+        ]
+      ],
+      "detail": "Asks you to press a number to speak to an officer, the classic opening of automated scam calls about blocked lines, court cases or unpaid fines.",
+      "advice": "Hang up on automated calls about fines, court cases or blocked lines, and check with the organisation using a number you look up yourself.",
+      "reason": "it uses a 'press 1 for an officer' script"
+    },
+    {
+      "id": "rental_deposit",
+      "severity": "amber",
+      "deterministic": false,
+      "category": "online_shopping",
+      "title": "Deposit before viewing a rental",
+      "all": [
+        [
+          "\\b(rent|rental|sewa|bilik|room|house|rumah|condo|apartment|homestay|unit)\\b"
+        ],
+        [
+          "\\b(booking fee|deposit (to|untuk) (view|book|reserve|tengok|lihat|tempah)|pay (the )?deposit (first|before)|yuran tempahan|deposit sewa|bayar deposit (dulu|dahulu)|before (viewing|view)|sebelum (tengok|lihat)|i('m| am) (overseas|outstation|abroad)|saya (di luar negara|outstation))\\b"
+        ]
+      ],
+      "detail": "Asks for a booking fee or deposit before you can view a rental, or says the owner is away. Rental scams copy real listings and disappear with the deposit.",
+      "advice": "Never pay before viewing the property and meeting the owner or agent. Check the agent with the Board of Valuers (LPPEH) and the account on Semak Mule.",
+      "source_url": "https://www.thevibes.com/articles/news/118093/fraudulent-property-rental-scams-surge-in-malaysia-amid-rising-identity-theft-police",
+      "reason": "it wants a deposit before you view a rental"
     }
   ]
 }

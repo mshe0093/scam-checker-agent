@@ -6,7 +6,8 @@
       "official_page",
       "secondary_source",
       "unverified"
-    ]
+    ],
+    "domains_checked": "Official domains were checked on 2026-11-08: each homepage loaded and named the institution, or (affinbank.com.my, rhbbank.com.my, maybank.com.my) a MYNIC WHOIS record shows a long-held registration. Institution list: https://www.bnm.gov.my/regulations/fsp-directory"
   },
   "generic_reporting": [
     {
@@ -159,7 +160,8 @@
       ],
       "official_domains": [
         "rhbgroup.com",
-        "rhbbank.com.my"
+        "rhbbank.com.my",
+        "rhb.com.my"
       ],
       "contacts": [
         {
@@ -187,7 +189,9 @@
       ],
       "official_domains": [
         "hlb.com.my",
-        "hongleongconnect.my"
+        "hongleongconnect.my",
+        "hlbislamic.com.my",
+        "hlisb.com.my"
       ],
       "contacts": [
         {
@@ -832,7 +836,8 @@
         "hsbc"
       ],
       "official_domains": [
-        "hsbc.com.my"
+        "hsbc.com.my",
+        "hsbcamanah.com.my"
       ],
       "contacts": [],
       "policies": [
@@ -879,6 +884,7 @@
         "affinbank"
       ],
       "official_domains": [
+        "affinalways.com",
         "affinbank.com.my"
       ],
       "contacts": [],
@@ -887,6 +893,442 @@
           "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
           "verification": "secondary_source",
           "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
+      ]
+    },
+    {
+      "id": "alrajhi",
+      "name": "Al Rajhi Bank Malaysia",
+      "type": "bank",
+      "aliases": [
+        "al rajhi",
+        "alrajhi"
+      ],
+      "brand_tokens": [
+        "alrajhi"
+      ],
+      "official_domains": [
+        "alrajhibank.com.my"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
+          "verification": "secondary_source",
+          "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
+      ]
+    },
+    {
+      "id": "muamalat",
+      "name": "Bank Muamalat",
+      "type": "bank",
+      "aliases": [
+        "bank muamalat",
+        "muamalat"
+      ],
+      "brand_tokens": [
+        "muamalat"
+      ],
+      "official_domains": [
+        "muamalat.com.my"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
+          "verification": "secondary_source",
+          "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
+      ]
+    },
+    {
+      "id": "bankofchina",
+      "name": "Bank of China (Malaysia)",
+      "type": "bank",
+      "aliases": [
+        "bank of china"
+      ],
+      "brand_tokens": [
+        "bankofchina"
+      ],
+      "official_domains": [
+        "bankofchina.com"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
+          "verification": "secondary_source",
+          "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
+      ]
+    },
+    {
+      "id": "agrobank",
+      "name": "Agrobank (Bank Pertanian Malaysia)",
+      "type": "bank",
+      "aliases": [
+        "agrobank",
+        "bank pertanian"
+      ],
+      "brand_tokens": [
+        "agrobank"
+      ],
+      "official_domains": [
+        "agrobank.com.my"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
+          "verification": "secondary_source",
+          "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
+      ]
+    },
+    {
+      "id": "bpmb",
+      "name": "Bank Pembangunan Malaysia",
+      "type": "bank",
+      "aliases": [
+        "bank pembangunan",
+        "bpmb"
+      ],
+      "brand_tokens": [
+        "bpmb"
+      ],
+      "official_domains": [
+        "bpmb.com.my"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
+          "verification": "secondary_source",
+          "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
+      ]
+    },
+    {
+      "id": "exim",
+      "name": "EXIM Bank Malaysia",
+      "type": "bank",
+      "aliases": [
+        "exim bank"
+      ],
+      "brand_tokens": [
+        "eximbank"
+      ],
+      "official_domains": [
+        "exim.com.my"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
+          "verification": "secondary_source",
+          "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
+      ]
+    },
+    {
+      "id": "kfh",
+      "name": "Kuwait Finance House (Malaysia)",
+      "type": "bank",
+      "aliases": [
+        "kuwait finance house",
+        "kfh"
+      ],
+      "brand_tokens": [],
+      "official_domains": [
+        "kfh.com.my"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
+          "verification": "secondary_source",
+          "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
+      ]
+    },
+    {
+      "id": "mbsb",
+      "name": "MBSB Bank",
+      "type": "bank",
+      "aliases": [
+        "mbsb",
+        "mbsb bank"
+      ],
+      "brand_tokens": [
+        "mbsb"
+      ],
+      "official_domains": [
+        "mbsb.com",
+        "mbsbbank.com"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
+          "verification": "secondary_source",
+          "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
+      ]
+    },
+    {
+      "id": "standardchartered",
+      "name": "Standard Chartered Malaysia",
+      "type": "bank",
+      "aliases": [
+        "standard chartered",
+        "stanchart",
+        "sc saadiq"
+      ],
+      "brand_tokens": [
+        "standardchartered",
+        "stanchart"
+      ],
+      "official_domains": [
+        "sc.com"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
+          "verification": "secondary_source",
+          "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
+      ]
+    },
+    {
+      "id": "aeonbank",
+      "name": "AEON Bank (digital bank)",
+      "type": "bank",
+      "aliases": [
+        "aeon bank"
+      ],
+      "brand_tokens": [
+        "aeonbank"
+      ],
+      "official_domains": [
+        "aeonbank.com.my"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
+          "verification": "secondary_source",
+          "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
+      ]
+    },
+    {
+      "id": "boost",
+      "name": "Boost (eWallet and Boost Bank)",
+      "type": "ewallet",
+      "aliases": [
+        "boost bank",
+        "boost app",
+        "boost ewallet",
+        "boost e-wallet",
+        "myboost"
+      ],
+      "brand_tokens": [
+        "myboost"
+      ],
+      "official_domains": [
+        "myboost.co",
+        "myboost.com.my",
+        "myboostbank.co"
+      ],
+      "contacts": [],
+      "policies": []
+    },
+    {
+      "id": "gxbank",
+      "name": "GXBank (digital bank)",
+      "type": "bank",
+      "aliases": [
+        "gxbank",
+        "gx bank"
+      ],
+      "brand_tokens": [
+        "gxbank"
+      ],
+      "official_domains": [
+        "gxbank.my"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
+          "verification": "secondary_source",
+          "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
+      ]
+    },
+    {
+      "id": "kafdigital",
+      "name": "KAF Digital Bank",
+      "type": "bank",
+      "aliases": [
+        "kaf digital",
+        "kaf digital bank"
+      ],
+      "brand_tokens": [
+        "kafdigital"
+      ],
+      "official_domains": [
+        "kafdigitalbank.com.my"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
+          "verification": "secondary_source",
+          "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
+      ]
+    },
+    {
+      "id": "rytbank",
+      "name": "Ryt Bank (YTL Digital Bank)",
+      "type": "bank",
+      "aliases": [
+        "ryt bank",
+        "rytbank",
+        "ytl digital bank"
+      ],
+      "brand_tokens": [
+        "rytbank"
+      ],
+      "official_domains": [
+        "rytbank.my"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Malaysian banks do not ask customers for personal or login details through links in SMS/online messages.",
+          "verification": "secondary_source",
+          "source_url": "https://soyacincau.com/2024/04/12/malaysia-banks-never-request-personal-information-online-scam/"
+        }
+      ]
+    },
+    {
+      "id": "bigpay",
+      "name": "BigPay",
+      "type": "ewallet",
+      "aliases": [
+        "bigpay"
+      ],
+      "brand_tokens": [
+        "bigpay"
+      ],
+      "official_domains": [
+        "bigpayme.com"
+      ],
+      "contacts": [],
+      "policies": []
+    },
+    {
+      "id": "setel",
+      "name": "Setel",
+      "type": "ewallet",
+      "aliases": [
+        "setel"
+      ],
+      "brand_tokens": [
+        "setel"
+      ],
+      "official_domains": [
+        "setel.com"
+      ],
+      "contacts": [],
+      "policies": []
+    },
+    {
+      "id": "paypal",
+      "name": "PayPal",
+      "type": "ewallet",
+      "aliases": [
+        "paypal"
+      ],
+      "brand_tokens": [
+        "paypal"
+      ],
+      "official_domains": [
+        "paypal.com"
+      ],
+      "contacts": [],
+      "policies": []
+    },
+    {
+      "id": "mcmc",
+      "name": "MCMC (Malaysian Communications and Multimedia Commission)",
+      "type": "government",
+      "aliases": [
+        "mcmc",
+        "suruhanjaya komunikasi dan multimedia",
+        "malaysian communications and multimedia commission"
+      ],
+      "brand_tokens": [
+        "mcmc"
+      ],
+      "official_domains": [
+        "mcmc.gov.my"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Only trust government links on sites ending in .gov.my.",
+          "verification": "secondary_source",
+          "source_url": "https://www.malaymail.com/amp/news/malaysia/2025/05/05/only-trust-govmy-sites-for-sumbangan-tunai-rahmah-updates-teo-warns-as-scam-links-spread/175632"
+        }
+      ]
+    },
+    {
+      "id": "sc",
+      "name": "Securities Commission Malaysia",
+      "type": "government",
+      "aliases": [
+        "securities commission",
+        "suruhanjaya sekuriti"
+      ],
+      "brand_tokens": [
+        "suruhanjayasekuriti"
+      ],
+      "official_domains": [
+        "sc.com.my"
+      ],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Check any investment offer or company with the SC Investment Checker at www.sc.com.my/investment-checker.",
+          "verification": "official_page",
+          "source_url": "https://www.sc.com.my/investment-checker"
+        }
+      ]
+    },
+    {
+      "id": "nsrc",
+      "name": "NSRC (National Scam Response Centre, 997)",
+      "type": "government",
+      "aliases": [
+        "nsrc",
+        "national scam response centre",
+        "pusat respons scam kebangsaan",
+        "pegawai nsrc"
+      ],
+      "brand_tokens": [],
+      "official_domains": [],
+      "contacts": [],
+      "policies": [
+        {
+          "text": "Police say the NSRC does not call members of the public, so any call or message claiming to be from an NSRC officer is a scam. To report a scam, you call 997 yourself.",
+          "verification": "secondary_source",
+          "source_url": "https://thesun.my/news/malaysia-news/police-receive-23-reports-of-bogus-nsrc-officers-involving-over-rm700000-in-losses-an11857447/"
         }
       ]
     }

@@ -38,6 +38,13 @@ POSITIVE = {
     "disconnection_threat": "Your water supply will be cut off tomorrow unless you settle the bill.",
     "aid_or_prize_claim": "Anda layak menerima bantuan RM300. Tuntut di bantuan-rakyat.site",
     "app_install_request": "Download our app here to get the promo: promo-rumah.xyz/get",
+    "nsrc_impersonation": "Ini wakil NSRC. Akaun anda disyaki terlibat, sila hubungi kami segera.",
+    "fund_recovery_offer": "Ditipu online? Kami pakar pemulihan dana, boleh dapatkan semula wang anda.",
+    "endorsed_investment": "This platform is approved by Bank Negara. Invest RM250 and start earning today.",
+    "qr_to_receive": "Imbas kod QR ini untuk terima bayaran balik anda.",
+    "romance_money_request": "Honey, I'm stuck at the airport. Please send money for my ticket home.",
+    "press_to_connect": "Your court summons is pending. Press 2 to speak to an officer.",
+    "rental_deposit": "Rumah sewa masih ada. Saya outstation, bayar yuran tempahan dulu ya.",
 }
 
 # Genuine messages in the same style that must not trigger any tactic.
@@ -52,6 +59,12 @@ CLEAN = [
     "Maybank: Enjoy 0% instalment for 12 months on selected purchases. T&C apply at maybank2u.com.my",
     "TNB: Your bill for October is RM88.10, due 25/11. Pay via the myTNB app.",
     "Download the MAE app from Google Play to manage your account.",
+    # Genuine advisories mention the NSRC without claiming to be it.
+    "If you have been scammed, call NSRC at 997 immediately to stop the transfer.",
+    "Jika anda menjadi mangsa penipuan, hubungi NSRC 997 segera.",
+    "Hi, is the room in Bangsar still available for rent? Can I view it this Saturday?",
+    "Thanks for dining with us! You can pay at the counter with DuitNow QR or card.",
+    "Securities Commission: check any investment offer on the SC Investment Checker first.",
 ]
 
 
@@ -120,6 +133,32 @@ def test_brand_tokens_never_match_another_orgs_official_domain():
                     assert token not in domain.replace(".", "").replace("-", ""), (token, domain)
 
 
+def test_no_domain_is_official_for_two_orgs():
+    owners: dict[str, str] = {}
+    for org in data.orgs():
+        for domain in org["official_domains"]:
+            assert domain not in owners, (domain, owners.get(domain), org["id"])
+            owners[domain] = org["id"]
+
+
+def test_known_wrong_domains_are_not_official():
+    official = {d for org in data.orgs() for d in org["official_domains"]}
+    # mae.com.my is an English-learning site, not Maybank's MAE app; pbislamic.com.my is unregistered.
+    assert "mae.com.my" not in official
+    assert "pbislamic.com.my" not in official
+    assert "affinalways.com" in official  # Affin's live site
+
+
+def test_short_ids_do_not_match_inside_other_names():
+    from scamcheck.tools.orgs import match_org
+
+    # "sc" (Securities Commission) appears inside "nsrc"; it must not win.
+    assert match_org("NSRC (National Scam Response Centre, 997)")["id"] == "nsrc"
+    assert match_org("Securities Commission")["id"] == "sc"
+    assert match_org("mayban")["id"] == "maybank"
+    assert match_org("Unknown Trading Sdn Bhd") is None
+
+
 def test_every_explanation_reason_is_a_known_signal_or_unused():
     reasons = data.explanations()["reasons"]
     assert all(isinstance(v, str) and v for v in reasons.values())
@@ -184,6 +223,25 @@ def test_red_tactic_with_strong_pressure_is_likely_scam():
     v = decide(ent, [res])
     assert v["verdict"] == "likely_scam"
     assert v["category"] == "loan_investment"
+
+
+def test_partner_asking_for_grocery_money_is_not_warned_about():
+    # The romance tactic is a weak hint (weight 1): on its own it must not trigger a warning.
+    ent, res = _entities_result("Darling, can you transfer RM50 for groceries? Love you!")
+    assert "romance_money_request" in {h["id"] for h in ent["tactics"]}
+    assert decide(ent, [res])["verdict"] == "insufficient_information"
+
+
+def test_fake_nsrc_officer_gets_nsrc_advice_not_another_orgs():
+    from scamcheck.tools.official_contact import lookup_official_contact
+
+    msg = "This is an officer from the NSRC. Your line will be disconnected. Press 1 now."
+    ent, res = _entities_result(msg)
+    contact = lookup_official_contact(ent["claimed_orgs"][0]["name"])
+    v = decide(ent, [res, contact])
+    assert v["verdict"] == "likely_scam"
+    assert "NSRC" in v["headline"]
+    assert not any("Securities Commission" in a for a in v["recommended_actions"])
 
 
 def test_everyday_words_are_not_pressure():

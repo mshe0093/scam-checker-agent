@@ -15,6 +15,15 @@ from scamcheck.models import ToolResult
 from scamcheck.registry import run_tool
 
 app = typer.Typer(add_completion=False, help="Agentic scam/phishing message checker for Malaysia.")
+
+# Windows consoles and pipes often default to a legacy code page that can't print "●" or "✓".
+# Replace what can't be encoded instead of crashing halfway through a verdict.
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure") and (_stream.encoding or "").lower() not in {
+        "utf-8",
+        "utf8",
+    }:
+        _stream.reconfigure(encoding="utf-8", errors="replace")
 console = Console()
 
 _SEV = {"red": "bold red", "amber": "yellow", "green": "green", "info": "dim"}

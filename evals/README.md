@@ -25,11 +25,32 @@ first set doesn't:
 - CEO gift-card requests, sextortion and "hi dad" messages in BM
 - genuine Shopee, Grab, TNB, school, work and family messages
 
+### Regression set
+
+`regression.jsonl` holds 28 messages (16 scams, 12 genuine), written on 2026-11-08 **after** the
+second round of detectors. Because it was written after them, it checks that the new rules work and
+don't cause false alarms. It is not a measure of accuracy. It covers:
+
+- fake NSRC officers and paid "fund recovery"
+- deepfake-endorsed investments
+- QR codes to "receive" refunds
+- COD parcels paid to a rider's account
+- rental deposits and love-scam customs fees
+- lookalikes of the newly added banks (GXBank, Affin, Boost)
+- MCMC robocalls, an `.apk` fake summons, mule recruitment via a job, Telegram code theft
+
+The genuine messages are deliberately tricky:
+- bank advisories that say "call NSRC 997"
+- a partner asking for grocery money
+- a rental enquiry and a restaurant's DuitNow QR note
+- real links to the new banks' official sites
+
 ## Running
 
 ```bash
 scamcheck eval --mode baseline                                # rules engine on dataset.jsonl
 scamcheck eval --mode baseline --dataset evals/challenge.jsonl
+scamcheck eval --mode baseline --dataset evals/regression.jsonl
 scamcheck eval --mode agent                                   # full Claude agent; costs API credits
 ```
 
@@ -42,6 +63,20 @@ Results are written to `evals/results/` (git-ignored). Copy the summary table he
 - **Legit cleared**: real messages correctly called `likely_legitimate`.
 
 ## Results
+
+### Rules-only baseline (2026-11-08, after the Malaysia coverage round)
+
+The second round added 7 tactics, 20 organisations (bringing the total to 53, including every retail
+bank on BNM's register) and 10 templates. It also stopped short organisation IDs from matching inside
+other names: `sc` used to match inside "NSRC", so a fake NSRC call got the Securities Commission's contacts.
+
+| Set | Scams flagged | Firm `likely_scam` | Scams called legitimate | Genuine marked suspicious | Genuine cleared |
+|---|---|---|---|---|---|
+| Original (26 / 14) | 100% | 26 | 0% | 0 | 71% |
+| Challenge (20 / 12) | 100% | 19 | 0% | 0 | 42% |
+| Regression (16 / 12) | 100% | 15 | 0% | 0 | 67% |
+
+The original and challenge results didn't change, so the new rules caused no regressions there.
 
 ### Rules-only baseline (2026-11-08, after the scam-tactic detectors)
 

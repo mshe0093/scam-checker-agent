@@ -167,6 +167,7 @@ that `unverified` must never count as evidence either way.
 | M7 | MCP server | `MCPServer` (mcp 2.x, formerly FastMCP) stdio server over `tools/` + prompt + resource | ✅ |
 | M7.5 | Detection upgrade from GitHub research | dnstwist permutations of official domains, IDN/punycode folding, URL-shape signals, trust signals, weights + caps in `data/rules.json` (see `docs/RESEARCH-similar-projects.md`) | ✅ |
 | M7.6 | Rules engine made usable on its own | 25 data-driven scam tactics (`data/tactics.json`), self-explaining verdicts with tailored advice and real hotlines (`data/explanations.json`), 18 more organisations, 12 more templates, `evals/challenge.jsonl` | ✅ |
+| M7.7 | Malaysia coverage from research | Every consumer-facing bank on BNM's register with hand-checked domains, e-wallets, NSRC/MCMC/SC; 7 more tactics from 2026 police warnings (fake NSRC, fund recovery, deepfake investments, QR, romance, robocalls, rentals); stricter org matching; `evals/regression.jsonl`; `docs/data-sources.md` | ✅ |
 | M8 | Ship | deploy (Vercel + Render), demo GIF, README polish, LICENSE | ⏳ next |
 | S1 | Stretch: screenshot input | Claude vision reads the SMS screenshot, then the same pipeline | — |
 | S2 | Stretch: WhatsApp | Twilio sandbox webhook adapter | — |
