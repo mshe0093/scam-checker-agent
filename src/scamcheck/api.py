@@ -23,6 +23,7 @@ from typing import Any
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from scamcheck import __version__
@@ -161,11 +162,18 @@ def create_app(
     limiter = RateLimiter(*rate_limit)
     app.state.sessions = sessions
 
+    # Behind a reverse proxy (Render, Fly), each proxy appends the address it saw to
+    # X-Forwarded-For. The left-most entries come from the client and can be forged to dodge the
+    # rate limit, so count SCAMCHECK_PROXY_HOPS trusted proxies from the right instead.
+    trust_proxy = os.getenv("SCAMCHECK_TRUST_PROXY") == "1"
+    proxy_hops = max(1, int(os.getenv("SCAMCHECK_PROXY_HOPS", "1")))
+
     def client_key(request: Request) -> str:
-        # Behind a proxy (Render/Fly), the first X-Forwarded-For hop is the client.
         fwd = request.headers.get("x-forwarded-for")
-        if fwd and os.getenv("SCAMCHECK_TRUST_PROXY") == "1":
-            return fwd.split(",")[0].strip()
+        if fwd and trust_proxy:
+            hops = [h.strip() for h in fwd.split(",") if h.strip()]
+            if hops:
+                return hops[-min(proxy_hops, len(hops))]
         return request.client.host if request.client else "unknown"
 
     def check_rate(request: Request) -> None:
@@ -216,7 +224,35 @@ def create_app(
             headers=headers,
         )
 
+    @app.middleware("http")
+    async def security_headers(request: Request, call_next: Callable[[Request], Any]) -> Any:
+        response = await call_next(request)
+        for key, value in SECURITY_HEADERS.items():
+            response.headers.setdefault(key, value)
+        return response
+
+    # In production the static export of the web UI (web/out) is served from the same origin, so
+    # one service hosts everything and the browser needs no CORS. Mounted last so /api/* wins.
+    static_dir = os.getenv("SCAMCHECK_STATIC_DIR")
+    if static_dir and os.path.isdir(static_dir):
+        app.mount("/", StaticFiles(directory=static_dir, html=True), name="ui")
+
     return app
+
+
+# Applied to every response. The static UI is plain HTML/JS from this origin; Next.js inlines
+# small bootstrap scripts, hence 'unsafe-inline' for scripts and styles.
+SECURITY_HEADERS = {
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "no-referrer",
+    "X-Frame-Options": "DENY",
+    "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+    "Content-Security-Policy": (
+        "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; "
+        "img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; "
+        "form-action 'self'"
+    ),
+}
 
 
 def __getattr__(name: str) -> Any:

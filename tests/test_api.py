@@ -112,3 +112,31 @@ def test_rules_engine_streams_real_tool_events_offline(monkeypatch):
     assert events[0]["engine"] == "rules"
     verdict = next(e for e in events if e["type"] == "verdict")["verdict"]
     assert verdict["engine"] == "rules" and "rules engine" in verdict["headline"]
+
+
+def test_rate_limit_uses_rightmost_proxy_hop_not_a_forged_one(monkeypatch):
+    monkeypatch.setenv("SCAMCHECK_TRUST_PROXY", "1")
+    monkeypatch.setenv("SCAMCHECK_PROXY_HOPS", "1")
+    c = TestClient(create_app(agent_factory=FakeAgent, rate_limit=(2, 60)))
+    body = {"message": "hello"}
+    # A client rotating a forged left-most address is still the same real client (right-most hop).
+    for forged in ("1.1.1.1", "2.2.2.2"):
+        h = {"x-forwarded-for": f"{forged}, 203.0.113.7"}
+        assert c.post("/api/check", json=body, headers=h).status_code == 200
+    h = {"x-forwarded-for": "3.3.3.3, 203.0.113.7"}
+    assert c.post("/api/check", json=body, headers=h).status_code == 429
+
+
+def test_security_headers_on_every_response(client):
+    r = client.get("/api/health")
+    assert r.headers["x-frame-options"] == "DENY"
+    assert "frame-ancestors 'none'" in r.headers["content-security-policy"]
+    assert r.headers["x-content-type-options"] == "nosniff"
+
+
+def test_serves_static_ui_without_shadowing_the_api(tmp_path, monkeypatch):
+    (tmp_path / "index.html").write_text("<h1>ui</h1>", encoding="utf-8")
+    monkeypatch.setenv("SCAMCHECK_STATIC_DIR", str(tmp_path))
+    c = TestClient(create_app(agent_factory=FakeAgent, rate_limit=(100, 60)))
+    assert "ui" in c.get("/").text
+    assert c.get("/api/health").json()["status"] == "ok"

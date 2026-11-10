@@ -45,3 +45,22 @@ jobs:
       - run: npm ci
       - run: npm run build # also generates .next/types used by the typecheck
       - run: npm run typecheck
+
+  docker:
+    name: Docker image (build + smoke test)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: docker build -t scamcheck:ci .
+      - name: Smoke test
+        run: |
+          docker run -d --name app -p 8000:8000 -e SCAMCHECK_ENGINE=rules scamcheck:ci
+          for i in $(seq 1 30); do curl -fs http://127.0.0.1:8000/api/health && break; sleep 1; done
+          curl -fs http://127.0.0.1:8000/ | grep -q "Scam Checker"
+          curl -fsN -X POST http://127.0.0.1:8000/api/check -H 'content-type: application/json' \
+            -d '{"message":"Ini pegawai dari NSRC. Talian anda akan dipotong."}' | grep -q '"verdict"'
+          test "$(docker exec app whoami)" = "app"
+      - name: Logs on failure
+        if: failure()
+        run: docker logs app

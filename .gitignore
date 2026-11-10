@@ -16,3 +16,4 @@ node_modules/
 evals/results/
 web/next-env.d.ts
 web/*.tsbuildinfo
+web/out/

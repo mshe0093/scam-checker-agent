@@ -1,0 +1,26 @@
+# Render Blueprint: one free web service that serves the API and the web UI.
+# Deploy: Render dashboard -> New -> Blueprint -> pick this repository. See docs/deploy.md.
+services:
+  - type: web
+    name: scamcheck
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      # rules = the free offline rules engine. Set to auto (and add ANTHROPIC_API_KEY) to use the
+      # Claude agent instead.
+      - key: SCAMCHECK_ENGINE
+        value: rules
+      # Render's proxy appends the real client IP to X-Forwarded-For; trust exactly one hop.
+      - key: SCAMCHECK_TRUST_PROXY
+        value: "1"
+      - key: SCAMCHECK_PROXY_HOPS
+        value: "1"
+      # Optional secrets: set them in the dashboard, never in this file.
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: GOOGLE_SAFE_BROWSING_API_KEY
+        sync: false

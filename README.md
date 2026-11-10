@@ -104,6 +104,8 @@ scamcheck tool phone "03-5891 4744"
 | Call it over HTTP (Server-Sent Events) | `scamcheck serve --port 8000` | [HTTP API](docs/usage.md#http-api) |
 | Give the tools to Claude Desktop or Claude Code | `claude mcp add scamcheck -- …/scamcheck-mcp` | [MCP server](docs/usage.md#mcp-server) |
 | Measure accuracy | `scamcheck eval --mode baseline` | [Evaluation](evals/README.md) |
+| Run everything in one container | `docker build -t scamcheck . && docker run -p 8000:8000 scamcheck` | [Deploying](docs/deploy.md) |
+| Deploy for free | Render → New → Blueprint → this repo | [Deploying](docs/deploy.md) |
 
 ## How it works
 
@@ -196,6 +198,7 @@ docs/                # usage guide, design plan, research notes
 ## Documentation
 
 - [Usage guide](docs/usage.md): CLI, web UI, HTTP API, MCP server and configuration
+- [Deploying](docs/deploy.md): Render Blueprint, Docker and the production checklist
 - [Design plan](docs/PLAN.md): architecture, tool contract, research behind each tool, milestones
 - [Similar projects](docs/RESEARCH-similar-projects.md): what other open-source scam checkers do, and what we adopted
 - [Data sources](docs/data-sources.md): where the bank domains, hotlines and scam patterns come from, and how they were checked
@@ -211,7 +214,8 @@ docs/                # usage guide, design plan, research notes
 - [x] dnstwist lookalikes, IDN folding, URL-shape and trust signals, data-driven weights
 - [x] 25 scam tactics, self-explaining rules-engine verdicts, challenge eval set
 - [x] Every BNM-licensed retail bank and the main e-wallets with hand-checked domains, 32 tactics from police warnings, regression set
-- [ ] Public deployment (rules engine, free tier)
+- [x] Deployment ready: one Docker image serving the UI and API, a Render Blueprint, security headers, a proxy-safe rate limiter, and a CI image smoke test
+- [ ] Go live and add the public URL
 - [ ] Held-out eval set and live agent eval results
 - [ ] Shareable BM/EN summary to forward to family
 - [ ] Threat-feed lookups, screenshot (OCR) input, Telegram/WhatsApp bot

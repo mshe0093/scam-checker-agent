@@ -5,6 +5,20 @@ releases yet, so entries are grouped by milestone (see [docs/PLAN.md](docs/PLAN.
 
 ## [Unreleased]
 
+### Added (M8: deployment)
+- `Dockerfile`: one image that builds the web UI as a static site and serves it from the API on the
+  same origin. It runs as a non-root user, has a health check and listens on `$PORT`.
+- `render.yaml`: a Render Blueprint for one free web service in Singapore, running the rules engine by default.
+- `docs/deploy.md`: deployment guide, proxy settings and a go-live checklist.
+- CI builds the image and smoke-tests the UI, the health check, a real check and the non-root user.
+- Security headers on every response: CSP, `X-Frame-Options`, `nosniff`, `Referrer-Policy` and `Permissions-Policy`.
+- `SCAMCHECK_STATIC_DIR` and `SCAMCHECK_PROXY_HOPS` settings.
+
+### Fixed (M8)
+- Rate limiting behind a proxy used the left-most `X-Forwarded-For` entry, which the client controls, so
+  rotating a forged address got around the limit. It now counts `SCAMCHECK_PROXY_HOPS` trusted proxies from the right.
+
+
 ### Added (Malaysia coverage round)
 - **Every consumer-facing bank on Bank Negara's register.** The list is taken from BNM's Financial Sector
   Participants Directory, and each domain was checked by loading its homepage. It covers:

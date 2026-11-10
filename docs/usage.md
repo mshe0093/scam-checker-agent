@@ -154,7 +154,8 @@ Every event is a JSON object with a `type` field. A `tool_result` carries the to
 - Each IP can make 10 requests per 10 minutes, and each session allows 10 follow-up questions.
 - Sessions live in memory and expire after 30 minutes.
 - **Pasted messages are never logged or stored.**
-- Set `SCAMCHECK_TRUST_PROXY=1` only when the API runs behind a reverse proxy that sets `X-Forwarded-For`.
+- Set `SCAMCHECK_TRUST_PROXY=1` only when the API runs behind a reverse proxy that sets `X-Forwarded-For`, and `SCAMCHECK_PROXY_HOPS` to the number of such proxies.
+- Every response carries security headers: CSP, `X-Frame-Options`, `nosniff`, `Referrer-Policy` and `Permissions-Policy`.
 
 ## MCP server
 
@@ -198,6 +199,9 @@ Copy [`.env.example`](../.env.example) and set what you need:
 | `GOOGLE_SAFE_BROWSING_API_KEY` | unset | Turns on the Safe Browsing check. Without it the check reports `unverified` |
 | `SCAMCHECK_CORS_ORIGINS` | `http://localhost:3000,http://127.0.0.1:3000` | A comma-separated list of origins allowed to call the API |
 | `SCAMCHECK_TRUST_PROXY` | unset | Set to `1` to read the client IP from `X-Forwarded-For` |
+| `SCAMCHECK_PROXY_HOPS` | `1` | How many trusted proxies append to `X-Forwarded-For`. The client IP is that many entries from the right, because entries further left can be forged |
+| `SCAMCHECK_STATIC_DIR` | unset | Serve the static web UI (`web/out`) from this directory on the same origin as the API. The Docker image sets it |
+| `PORT` | `8000` | Port the Docker image listens on |
 
 ## Development
 
