@@ -193,15 +193,6 @@ def create_app(
             "sessions": len(sessions),
         }
 
-    @app.get("/api/_ipdebug")  # TEMPORARY: removed once the proxy header layout is known
-    def ipdebug(request: Request) -> dict[str, Any]:
-        names = ("x-forwarded-for", "cf-connecting-ip", "true-client-ip", "x-real-ip", "forwarded")
-        return {
-            "peer": request.client.host if request.client else None,
-            **{n: request.headers.get(n) for n in names},
-            "key": client_key(request),
-        }
-
     @app.post("/api/check")
     def check(body: CheckRequest, request: Request) -> StreamingResponse:
         check_rate(request)

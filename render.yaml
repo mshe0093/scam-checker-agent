@@ -14,11 +14,13 @@ services:
       # Claude agent instead.
       - key: SCAMCHECK_ENGINE
         value: rules
-      # Render's proxy appends the real client IP to X-Forwarded-For; trust exactly one hop.
+      # On Render, X-Forwarded-For arrives as "<client-supplied...>, <real client>, <Cloudflare
+      # edge>, <Render load balancer>" (observed 2026-11-11), so the real client is 3 from the
+      # right. Anything further left can be forged.
       - key: SCAMCHECK_TRUST_PROXY
         value: "1"
       - key: SCAMCHECK_PROXY_HOPS
-        value: "1"
+        value: "3"
       # Optional secrets: set them in the dashboard, never in this file.
       - key: ANTHROPIC_API_KEY
         sync: false

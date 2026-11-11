@@ -25,7 +25,7 @@ The Blueprint sets these variables:
 |---|---|---|
 | `SCAMCHECK_ENGINE` | `rules` | The free offline rules engine. Change it to `auto` and set `ANTHROPIC_API_KEY` to use the Claude agent |
 | `SCAMCHECK_TRUST_PROXY` | `1` | Read the client IP from `X-Forwarded-For` for rate limiting |
-| `SCAMCHECK_PROXY_HOPS` | `1` | How many trusted proxies to count from the right. Entries further left can be forged by the client |
+| `SCAMCHECK_PROXY_HOPS` | `3` | On Render, `X-Forwarded-For` arrives as `<client-supplied…>, <real client>, <Cloudflare edge>, <Render load balancer>`, as observed on 2026-11-11. The real client is the third entry from the right, and anything further left can be forged |
 | `ANTHROPIC_API_KEY` | (optional secret) | Set it in the dashboard, never in the file |
 | `GOOGLE_SAFE_BROWSING_API_KEY` | (optional secret) | Turns on the Safe Browsing check |
 
@@ -35,9 +35,14 @@ The Blueprint sets these variables:
 - **A restart clears follow-up sessions and rate-limit counters.** They live in memory by design, so
   nothing about users is stored.
 
-**Check the rate limiter after the first deploy.** Make several requests from one machine. The 11th
-within 10 minutes should get HTTP 429. If requests are never limited, or everyone is limited together,
-check how many proxies add to `X-Forwarded-For` and set `SCAMCHECK_PROXY_HOPS` to match.
+**Check the rate limiter after any change to hosting.** Make 11 requests from one machine, each with a
+different made-up `X-Forwarded-For` header. The 11th should get HTTP 429.
+- **If none are limited:** the hop count is too low, so a proxy's address (which changes per request) is
+  being used as the client's.
+- **If everyone is limited together:** it's too high.
+
+On 2026-11-11, `SCAMCHECK_PROXY_HOPS=1` let forged headers through on Render. The header layout
+showed three proxies, so the setting is now 3.
 
 ## Any Docker host
 
