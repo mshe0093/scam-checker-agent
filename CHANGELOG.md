@@ -15,6 +15,9 @@ releases yet, so entries are grouped by milestone (see [docs/PLAN.md](docs/PLAN.
 - `SCAMCHECK_STATIC_DIR` and `SCAMCHECK_PROXY_HOPS` settings.
 
 ### Fixed (M8)
+- Live on Render at https://scamcheck-4afb.onrender.com. Render delivers `X-Forwarded-For` through
+  three proxies, so the Blueprint now sets `SCAMCHECK_PROXY_HOPS=3`. With one hop, every request
+  looked like a new client and nothing was ever rate-limited. Re-tested live with forged headers.
 - Rate limiting behind a proxy used the left-most `X-Forwarded-For` entry, which the client controls, so
   rotating a forged address got around the limit. It now counts `SCAMCHECK_PROXY_HOPS` trusted proxies from the right.
 

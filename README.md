@@ -11,6 +11,7 @@ analyst would, and shows every check it ran.**
 [![MCP server](https://img.shields.io/badge/MCP-server-8A2BE2)](docs/usage.md#mcp-server)
 [![Claude tool use](https://img.shields.io/badge/Claude-tool%20use-D97757)](src/scamcheck/agent.py)
 
+**[Try it live](https://scamcheck-4afb.onrender.com)** •
 [Quick start](#quick-start) •
 [How it works](#how-it-works) •
 [What it checks](#what-it-checks) •
@@ -215,7 +216,7 @@ docs/                # usage guide, design plan, research notes
 - [x] 25 scam tactics, self-explaining rules-engine verdicts, challenge eval set
 - [x] Every BNM-licensed retail bank and the main e-wallets with hand-checked domains, 32 tactics from police warnings, regression set
 - [x] Deployment ready: one Docker image serving the UI and API, a Render Blueprint, security headers, a proxy-safe rate limiter, and a CI image smoke test
-- [ ] Go live and add the public URL
+- [x] Live at [scamcheck-4afb.onrender.com](https://scamcheck-4afb.onrender.com) (free plan, rules engine; the first visit after a quiet spell can take up to a minute)
 - [ ] Held-out eval set and live agent eval results
 - [ ] Shareable BM/EN summary to forward to family
 - [ ] Threat-feed lookups, screenshot (OCR) input, Telegram/WhatsApp bot
