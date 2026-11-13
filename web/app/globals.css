@@ -184,3 +184,15 @@ button.primary:disabled { opacity: 0.55; cursor: default; }
 footer.foot { margin-top: 28px; color: var(--muted); font-size: 0.82rem; }
 footer.foot a { color: var(--accent); }
 code.inline { font-family: var(--mono); font-size: 0.85em; background: var(--surface-2); padding: 1px 4px; border-radius: 4px; overflow-wrap: anywhere; }
+
+/* Share panel */
+.share { margin-top: 18px; border: 1px solid var(--border, #2a2f3a); border-radius: 10px; padding: 12px; }
+.share-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.share-head .section-title { margin: 0; }
+.share-lang { display: flex; gap: 4px; }
+.share-lang button { font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border, #2a2f3a); background: transparent; color: inherit; cursor: pointer; }
+.share-lang button[aria-pressed="true"] { background: var(--accent, #3b82f6); border-color: var(--accent, #3b82f6); color: #fff; }
+.share-text { white-space: pre-wrap; word-break: break-word; font-family: inherit; font-size: 13px; line-height: 1.5; margin: 10px 0; padding: 10px; border-radius: 8px; background: rgba(127, 127, 127, 0.08); }
+.share-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.share-actions button, .share-actions a { font-size: 13px; padding: 7px 14px; border-radius: 8px; border: 1px solid var(--border, #2a2f3a); background: transparent; color: inherit; cursor: pointer; text-decoration: none; }
+.share-actions a.whatsapp { background: #25d366; border-color: #25d366; color: #06301a; font-weight: 600; }

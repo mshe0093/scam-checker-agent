@@ -24,6 +24,7 @@ from typing import Any
 from scamcheck import data
 from scamcheck.models import Severity, Signal, ToolResult
 from scamcheck.registry import CATEGORIES, run_tool
+from scamcheck.share import with_share
 from scamcheck.tools import tactics
 
 Event = dict[str, Any]
@@ -69,7 +70,7 @@ class RulesAgent:
             yield from self._call("check_phone_number", number=number)
         yield from self._call("match_scam_pattern", message=message)
 
-        self.verdict = decide(ent, self.results)
+        self.verdict = with_share(decide(ent, self.results), self.results)
         yield {"type": "verdict", "verdict": self.verdict}
         yield {"type": "done", "usage": dict(self.usage)}
 

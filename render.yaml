@@ -21,7 +21,15 @@ services:
         value: "1"
       - key: SCAMCHECK_PROXY_HOPS
         value: "3"
+      # Shown in the forwardable summary so recipients can check their own messages.
+      - key: SCAMCHECK_PUBLIC_URL
+        value: https://scamcheck-4afb.onrender.com
       # Optional secrets: set them in the dashboard, never in this file.
+      # Telegram bot (docs/deploy.md): both must be set for /api/telegram/webhook to exist.
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_WEBHOOK_SECRET
+        sync: false
       - key: ANTHROPIC_API_KEY
         sync: false
       - key: GOOGLE_SAFE_BROWSING_API_KEY

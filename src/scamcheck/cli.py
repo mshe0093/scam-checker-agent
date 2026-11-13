@@ -191,6 +191,23 @@ def serve(
     uvicorn.run(create_app(), host=host, port=port)
 
 
+@app.command("telegram-setup")
+def telegram_setup(
+    url: Annotated[
+        str, typer.Argument(help="Public base URL, e.g. https://scamcheck-xxxx.onrender.com")
+    ],
+) -> None:
+    """Register the Telegram webhook (needs TELEGRAM_BOT_TOKEN and TELEGRAM_WEBHOOK_SECRET)."""
+    from scamcheck import telegram
+
+    if not telegram.enabled():
+        raise typer.BadParameter("set TELEGRAM_BOT_TOKEN and TELEGRAM_WEBHOOK_SECRET first")
+    if not url.startswith("https://"):
+        raise typer.BadParameter("Telegram webhooks must use https://")
+    result = telegram.set_webhook(url.rstrip("/") + "/api/telegram/webhook")
+    console.print(result)
+
+
 @app.command("eval")
 def eval_cmd(
     mode: Annotated[

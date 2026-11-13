@@ -5,6 +5,16 @@ releases yet, so entries are grouped by milestone (see [docs/PLAN.md](docs/PLAN.
 
 ## [Unreleased]
 
+### Added (sharing and Telegram)
+- Every verdict, from either engine, now includes `share: {en, ms}`, a short forwardable warning. It covers
+  the verdict, the scam type, what to do, the official hotline from the dataset and NSRC 997, and never
+  repeats the scam's links. The web UI shows it with an English/Bahasa Melayu switch and Copy and
+  Send on WhatsApp buttons.
+- An optional Telegram bot on `/api/telegram/webhook`. It checks the secret header, answers straight away
+  and runs the check in the background, replies in the user's language (`/bm`, `/en`), and is rate-limited
+  per chat. `scamcheck telegram-setup <url>` registers the webhook.
+
+
 ### Added (M8: deployment)
 - `Dockerfile`: one image that builds the web UI as a static site and serves it from the API on the
   same origin. It runs as a non-root user, has a health check and listens on `$PORT`.

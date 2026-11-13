@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { Contact, TraceStep, Verdict } from "@/lib/types";
 
 const LABEL: Record<Verdict["verdict"], string> = {
@@ -52,6 +53,52 @@ function ContactLine({ c }: { c: Contact }) {
   );
 }
 
+/** A short warning to forward to family. Built server-side from the verdict and the dataset only,
+ * so it never repeats the scam's own links. */
+function SharePanel({ share }: { share: { en: string; ms: string } }) {
+  const [lang, setLang] = useState<"en" | "ms">("en");
+  const [copied, setCopied] = useState(false);
+  const text = share[lang];
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setCopied(false);
+    }
+  };
+  return (
+    <div className="share">
+      <div className="share-head">
+        <h3 className="section-title">Share this warning</h3>
+        <div className="share-lang" role="group" aria-label="Language">
+          <button type="button" aria-pressed={lang === "en"} onClick={() => setLang("en")}>
+            English
+          </button>
+          <button type="button" aria-pressed={lang === "ms"} onClick={() => setLang("ms")}>
+            Bahasa Melayu
+          </button>
+        </div>
+      </div>
+      <pre className="share-text">{text}</pre>
+      <div className="share-actions">
+        <button type="button" onClick={copy}>
+          {copied ? "Copied" : "Copy"}
+        </button>
+        <a
+          className="whatsapp"
+          href={`https://wa.me/?text=${encodeURIComponent(text)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Send on WhatsApp
+        </a>
+      </div>
+    </div>
+  );
+}
+
 export function VerdictCard({ verdict, steps }: { verdict: Verdict; steps: TraceStep[] }) {
   const official = officialFrom(steps);
   return (
@@ -102,6 +149,8 @@ export function VerdictCard({ verdict, steps }: { verdict: Verdict; steps: Trace
           </ul>
         </>
       )}
+
+      {verdict.share && <SharePanel share={verdict.share} />}
 
       {(official.contacts.length > 0 || official.generic.length > 0) && (
         <div className="contacts">

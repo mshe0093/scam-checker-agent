@@ -28,6 +28,8 @@ The Blueprint sets these variables:
 | `SCAMCHECK_PROXY_HOPS` | `3` | On Render, `X-Forwarded-For` arrives as `<client-supplied…>, <real client>, <Cloudflare edge>, <Render load balancer>`, as observed on 2026-11-11. The real client is the third entry from the right, and anything further left can be forged |
 | `ANTHROPIC_API_KEY` | (optional secret) | Set it in the dashboard, never in the file |
 | `GOOGLE_SAFE_BROWSING_API_KEY` | (optional secret) | Turns on the Safe Browsing check |
+| `SCAMCHECK_PUBLIC_URL` | the live URL | Added to the end of forwardable summaries |
+| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_WEBHOOK_SECRET` | (optional secrets) | Turn on the Telegram bot (see below) |
 
 **Free-plan behaviour:**
 - **The service sleeps after about 15 minutes without traffic.** The first request after that can take up
@@ -43,6 +45,30 @@ different made-up `X-Forwarded-For` header. The 11th should get HTTP 429.
 
 On 2026-11-11, `SCAMCHECK_PROXY_HOPS=1` let forged headers through on Render. The header layout
 showed three proxies, so the setting is now 3.
+
+## Telegram bot (optional)
+
+People can forward a suspicious message to a Telegram bot and get the verdict back as the same short
+EN/BM summary the web UI shows.
+
+1. In Telegram, message **@BotFather**, send `/newbot`, and copy the token it gives you.
+2. In the Render dashboard → `scamcheck` → **Environment**, set `TELEGRAM_BOT_TOKEN` to that token, and
+   `TELEGRAM_WEBHOOK_SECRET` to a long random string of letters and numbers (1–256 characters,
+   `A-Z a-z 0-9 _ -`). Save, and Render redeploys.
+3. Register the webhook once, from your machine:
+
+   ```bash
+   export TELEGRAM_BOT_TOKEN=... TELEGRAM_WEBHOOK_SECRET=...   # the same values
+   scamcheck telegram-setup https://scamcheck-4afb.onrender.com
+   ```
+4. Open your bot in Telegram and send `/start`.
+
+How it behaves:
+- **Only Telegram can call the webhook.** It rejects any request without the secret header (HTTP 403).
+- **It answers Telegram straight away** and runs the check in the background, then replies in the chat.
+- **Language:** it replies in BM for users whose Telegram language is Malay or Indonesian. `/bm` and `/en` switch it.
+- **Rate limit:** the same per-chat limit as the web, 10 checks per 10 minutes.
+- **Privacy:** message text is never logged or stored. Only the chat ID is used, for rate limiting and the language setting, and only in memory.
 
 ## Any Docker host
 

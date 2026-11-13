@@ -169,6 +169,7 @@ that `unverified` must never count as evidence either way.
 | M7.6 | Rules engine made usable on its own | 25 data-driven scam tactics (`data/tactics.json`), self-explaining verdicts with tailored advice and real hotlines (`data/explanations.json`), 18 more organisations, 12 more templates, `evals/challenge.jsonl` | ✅ |
 | M7.7 | Malaysia coverage from research | Every consumer-facing bank on BNM's register with hand-checked domains, e-wallets, NSRC/MCMC/SC; 7 more tactics from 2026 police warnings (fake NSRC, fund recovery, deepfake investments, QR, romance, robocalls, rentals); stricter org matching; `evals/regression.jsonl`; `docs/data-sources.md` | ✅ |
 | M8 | Ship | Deployment ready: one Docker image (static UI served by FastAPI, same origin), `render.yaml` Blueprint, security headers, proxy-safe rate limiting, CI image smoke test, `docs/deploy.md`. README polish and LICENSE done. Going live needs the owner's Render account | ✅ live at scamcheck-4afb.onrender.com |
+| M9 | Reach | Forwardable EN/BM summary with WhatsApp share; optional Telegram bot | ✅ |
 | S1 | Stretch: screenshot input | Claude vision reads the SMS screenshot, then the same pipeline | — |
 | S2 | Stretch: WhatsApp | Twilio sandbox webhook adapter | — |
 | S3 | Stretch: urlscan.io | submit the final URL for a sandboxed scan (needs a key) | — |

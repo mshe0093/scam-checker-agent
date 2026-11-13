@@ -136,7 +136,7 @@ curl -N -X POST localhost:8000/api/check -H 'content-type: application/json' \
 | `POST /api/ask` | `{"session_id": "...", "question": "..."}` | SSE: `text` / `tool_call` / `tool_result` …, then `done` |
 | `GET /api/health` | | JSON status, including the active engine |
 
-Every event is a JSON object with a `type` field. A `tool_result` carries the tool's full
+Every event is a JSON object with a `type` field. The `verdict` event's object also has `share: {en, ms}`: a short warning to forward on WhatsApp. It's built from the verdict and the dataset only, and never repeats the message's own links or numbers. A `tool_result` carries the tool's full
 [`ToolResult`](../src/scamcheck/models.py):
 
 ```json
@@ -202,6 +202,8 @@ Copy [`.env.example`](../.env.example) and set what you need:
 | `SCAMCHECK_PROXY_HOPS` | `1` | How many trusted proxies append to `X-Forwarded-For`. The client IP is that many entries from the right, because entries further left can be forged |
 | `SCAMCHECK_STATIC_DIR` | unset | Serve the static web UI (`web/out`) from this directory on the same origin as the API. The Docker image sets it |
 | `PORT` | `8000` | Port the Docker image listens on |
+| `SCAMCHECK_PUBLIC_URL` | unset | Link added to the end of the forwardable EN/BM summary |
+| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_WEBHOOK_SECRET` | unset | Turn on the Telegram bot webhook ([setup](deploy.md#telegram-bot-optional)) |
 
 ## Development
 

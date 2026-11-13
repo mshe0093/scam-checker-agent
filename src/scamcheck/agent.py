@@ -18,6 +18,7 @@ from scamcheck.models import ToolResult
 from scamcheck.prompts import SYSTEM_PROMPT, wrap_message
 from scamcheck.registry import anthropic_tools, run_tool
 from scamcheck.rules_agent import never_legitimate
+from scamcheck.share import with_share
 
 Event = dict[str, Any]
 FALLBACK_BETA = "server-side-fallback-2026-07-01"
@@ -160,7 +161,9 @@ class ScamCheckAgent:
 
             verdict_block = next((b for b in tool_uses if b.name == "submit_verdict"), None)
             if verdict_block is not None:
-                self.verdict = apply_verdict_floor(dict(verdict_block.input), self.results)
+                self.verdict = with_share(
+                    apply_verdict_floor(dict(verdict_block.input), self.results), self.results
+                )
                 tool_results.append(
                     {
                         "type": "tool_result",
@@ -193,4 +196,5 @@ class ScamCheckAgent:
             },
             self.results,
         )
+        self.verdict = with_share(self.verdict, self.results)
         return {"type": "verdict", "verdict": self.verdict}

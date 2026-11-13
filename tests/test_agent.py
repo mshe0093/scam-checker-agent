@@ -72,7 +72,10 @@ def test_full_run_parallel_tools_then_verdict(settings, monkeypatch):
     events = list(agent.check(MSG))
     kinds = [e["type"] for e in events]
     assert kinds.count("tool_call") == 4 and kinds.count("tool_result") == 4
-    assert events[-2] == {"type": "verdict", "verdict": VERDICT}
+    assert events[-2]["type"] == "verdict"
+    verdict = dict(events[-2]["verdict"])
+    assert set(verdict.pop("share")) == {"en", "ms"}  # forwardable summary added by the agent
+    assert verdict == VERDICT
     assert events[-1]["type"] == "done"
     # all three parallel results went back in ONE user message
     third_call_msgs = client.calls[2]["messages"]

@@ -30,6 +30,7 @@ export interface Verdict {
   findings: Finding[];
   recommended_actions: string[];
   engine?: string;
+  share?: { en: string; ms: string };
   floor_applied?: { from: string; reasons: string[] };
 }
 

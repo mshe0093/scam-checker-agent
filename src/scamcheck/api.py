@@ -26,7 +26,7 @@ from fastapi.responses import StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
-from scamcheck import __version__
+from scamcheck import __version__, telegram
 from scamcheck.agent import ScamCheckAgent
 from scamcheck.rules_agent import RulesAgent
 
@@ -223,6 +223,9 @@ def create_app(
             media_type="text/event-stream",
             headers=headers,
         )
+
+    if telegram.enabled():
+        telegram.register(app, agent_factory, RateLimiter(*rate_limit))
 
     @app.middleware("http")
     async def security_headers(request: Request, call_next: Callable[[Request], Any]) -> Any:

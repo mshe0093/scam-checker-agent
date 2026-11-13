@@ -66,6 +66,9 @@ The verdict cites every check, and a red flag found by deterministic code can't 
 - **Works without an API key.** An offline rules engine runs the same tools and explains each verdict
   in plain words, such as "Likely scam: the link is not Maybank's real website and…". It gives advice
   for that type of scam and the organisation's real hotline. Its verdicts are labelled "rules engine, no AI".
+- **Made to be shared.** Every verdict comes with a short warning in English and Bahasa Melayu that
+  can be copied or sent on WhatsApp in one tap. It includes the organisation's real hotline and never
+  repeats the scam's own links. An optional **Telegram bot** gives the same verdict in chat.
 - **One toolset, three front ends.** The Claude agent, the rules engine and the
   [MCP server](docs/usage.md#mcp-server) call the same `run_tool()` function.
 
@@ -218,8 +221,9 @@ docs/                # usage guide, design plan, research notes
 - [x] Deployment ready: one Docker image serving the UI and API, a Render Blueprint, security headers, a proxy-safe rate limiter, and a CI image smoke test
 - [x] Live at [scamcheck-4afb.onrender.com](https://scamcheck-4afb.onrender.com) (free plan, rules engine; the first visit after a quiet spell can take up to a minute)
 - [ ] Held-out eval set and live agent eval results
-- [ ] Shareable BM/EN summary to forward to family
-- [ ] Threat-feed lookups, screenshot (OCR) input, Telegram/WhatsApp bot
+- [x] Shareable EN/BM summary with Copy and WhatsApp buttons
+- [x] Optional Telegram bot (webhook, secret-checked, rate-limited)
+- [ ] Threat-feed lookups, screenshot (OCR) input
 
 ## Limitations
 
