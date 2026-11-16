@@ -10,6 +10,7 @@ analyst would, and shows every check it ran.**
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![MCP server](https://img.shields.io/badge/MCP-server-8A2BE2)](docs/usage.md#mcp-server)
 [![Claude tool use](https://img.shields.io/badge/Claude-tool%20use-D97757)](src/scamcheck/agent.py)
+[![M8ven Score](https://m8ven.ai/badge/mcp/mshe0093/scam-checker-agent?variant=verified)](https://m8ven.ai/mcp/mshe0093/scam-checker-agent?s=readme)
 
 **[Try it live](https://scamcheck-4afb.onrender.com)** •
 [Quick start](#quick-start) •

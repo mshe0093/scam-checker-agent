@@ -22,8 +22,17 @@ from scamcheck.prompts import SYSTEM_PROMPT, wrap_message
 from scamcheck.registry import TOOL_SPECS, run_tool
 
 DESCRIPTIONS = {spec["name"]: spec["description"] for spec in TOOL_SPECS}
-OFFLINE = ToolAnnotations(readOnlyHint=True, openWorldHint=False, idempotentHint=True)
-NETWORK = ToolAnnotations(readOnlyHint=True, openWorldHint=True, idempotentHint=True)
+
+
+def _hints(*, network: bool) -> ToolAnnotations:
+    """All four MCP behaviour hints, stated explicitly on every tool (hosts and directories such as
+    OpenAI's reject tools with any hint missing). Every tool only reads: none writes, deletes or
+    executes anything, and calling one twice has no extra effect. `network` tools reach outside
+    services (RDAP/WHOIS, the link being checked); the rest work from bundled data only."""
+    return ToolAnnotations(
+        readOnlyHint=True, destructiveHint=False, idempotentHint=True, openWorldHint=network
+    )
+
 
 server = MCPServer(
     name="scamcheck",
@@ -44,32 +53,34 @@ async def _run(name: str, **args: Any) -> dict[str, Any]:
     return result.model_dump(mode="json")
 
 
-@server.tool(description=DESCRIPTIONS["extract_entities"], annotations=OFFLINE)
+@server.tool(description=DESCRIPTIONS["extract_entities"], annotations=_hints(network=False))
 async def extract_entities(message: str) -> dict[str, Any]:
     return await _run("extract_entities", message=message)
 
 
-@server.tool(description=DESCRIPTIONS["check_domain"], annotations=NETWORK)
+@server.tool(description=DESCRIPTIONS["check_domain"], annotations=_hints(network=True))
 async def check_domain(domain_or_url: str, claimed_org: str = "") -> dict[str, Any]:
     return await _run("check_domain", domain_or_url=domain_or_url, claimed_org=claimed_org)
 
 
-@server.tool(description=DESCRIPTIONS["resolve_url_redirects"], annotations=NETWORK)
+@server.tool(description=DESCRIPTIONS["resolve_url_redirects"], annotations=_hints(network=True))
 async def resolve_url_redirects(url: str) -> dict[str, Any]:
     return await _run("resolve_url_redirects", url=url)
 
 
-@server.tool(description=DESCRIPTIONS["lookup_official_contact"], annotations=OFFLINE)
+@server.tool(
+    description=DESCRIPTIONS["lookup_official_contact"], annotations=_hints(network=False)
+)
 async def lookup_official_contact(org_name: str) -> dict[str, Any]:
     return await _run("lookup_official_contact", org_name=org_name)
 
 
-@server.tool(description=DESCRIPTIONS["match_scam_pattern"], annotations=OFFLINE)
+@server.tool(description=DESCRIPTIONS["match_scam_pattern"], annotations=_hints(network=False))
 async def match_scam_pattern(message: str) -> dict[str, Any]:
     return await _run("match_scam_pattern", message=message)
 
 
-@server.tool(description=DESCRIPTIONS["check_phone_number"], annotations=OFFLINE)
+@server.tool(description=DESCRIPTIONS["check_phone_number"], annotations=_hints(network=False))
 async def check_phone_number(number: str) -> dict[str, Any]:
     return await _run("check_phone_number", number=number)
 
