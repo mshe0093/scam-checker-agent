@@ -21,6 +21,19 @@ def test_exposes_same_tools_as_agent_minus_verdict():
     assert all(t.annotations.read_only_hint for t in tools)
 
 
+def test_every_tool_states_all_four_hints():
+    """readOnly, destructive, idempotent and openWorld are explicit booleans on every tool, and
+    only the tools that reach the network say openWorld."""
+    tools = asyncio.run(server.list_tools())
+    for t in tools:
+        a = t.annotations
+        hints = (a.read_only_hint, a.destructive_hint, a.idempotent_hint, a.open_world_hint)
+        assert all(isinstance(h, bool) for h in hints), t.name
+        assert a.destructive_hint is False and a.idempotent_hint is True, t.name
+    network = {t.name for t in tools if t.annotations.open_world_hint}
+    assert network == {"check_domain", "resolve_url_redirects"}
+
+
 def test_offline_tool_returns_structured_tool_result():
     res = asyncio.run(server.call_tool("extract_entities", {"message": MSG}))
     assert not res.is_error
